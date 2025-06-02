@@ -1,0 +1,44 @@
+{
+  "tests": [
+    {
+      "id": 1,
+      "name": "Full Body Check",
+      "icon": "/TestIcons/test.svg"
+    },
+    {
+      "id": 2,
+      "name": "Covid RTPCR",
+      "icon": "/TestIcons/test-1.svg"
+    },
+    {
+      "id": 3,
+      "name": "Liver Function Test",
+      "icon": "/TestIcons/test-2.svg"
+    },
+    {
+      "id": 4,
+      "name": "Complete Blood Count",
+      "icon": "/TestIcons/test-3.svg"
+    },
+    {
+      "id": 5,
+      "name": "Diabetes Test",
+      "icon": "/TestIcons/test-4.svg"
+    },
+     {
+      "id": 6,
+      "name": "Kidney Function Test ",
+      "icon": "/TestIcons/test-5.svg"
+    },
+     {
+      "id": 7,
+      "name": "Thyroid Test",
+      "icon": "/TestIcons/test-6.svg"
+    },
+    {
+      "id": 8,
+      "name": "Lipid Profile",
+      "icon": "/TestIcons/test-7.svg"
+    }
+  ]
+}
