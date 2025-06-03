@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {  SearchIcon } from 'lucide-react'
 import { useRecoilValue } from 'recoil'
 import { apiDataState } from '../apiState'
+import banner from '../assets/banner.png'
 
 function Search() {
     const [Searchquery, setSearchquery] = useState("")
@@ -12,7 +13,7 @@ function Search() {
       const apiData = useRecoilValue(apiDataState)
 
     useEffect(() => {
-      const  filtereddata = apiData.filter((item , i)=> {
+      const  filtereddata = apiData.filter((item )=> {
         if (item.name.toLowerCase().includes(Searchquery.toLowerCase())) {
           return true
         }
@@ -47,6 +48,9 @@ function Search() {
       ))}
      </div>
     ) : null}
+    <div>
+      <img className='w-[80%] mt-8' src={banner} alt="" />
+    </div>
           </>
   
   )

@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Search from './components/Search';
 import { useSetRecoilState } from 'recoil';
 import { apiDataState } from './apiState';
+import CommonlyBooked from './components/CommonlyBooked';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
     <>
      <Navbar/>
      <Search/>
+     <CommonlyBooked/>
     </>
   )
 }
