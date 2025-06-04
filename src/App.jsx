@@ -6,6 +6,7 @@ import Search from './components/Search';
 import { useSetRecoilState } from 'recoil';
 import { apiDataState } from './apiState';
 import CommonlyBooked from './components/CommonlyBooked';
+import TestList from './components/TestList';
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
         try {
               let response = await fetch("http://localhost:3001/tests")
           let data = await response.json()
-          console.log(data)
+          
           setApiData(data)
           
         } catch (error) {
@@ -32,6 +33,7 @@ function App() {
      <Navbar/>
      <Search/>
      <CommonlyBooked/>
+     <TestList/>
     </>
   )
 }

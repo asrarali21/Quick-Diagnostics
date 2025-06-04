@@ -18,7 +18,7 @@ function Search() {
           return true
         }
       })
-      console.log(filtereddata);
+
       
       setFilterData(filtereddata)
     }, [Searchquery,apiData])
