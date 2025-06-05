@@ -4,16 +4,16 @@
       "id": 1,
       "name": "Full Body Check",
       "icon": "/TestIcons/test.svg",
-       "image" : "bodytest.png",
-      "price": 1299,
+       "image" : "/TestIcons/bodytest.png",
+      "price": "Starting from $1299",
       "description": "A complete health checkup that includes 42 tests to assess overall health.",
       "testsIncluded": 42,
-      "reportTime": "24 Hrs"
+      "reportTime": "Reports ready in 24 Hrs"
     },
     {
       "id": 2,
       "name": "Cardiac Risk Assessment",
-       "image" : "cardiac.png",
+       "image" : "/TestIcons/cardiac.png",
       "price": 1299,
       "description": "Cardiac health check including cholesterol, ECG, and BP tests.",
       "testsIncluded": 42,
@@ -22,6 +22,7 @@
     {
       "id": 3,
       "name": "Stress Assessment",
+       "image" : "/TestIcons/stress.png",
       "price": 1299,
       "description": "Evaluate cortisol levels and other key stress indicators.",
       "testsIncluded": 42,
@@ -89,6 +90,53 @@
       "description": "Includes T3, T4, and TSH to assess thyroid function.",
       "testsIncluded": 3,
       "reportTime": "24 Hrs"
+    }
+  ]
+  ,
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Abby",
+      "location": "San Jose, CA",
+      "message": "Very friendly and professional. Loved the follow-up and progress calls.",
+      "image": "/UserIcons/avatar.png"
+    },
+    {
+      "id": 2,
+      "name": "John",
+      "location": "Austin, TX",
+      "message": "Professional service with fast reporting. Highly recommend!",
+      "image": "/UserIcons/avatar.png"
+    },
+    {
+      "id": 3,
+      "name": "Priya",
+      "location": "Mumbai, IN",
+      "message": "The staff was friendly and the process was quick. Great experience!",
+           "image": "/UserIcons/avatar.png"
+    }
+  ]
+,
+ "faqs": [
+    {
+      "id": 1,
+      "question": "How soon can I get the report?",
+      "answer": "Reports are typically available within 24 to 48 hours, depending on the test."
+    },
+    {
+      "id": 2,
+      "question": "Who needs Full Body Check-up?",
+      "answer": "It is recommended for adults over 25 or anyone looking for a comprehensive health overview."
+    },
+    {
+      "id": 3,
+      "question": "Can children take this test?",
+      "answer": "Some tests are suitable for children. Please consult with our medical team before booking."
+    },
+    {
+      "id": 4,
+      "question": "How many persons can book appointment through one account?",
+      "answer": "You can book appointments for up to 4 family members under one account."
     }
   ]
 }

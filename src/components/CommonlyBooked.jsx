@@ -15,7 +15,7 @@ function CommonlyBooked() {
     </div>
     <div className='flex flex-wrap '>
         {apidata.map((item , i )=>(
-            <img className='cursor-pointer' src={item.icon} alt="" />
+            <img key={i} className='cursor-pointer' src={item.icon} alt="" />
         ))}
         </div>
         <div>
