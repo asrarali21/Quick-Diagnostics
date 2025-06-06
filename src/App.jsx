@@ -2,15 +2,13 @@
 import { useEffect, useState } from 'react';
 import './App.css'
 import Navbar from './components/Navbar';
-import Search from './components/Search';
 import { useSetRecoilState } from 'recoil';
 import { apiDataState, ApiFaqState, apiTestimonialState } from './apiState';
-import CommonlyBooked from './components/CommonlyBooked';
-import TestList from './components/TestList';
 import axios from 'axios'
-import Testimonial from './components/Testimonial';
-import FAQ from './components/FAQ';
-import Footer from './components/Footer';
+import { Route, Routes } from 'react-router-dom';
+import Home from './Pages/Home';
+import Reports from './Pages/Reports';
+import Appointments from './Pages/Appointments';
 
 function App() {
 
@@ -56,16 +54,21 @@ function App() {
        FaqDataFetch()
       }, [])
       
-  
   return (
     <>
-     <Navbar/>
-     <Search/>
-     <CommonlyBooked/>
-     <TestList/>
-     <Testimonial/>
-     <FAQ/>
-     <Footer/>
+    <Routes>
+      <Route path='/' element ={ <Home/>  }/>
+      <Route path='/reports' element ={ <>
+       <Navbar/>
+          <Reports/>  
+        </>}/>
+      <Route path='/appointments' element ={
+        <>
+        <Navbar/>
+        <Appointments/>
+        </>
+        }/>
+     </Routes>
     </>
   )
 }

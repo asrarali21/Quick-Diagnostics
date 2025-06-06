@@ -9,9 +9,9 @@ function Navbar() {
         <img src={logo} alt="" />
     <div>
 
-    <NavLink>Home</NavLink>
-    <NavLink>Reports</NavLink>
-    <NavLink>My Appointments</NavLink>
+    <NavLink to={"/"}>Home</NavLink>
+    <NavLink to={"/reports"}>Reports</NavLink>
+    <NavLink  to={"/appointments"}>My Appointments</NavLink>
     </div>
  
 
