@@ -3,9 +3,18 @@ import { useRecoilValue } from 'recoil'
 import { apiDataState } from '../apiState'
 import { ChevronsRight } from 'lucide-react'
 import  ChooseBanner from "../assets/ChooseBanner.png"
+import { useNavigate } from 'react-router-dom'
 
 function CommonlyBooked() {
     const apidata = useRecoilValue(apiDataState)
+    const navigate = useNavigate()
+
+    function HandleClick(id) {
+        navigate(`/testinfo/${id}`)
+     
+        
+    }
+    
   return (
     <>
     <div className='flex justify-between m-3 pr-5'>
@@ -15,7 +24,7 @@ function CommonlyBooked() {
     </div>
     <div className='flex flex-wrap '>
         {apidata.map((item , i )=>(
-            <img key={i} className='cursor-pointer' src={item.icon} alt="" />
+            <img onClick={()=>HandleClick(item.id)} key={i} className='cursor-pointer' src={item.icon} alt="" />
         ))}
         </div>
         <div>

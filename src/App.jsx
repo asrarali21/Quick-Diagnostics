@@ -9,6 +9,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './Pages/Home';
 import Reports from './Pages/Reports';
 import Appointments from './Pages/Appointments';
+import TestInfo from './Pages/TestInfo';
 
 function App() {
 
@@ -34,7 +35,6 @@ function App() {
 
       useEffect(() => {
         const TestimonialDataFetch = async ()=>{
-
         const TestimonialData = await  axios.get("http://localhost:3001/testimonials")
         setTestmonialData(TestimonialData.data);
         
@@ -59,7 +59,7 @@ function App() {
     <Routes>
       <Route path='/' element ={ <Home/>  }/>
       <Route path='/reports' element ={ <>
-       <Navbar/>
+         <Navbar/>
           <Reports/>  
         </>}/>
       <Route path='/appointments' element ={
@@ -68,6 +68,7 @@ function App() {
         <Appointments/>
         </>
         }/>
+        <Route path='/testinfo/:id' element={<TestInfo/>}/>
      </Routes>
     </>
   )

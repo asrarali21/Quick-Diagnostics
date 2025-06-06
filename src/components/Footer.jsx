@@ -6,7 +6,6 @@ function Footer() {
   return (
     <>
     <div className='bg-blue-950 grid grid-cols-2'>
-
     <div>
         <img src={logoName} alt="" />
   

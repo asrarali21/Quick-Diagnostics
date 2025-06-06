@@ -11,7 +11,7 @@ function FAQ() {
     <h1>Frequently Asked Questions</h1>
     </div>
     {Faqdata.map((item , i )=>(
-          <Accordion defaultActiveKey="0">
+    <Accordion defaultActiveKey={null}>
       <Accordion.Item eventKey="0">
         <Accordion.Header>{item.question}</Accordion.Header>
         <Accordion.Body>
