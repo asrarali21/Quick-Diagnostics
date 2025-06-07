@@ -5,20 +5,21 @@ import Navbar from './components/Navbar';
 import { useSetRecoilState } from 'recoil';
 import { apiDataState, ApiFaqState, apiTestimonialState } from './apiState';
 import axios from 'axios'
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useParams } from 'react-router-dom';
 import Home from './Pages/Home';
 import Reports from './Pages/Reports';
 import Appointments from './Pages/Appointments';
 import TestInfo from './Pages/TestInfo';
 
 function App() {
-
+ 
   const setApiData = useSetRecoilState(apiDataState)
   const setTestmonialData = useSetRecoilState(apiTestimonialState)
   const setFaqData = useSetRecoilState(ApiFaqState)
 
-      useEffect(() => {
-       const FetchedData = async () => { 
+
+  useEffect(() => {
+    const FetchedData = async () => { 
         try {
               let response = await fetch("http://localhost:3001/tests")
           let data = await response.json()
@@ -53,6 +54,10 @@ function App() {
       
        FaqDataFetch()
       }, [])
+
+
+        
+          
       
   return (
     <>

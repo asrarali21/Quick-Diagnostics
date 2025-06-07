@@ -16,3 +16,4 @@ export const ApiFaqState =atom({
     key : 'ApiFaqState',
     default : [],
 })
+

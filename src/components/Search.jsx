@@ -3,12 +3,13 @@ import {  SearchIcon } from 'lucide-react'
 import { useRecoilValue } from 'recoil'
 import { apiDataState } from '../apiState'
 import banner from '../assets/banner.png'
+import { useNavigate } from 'react-router-dom'
 
 function Search() {
     const [Searchquery, setSearchquery] = useState("")
   
     const [FilterData, setFilterData] = useState([])
- 
+     const navigate = useNavigate()
 
       const apiData = useRecoilValue(apiDataState)
 
@@ -43,7 +44,7 @@ function Search() {
   </p>
       {FilterData.map((item , i)=>( 
         <div key={i}>
-          <p className='cursor-pointer'>{item.name}</p>
+          <p className='cursor-pointer' onClick={()=>navigate(`testinfo/${item.id}`)}>{item.name}</p>
         </div>      
       ))}
      </div>
