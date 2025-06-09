@@ -10,6 +10,8 @@ import Home from './Pages/Home';
 import Reports from './Pages/Reports';
 import Appointments from './Pages/Appointments';
 import TestInfo from './Pages/TestInfo';
+import AddPatient from './Pages/AddPatient';
+import SelectLab from './Pages/SelectLab';
 
 function App() {
  
@@ -74,6 +76,8 @@ function App() {
         </>
         }/>
         <Route path='/testinfo/:id' element={<TestInfo/>}/>
+        <Route path='/AddPatient' element={<AddPatient/>}/>
+        <Route path='/Labtest' element={<SelectLab/>}/>
      </Routes>
     </>
   )
