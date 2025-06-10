@@ -5,7 +5,7 @@ import  { ChevronDown, MapPin, ShoppingCart, User,  } from "lucide-react"
 function Navbar() {
   return (
     <>
-    <div className='flex'>
+    <div className='flex flex-wrap justify-between '>
         <img src={logo} alt="" />
     <div>
 
@@ -21,12 +21,12 @@ function Navbar() {
               <span className="text-sm">Mountain view, CA, USA</span>
               <ChevronDown className="w-4 h-4" />
             </div>
-            </div>
 
     <div className='flex'>
-       <User className="w-5 h-5 text-gray-600" />
+       <User className="w-5 h-5 text-gray-600 cursor-pointer" />
          <ShoppingCart className="w-5 h-5 text-gray-600" />
   
+            </div>
     </div>
     </div>
 

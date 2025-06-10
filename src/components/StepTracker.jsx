@@ -7,7 +7,7 @@ function StepTracker({currentStep}) {
   return (
     <div>
             <div>
-                <button onClick={()=>navigate("/labtest")}>back</button>
+                <button onClick={()=>navigate("/")}>back</button>
                 {steps.map((item ,i )=>(
                  
                     <span key={i} className={`
