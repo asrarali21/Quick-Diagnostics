@@ -12,6 +12,9 @@ import Appointments from './Pages/Appointments';
 import TestInfo from './Pages/TestInfo';
 import AddPatient from './Pages/AddPatient';
 import SelectLab from './Pages/SelectLab';
+import SelectAppointment from './Pages/SelectAppointment';
+import AddAddress from './Pages/AddAddress';
+import ReviewOrder from './Pages/ReviewOrder';
 
 function App() {
  
@@ -78,6 +81,9 @@ function App() {
         <Route path='/testinfo/:id' element={<TestInfo/>}/>
         <Route path='/AddPatient' element={<AddPatient/>}/>
         <Route path='/Labtest' element={<SelectLab/>}/>
+        <Route path='/SelectAppointment' element={<SelectAppointment/>}/>
+        <Route path='/AddAddress' element={<AddAddress/>}/>
+        <Route path='/reviewOrder' element={<ReviewOrder/>}/>
      </Routes>
     </>
   )

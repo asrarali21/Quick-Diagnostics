@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 
 function AddPatient() {
   const navigate = useNavigate()
-
   return (
     <div>
      <BreadCrum />
@@ -14,5 +13,4 @@ function AddPatient() {
     </div>
   )
 }
-
 export default AddPatient
