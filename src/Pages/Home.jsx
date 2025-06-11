@@ -12,15 +12,21 @@ import Footer from '../components/Footer'
 
 function Home() {
   return (
-    <>
-    <Navbar/>
-      <Search/>
-     <CommonlyBooked/>
-     <TestList/>
-     <Testimonial/>
-     <FAQ/>
-     <Footer/>
-    </>
+    <div className="min-h-screen flex flex-col">
+      <Navbar/>
+      <div className="pt-14 flex-1">
+        <Search/>
+        <div className='mt-10 '>
+        <CommonlyBooked/>
+        </div>
+        <TestList/>
+        <Testimonial/>
+        <div className='mb-14'>
+        <FAQ/>
+        </div>
+      </div>
+      <Footer className="mt-auto" />
+    </div>
   )
 }
 

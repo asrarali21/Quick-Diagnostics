@@ -14,14 +14,22 @@ function TestInfo() {
      
      
   return (
-    <div>
+    <>
+    <div className='flex justify-center items-center'>
        <BreadCrum/>
-      <h2>{test.name}</h2>
+    </div >
      <div>
+      <h2 className='text-center'>{test.name}</h2>
+      <div>
+      <p>{test.price}</p>
+      <p>{test.reportTime}</p>
+      <p>{test.description}</p>
+      </div>
+      <div></div>
       <span>Cancel</span>
       <button onClick={()=>navigate("/AddPatient", {state:{test}})}>Add patients</button>
      </div>
-    </div>
+    </>
   )
 }
 

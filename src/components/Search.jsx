@@ -27,33 +27,39 @@ function Search() {
 
   return (
     <>
-    <div className="relative">
-        <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 mt-10">
+      <div className="bg-white border border-[#E5E5E5] rounded-xl shadow flex items-center px-4 py-2">
+        <SearchIcon className="text-gray-400 w-6 h-6 mr-2" />
         <input
           type="text"
           value={Searchquery}
-          placeholder= "search for labs , packages"
-          onChange={(e)=>setSearchquery(e.target.value)}
-          className="pl-10 pr-10 py-3 text-lg border-gray-200 focus:border-purple-500 focus:ring-purple-500"
-          />
+          placeholder="Search for lab test, packages"
+          onChange={(e) => setSearchquery(e.target.value)}
+          className="w-full bg-transparent outline-none border-none text-lg placeholder-gray-400 py-2"
+        />
+      </div>
+      {Searchquery.length !== 0 ? (
+        <div className="bg-white rounded-lg shadow mt-2 p-4">
+          <p className="text-gray-600 mb-2">
+            {FilterData.length} {FilterData.length === 1 ? 'result' : 'results'} found
+          </p>
+          {FilterData.map((item, i) => (
+            <div key={i}>
+              <p
+                className="cursor-pointer hover:text-[#7C5CFC] transition-colors"
+                onClick={() => navigate(`testinfo/${item.id}`)}
+              >
+                {item.name}
+              </p>
+            </div>
+          ))}
+        </div>
+      ) : null}
+      <div className="w-full flex justify-center">
+        <img className="w-full max-w-[100%] mt-8 rounded-2xl" src={banner} alt="" />
     </div>
-    
-    {Searchquery.length !== 0 ? (
-      <div>
-       <p>{FilterData.length} {FilterData.length === 1 ? 'result' : 'results'} found 
-  </p>
-      {FilterData.map((item , i)=>( 
-        <div key={i}>
-          <p className='cursor-pointer' onClick={()=>navigate(`testinfo/${item.id}`)}>{item.name}</p>
-        </div>      
-      ))}
-     </div>
-    ) : null}
-    <div>
-      <img className='w-[80%] mt-8' src={banner} alt="" />
-    </div>
-          </>
-  
+      </div>
+    </>
   )
 }
 
