@@ -1,10 +1,12 @@
 import React from 'react'
 import {  useRecoilValue } from 'recoil'
 import { apiDataState } from '../apiState'
+import { useNavigate } from 'react-router-dom';
 
 function TestList() {
     const TestData = useRecoilValue(apiDataState)
     console.log(TestData);
+    const navigate = useNavigate()
     
   return (
     <>
@@ -25,7 +27,7 @@ function TestList() {
                 <p className="text-base text-gray-700 mb-1">Starting from {item.price}</p>
                 <p className="text-sm text-gray-500 mb-1">{item.reportTime}</p>
                 <p className="text-sm text-gray-500 mb-1">{item.testsIncluded}</p>
-                <p className="text-[#7C5CFC] font-medium text-sm mt-2 cursor-pointer hover:underline">View Details</p>
+                <p onClick={()=>navigate(`/testinfo/${item.id}`)} className="text-[#7C5CFC] font-medium text-sm mt-2 cursor-pointer hover:underline">View Details</p>
               </div>
             </div>
           ))}

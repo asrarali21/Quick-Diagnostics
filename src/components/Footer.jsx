@@ -1,5 +1,5 @@
 import React from 'react'
-import logoName from '../assets/logoName.svg'
+import logoName from '../assets/logo.svg'
 import PlayStore from '../assets/Google play.png'
 
 import { FaFacebookF, FaTwitter } from 'react-icons/fa'

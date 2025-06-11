@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../assets/LogoName.svg';
+import logo from '../assets/logo.svg';
 import  { NavLink } from "react-router-dom"
 import  { ChevronDown, MapPin, ShoppingCart, User,  } from "lucide-react"
 
