@@ -13,7 +13,7 @@ function BreadCrum() {
     const pathnames = location.pathname.split("/")
   const testList =  useRecoilValue(apiDataState)
   const tests = testList.find(t => String(t.id) === id) || location.state?.test 
-  console.log(location);
+  console.log(tests);
   
   return (
     <div>
