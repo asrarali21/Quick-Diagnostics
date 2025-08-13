@@ -6,7 +6,7 @@ const userSchema = new Schema({
         type:String,
         required :true 
     },
-    LastName :{
+    lastName :{
         type:String,
         required :true
     },
@@ -19,7 +19,7 @@ const userSchema = new Schema({
      required : true
     },
     opt:{
-        type:Number,
+        type:String,
         required:true
     },
     optExpiry : {
