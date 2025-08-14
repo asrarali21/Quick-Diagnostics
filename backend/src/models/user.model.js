@@ -16,11 +16,11 @@ const userSchema = new Schema({
     },
     phoneNumber :{
       type:Number, 
-     required : true
+     required : false
     },
     opt:{
         type:String,
-        required:true
+        required:false
     },
     optExpiry : {
         type : Date

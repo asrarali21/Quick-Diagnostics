@@ -1,8 +1,9 @@
-import { User } from "../models/user.model";
-import { ApiError } from "../utils/apiError";
-import { ApiResponse } from "../utils/apiResponse";
-import { asyncHandler } from "../utils/asyncHandle";
+import { User } from "../models/user.model.js";
+import { ApiError } from "../utils/apiError.js";
+import { ApiResponse } from "../utils/apiResponse.js";
+import { asyncHandler } from "../utils/asyncHandle.js";
 import crypto from "crypto"
+import { sendemail } from "../utils/Emailsend.js";
 
 
 const signupUserBasic = asyncHandler(async(req , res)=>{
@@ -23,7 +24,7 @@ const signupUserBasic = asyncHandler(async(req , res)=>{
 
 })
 
-const verifyopt = asyncHandler(async()=>{
+const verifyotp = asyncHandler(async(req , res)=>{
        
     const {userID , phoneNumber} = req.body
 
@@ -45,5 +46,13 @@ const verifyopt = asyncHandler(async()=>{
     user.optExpiry = optExpiry;
     await user.save();
    
+   await sendemail(user.email , otp)
 
+
+   return  res.status(200)
+   .json(new ApiResponse(200 , {} , "opt generated successfully"))
 })
+
+
+
+export {signupUserBasic , verifyotp}
