@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { signupUserBasic, verifyotp } from "../controllers/user.controller.js";
+import { sendOtp, signupUserBasic, verifyOtp } from "../controllers/user.controller.js";
 
 
 
@@ -8,7 +8,8 @@ const userRouter = Router()
 
 
 userRouter.route("/signup").post(signupUserBasic)
-userRouter.route("/verifyotp").post(verifyotp)
+userRouter.route("/sendotp").post(sendOtp)
+userRouter.route("/verifyotp").post(verifyOtp)
 
 
 export {userRouter}

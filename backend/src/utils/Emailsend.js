@@ -1,4 +1,8 @@
 import nodemailer from "nodemailer"
+import dotenv from "dotenv"
+
+
+dotenv.config()
 
 // Create a test account or replace with real credentials.
 const transporter = nodemailer.createTransport({
@@ -11,14 +15,14 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-  export const sendemail = async(Toemail)=>{
+  export const sendemail = async(Toemail , otp)=>{
     try {
            const info = await transporter.sendMail({
     from: '"Diagnostic" <asrarpersonal6666@gmail.com>',
     to: Toemail,
-    subject: "Hello ✔",
-    text: "Hello world?", // plain‑text body
-    html: "<b>Hello world?</b>", // HTML body
+    subject: "Your OTP Code",
+    text: String(otp), // plain‑text body
+    html:  `<p>Your OTP code is: <b>${otp}</b></p>`, // HTML body
   });
     } catch (error) {
         console.log(error)

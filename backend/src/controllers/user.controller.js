@@ -24,7 +24,7 @@ const signupUserBasic = asyncHandler(async(req , res)=>{
 
 })
 
-const verifyotp = asyncHandler(async(req , res)=>{
+const sendOtp = asyncHandler(async(req , res)=>{
        
     const {userID , phoneNumber} = req.body
 
@@ -38,21 +38,50 @@ const verifyotp = asyncHandler(async(req , res)=>{
          throw new ApiError(400 , "user not found")
       }
 
+
+
+       
       const otp = crypto.randomInt(1000, 10000); // 4-digit OTP
-  const optExpiry = new Date(Date.now() + 5 * 60 * 1000)
+  const otpExpiry = new Date(Date.now() + 5 * 60 * 1000)
 
     user.phoneNumber = phoneNumber;
     user.otp = otp;
-    user.optExpiry = optExpiry;
+    user.otpExpiry = otpExpiry;
     await user.save();
    
    await sendemail(user.email , otp)
-
+  
+   
 
    return  res.status(200)
    .json(new ApiResponse(200 , {} , "opt generated successfully"))
 })
 
+const verifyOtp = asyncHandler(async (req, res) => {
+    const { userID, otp } = req.body;
 
+    if (!userID || !otp) {
+        throw new ApiError(400, "userID and otp are required");
+    }
 
-export {signupUserBasic , verifyotp}
+    const user = await User.findById(userID);
+    if (!user) {
+        throw new ApiError(404, "User not found");
+    }
+
+    if (user.otp !== Number(otp)) {
+        throw new ApiError(400, "Invalid OTP");
+    }
+
+    if (user.otpExpiry < Date.now()) {
+        throw new ApiError(400, "OTP expired");
+    }
+
+    // Mark user as verified, if needed
+    user.isVerified = true;
+    await user.save();
+
+    res.status(200).json(new ApiResponse(200, {}, "OTP verified successfully"));
+});
+
+export {signupUserBasic , sendOtp , verifyOtp}

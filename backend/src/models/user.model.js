@@ -18,11 +18,11 @@ const userSchema = new Schema({
       type:Number, 
      required : false
     },
-    opt:{
-        type:String,
-        required:false
+    otp:{
+        type:Number,
+      
     },
-    optExpiry : {
+    otpExpiry : {
         type : Date
     },
         isVerified: {
