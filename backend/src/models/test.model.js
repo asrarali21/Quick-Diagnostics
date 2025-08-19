@@ -17,11 +17,19 @@ const testSchema = new Schema({
         type: String,
         required: true
     },
-    inclusions: {
-        type: [String],   // array of strings
+    image: {
+        type: String,
         required: true
     },
-    tat: {   // Turnaround time
+    report_time: {
+        type: String,
+        required: true
+    },
+    inclusions: {
+        type: [String],  
+        required: true
+    },
+    tat: {   
         type: String,
         required: true
     },
@@ -32,5 +40,12 @@ const testSchema = new Schema({
     features: {
         type: [String],
         required: true
+    },
+      why_book: {
+        type: [String],
+        required: true
     }
 }, { timestamps: true });
+
+
+export const Test = mongoose.model("Test", testSchema)
