@@ -84,4 +84,17 @@ const verifyOtp = asyncHandler(async (req, res) => {
     res.status(200).json(new ApiResponse(200, {}, "OTP verified successfully"));
 });
 
+const adminLogin = asyncHandler(async(req ,res)=>{
+        const {email , password} =req.body
+  
+
+        if (email ==! process.env.ADMIN_EMAIL && password ==! process.env.ADMIN_PASS) {
+          throw new ApiError(400 , "invalid creadential")
+        }
+
+       
+})
+
+
+
 export {signupUserBasic , sendOtp , verifyOtp}

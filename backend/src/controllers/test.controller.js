@@ -56,4 +56,50 @@ const Testinfo = asyncHandler (async(req , res)=>{
        .json(new ApiResponse(201, testdetail , "successfully created test "))
 })
 
-export {Testinfo}
+
+const getallTest = asyncHandler(async(req ,res)=>{
+      const test = await Test.find()
+
+      if (!test) {
+        throw new ApiError(400 , "cant found test")
+      }
+
+    res.status(200)
+    .json(new ApiResponse(200 , test , "successfully got all the test"))
+
+})
+
+const getsingleTest = asyncHandler(async(req , res)=>{
+     const {id} = req.params
+
+     const singletest = await Test.findById(id)
+
+
+     if (!singletest) {
+         throw new ApiError(400 , "test not found")
+     }
+
+     res.status(200)
+     .json(new ApiResponse(200 , singletest , "got test successfully"))
+       
+})
+
+
+const deleteTest = asyncHandler(async(req , res)=>{
+  const {id} = req.params
+  const deletetest = await Test.findByIdAndDelete(id)
+
+  if (!deletetest) {
+       throw new ApiError(400 , "cloud not delete test")
+  }
+
+
+  res.status(200)
+  .json(new ApiResponse(200 , "successfully deleted test"))
+})
+
+
+
+export {Testinfo , getallTest , getsingleTest ,deleteTest}
+
+

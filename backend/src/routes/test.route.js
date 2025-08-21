@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Testinfo } from "../controllers/test.controller.js";
+import { deleteTest, getallTest, getsingleTest, Testinfo } from "../controllers/test.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
 
 
@@ -18,6 +18,10 @@ testRouter.route("/test").post(upload.fields([
             maxCount :1
         }
    ] ),Testinfo)
+
+   testRouter.route('/alltests').get(getallTest)
+   testRouter.route('/singleTest/:id').get(getsingleTest)
+   testRouter.route('/deleteTest/:id').delete(deleteTest)
 
 
 export default testRouter
