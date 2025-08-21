@@ -4,6 +4,7 @@ import { ApiResponse } from "../utils/apiResponse.js";
 import { asyncHandler } from "../utils/asyncHandle.js";
 import crypto from "crypto"
 import { sendemail } from "../utils/Emailsend.js";
+import jwt from "jsonwebtoken"
 
 
 const signupUserBasic = asyncHandler(async(req , res)=>{
@@ -84,7 +85,7 @@ const verifyOtp = asyncHandler(async (req, res) => {
     res.status(200).json(new ApiResponse(200, {}, "OTP verified successfully"));
 });
 
-const adminLogin = asyncHandler(async(req ,res)=>{
+const adminLogin = asyncHandler(async(req ,res )=>{
         const {email , password} =req.body
   
 
@@ -92,9 +93,31 @@ const adminLogin = asyncHandler(async(req ,res)=>{
           throw new ApiError(400 , "invalid creadential")
         }
 
-       
+        const accessToken = jwt.sign
+        (
+            {role:"admin"},
+           process.env.ACCESS_TOKEN_SECRET,
+           {expiresIn:process.env.ACCESS_TOKEN_EXPIRY}
+        );
+         const refreshToken = jwt.sign
+        (
+            {role:"admin"},
+           process.env.REFRESH_TOKEN_SECRET,
+           {expiresIn:process.env.REFRESH_TOKEN_EXPIRY}
+        )
+
+      const options = {
+  httpOnly: true,
+  secure: false,     // false on localhost
+  sameSite: 'lax',
+  path: '/',
+}
+   res
+        .cookie("accessToken" , accessToken , options )
+        .cookie("refreshToken" , refreshToken , options)
+        .json(new ApiResponse(200 ,  "admin login successfully"))
 })
 
 
 
-export {signupUserBasic , sendOtp , verifyOtp}
+export {signupUserBasic , sendOtp , verifyOtp , adminLogin} 
