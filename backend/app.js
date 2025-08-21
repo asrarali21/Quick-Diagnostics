@@ -1,7 +1,6 @@
 import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
-import { urlencoded } from "express"
 import { userRouter } from "./src/routes/user.route.js"
 import testRouter from "./src/routes/test.route.js"
 
@@ -20,7 +19,7 @@ app.use(cors({
 app.use(express.json())
 app.use(cookieParser())
 
-app.use(urlencoded({extended:true}))
+app.use(express.urlencoded({extended:true}))
 app.use(express.static("public"))
 
 //routes

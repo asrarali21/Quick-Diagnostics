@@ -86,10 +86,13 @@ const verifyOtp = asyncHandler(async (req, res) => {
 });
 
 const adminLogin = asyncHandler(async(req ,res )=>{
+
+    console.log(req.body);
+    
         const {email , password} =req.body
   
 
-        if (email ==! process.env.ADMIN_EMAIL && password ==! process.env.ADMIN_PASS) {
+        if (email !== process.env.ADMIN_EMAIL && password !== process.env.ADMIN_PASS) {
           throw new ApiError(400 , "invalid creadential")
         }
 
@@ -119,5 +122,18 @@ const adminLogin = asyncHandler(async(req ,res )=>{
 })
 
 
+const adminlogout = asyncHandler(async(req , res)=>{
+                 const options = {
+  httpOnly: true,
+  secure: true,     
+}
+     res.status(200)
+    .clearCookie("accessToken" ,options)
+    .clearCookie("refreshToken" ,options)
+    .json(new ApiResponse(200 , {} , "user logout sucessfully"))
+      
+})
 
-export {signupUserBasic , sendOtp , verifyOtp , adminLogin} 
+
+
+export {signupUserBasic , sendOtp , verifyOtp , adminLogin ,adminlogout} 
