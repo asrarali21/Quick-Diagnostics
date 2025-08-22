@@ -8,7 +8,7 @@ import jwt from "jsonwebtoken"
 
 
 const signupUserBasic = asyncHandler(async(req , res)=>{
-          const {firstName , lastName , email} = req.body
+          const {firstName , lastName , email ,password} = req.body
       
           if ([firstName , lastName , email].some((item)=>item.trim()=== "")) {
             throw new  ApiError(400 , "all fields are required")
@@ -17,7 +17,8 @@ const signupUserBasic = asyncHandler(async(req , res)=>{
           const user = await User.create({
             firstName,
             lastName,
-            email
+            email,
+            password
           })
      
      res.status(200)
@@ -85,6 +86,55 @@ const verifyOtp = asyncHandler(async (req, res) => {
     res.status(200).json(new ApiResponse(200, {}, "OTP verified successfully"));
 });
 
+const userLogin = asyncHandler(async(req , res)=>{
+  const{email , password} = req.body
+
+  if (!email || !password) {
+    throw new ApiError(400 , "all fields required")
+  }
+
+  const user = await User.findOne({email})
+
+  if (!user) {
+    throw new ApiError(400 , "user doesnt exist")
+  }
+
+  const isvalid = await user.IspasswordCorrect(password)
+
+  if (!isvalid) {
+    throw new ApiError(400 , "incorrect password")
+  }
+
+  const accessToken = user.GenerateAccessToken()
+  const refreshToken = user.generateRefreshToken()
+
+  const loggedInuser  = await User.findById(user._id).select("-password -refreshToken")
+  
+    const options ={
+      httpOnly : true,
+      secure : true 
+    }
+
+
+  res.status(200)
+  .cookie("accessToken", accessToken , options)
+   .cookie("refreshToken" ,refreshToken , options) 
+    .json(new ApiResponse(200 , loggedInuser , "user login successfully"))
+})
+
+const userlogout = asyncHandler(async(req , res)=>{
+                 const options = {
+  httpOnly: true,
+  secure: true,     
+}
+     res.status(200)
+    .clearCookie("accessToken" ,options)
+    .clearCookie("refreshToken" ,options)
+    .json(new ApiResponse(200 , {} , "admiin logout sucessfully"))
+      
+})
+
+
 const adminLogin = asyncHandler(async(req ,res )=>{
 
     console.log(req.body);
@@ -130,10 +180,10 @@ const adminlogout = asyncHandler(async(req , res)=>{
      res.status(200)
     .clearCookie("accessToken" ,options)
     .clearCookie("refreshToken" ,options)
-    .json(new ApiResponse(200 , {} , "user logout sucessfully"))
+    .json(new ApiResponse(200 , {} , "admiin logout sucessfully"))
       
 })
 
 
 
-export {signupUserBasic , sendOtp , verifyOtp , adminLogin ,adminlogout} 
+export {signupUserBasic , sendOtp , verifyOtp ,userLogin,userlogout, adminLogin ,adminlogout} 
