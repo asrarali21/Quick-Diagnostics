@@ -3,6 +3,7 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 import { userRouter } from "./src/routes/user.route.js"
 import testRouter from "./src/routes/test.route.js"
+import { patientrouter } from "./src/routes/Patients.route.js"
 
 
 const app = express()
@@ -26,6 +27,7 @@ app.use(express.static("public"))
 
 app.use("/api/v1/users" , userRouter)
 app.use("/api/v1/tests" , testRouter)
+app.use("/api/v1/patient" , patientrouter)
 
 
 

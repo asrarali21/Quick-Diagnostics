@@ -112,21 +112,24 @@ const userLogin = asyncHandler(async(req , res)=>{
   
     const options ={
       httpOnly : true,
-      secure : true 
+      secure : false ,
+        sameSite: 'lax'
     }
 
 
   res.status(200)
   .cookie("accessToken", accessToken , options)
-   .cookie("refreshToken" ,refreshToken , options) 
+  .cookie("refreshToken" ,refreshToken , options) 
     .json(new ApiResponse(200 , loggedInuser , "user login successfully"))
 })
 
 const userlogout = asyncHandler(async(req , res)=>{
-                 const options = {
-  httpOnly: true,
-  secure: true,     
-}
+const options = {
+    httpOnly: true,
+    secure: false,     // Change this to false too
+    sameSite: 'lax'
+  }     
+
      res.status(200)
     .clearCookie("accessToken" ,options)
     .clearCookie("refreshToken" ,options)
