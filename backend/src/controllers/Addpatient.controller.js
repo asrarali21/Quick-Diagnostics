@@ -32,7 +32,7 @@ const Addpatient = asyncHandler(async(req , res)=>{
 
 const getPatientDetails = asyncHandler (async(req , res)=>{
     
-    const patient =await Patient.findOne({ user: req.user._id })
+    const patient =await Patient.find({ user: req.user._id })
     console.log(patient);
 
 
