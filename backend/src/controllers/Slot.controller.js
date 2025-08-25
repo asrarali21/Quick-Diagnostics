@@ -26,7 +26,7 @@ const createSlots = asyncHandler(async( req , res)=>{
     if (isNaN(slotsDate.getTime())) {
         throw new ApiError(400 , "invalid date formart")
     }
-    
+      slotsDate.setHours(0, 0, 0, 0);
 
     const slot = await Slot.create({
          lab: labId,
@@ -55,12 +55,19 @@ const getslot = asyncHandler(async(req , res)=>{
     throw new ApiError(400, "Lab ID and Date are required");
   }
     const slotDate = new Date(date)
-    slotDate.setHours(0,0,0,0)
 
+     const startOfDay = new Date(slotDate);
+    startOfDay.setHours(0, 0, 0, 0);
+    
+    const endOfDay = new Date(slotDate);
+    endOfDay.setHours(23, 59, 59, 999);
 
     const slot = await Slot.find({
         lab:labId,
-        date:slotDate
+        date: {
+            $gte: startOfDay,
+            $lte: endOfDay
+        }
     })
 
     res.status(200)
