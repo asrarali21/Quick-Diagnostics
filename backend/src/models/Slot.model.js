@@ -19,8 +19,7 @@ const slotSchema = new Schema({
     required: true,
   },
   isBooked: {
-    type: Boolean,
-    default: false,
+    type: Boolean, 
   }
 });
 
