@@ -55,12 +55,17 @@ const getslot = asyncHandler(async(req , res)=>{
     throw new ApiError(400, "Lab ID and Date are required");
   }
     const slotDate = new Date(date)
+      console.log("Parsed date:", slotDate);
 
      const startOfDay = new Date(slotDate);
     startOfDay.setHours(0, 0, 0, 0);
     
     const endOfDay = new Date(slotDate);
     endOfDay.setHours(23, 59, 59, 999);
+
+
+    console.log("Start of day:", startOfDay);
+    console.log("End of day:", endOfDay);
 
     const slot = await Slot.find({
         lab:labId,

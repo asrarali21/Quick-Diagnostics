@@ -26,7 +26,6 @@ const orderschema = new Schema({
         type:Schema.Types.ObjectId,
         ref:"Slot",
         required:true
-    }
-    
+    },
 
 },{})
