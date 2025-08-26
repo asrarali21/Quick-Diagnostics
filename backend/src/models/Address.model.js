@@ -2,6 +2,11 @@ import mongoose, { Schema } from "mongoose";
 
 
 const addressschema = new Schema({
+     user:{
+        type:Schema.Types.ObjectId,
+        ref:"User",
+        required:true
+    },
      houseNo:{
         type : String,
         required : true
