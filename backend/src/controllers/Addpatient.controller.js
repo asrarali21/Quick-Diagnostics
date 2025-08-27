@@ -34,8 +34,6 @@ const getPatientDetails = asyncHandler (async(req , res)=>{
     
     const patient =await Patient.find({ user: req.user._id })
     console.log(patient);
-
-
     res.status(200)
     .json(new ApiResponse(200 , patient, "successfully got patients details"))
     

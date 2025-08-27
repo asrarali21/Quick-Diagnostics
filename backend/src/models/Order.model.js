@@ -27,5 +27,13 @@ const orderschema = new Schema({
         ref:"Slot",
         required:true
     },
+      address :{
+        type:Schema.Types.ObjectId,
+        ref:"Address",
+        required:true
+    },
 
-},{})
+},{timestamps:true})
+
+
+export const Order = mongoose.model("Order" , orderschema)

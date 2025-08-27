@@ -8,6 +8,7 @@ import { Lab } from "./src/models/lab.model.js"
 import labrouter from "./src/routes/lab.route.js"
 import slotRouter from "./src/routes/Slot.route.js"
 import addressRouter from "./src/routes/Address.route.js"
+import orderRoute from "./src/routes/Order.route.js"
 
 
 const app = express()
@@ -35,6 +36,8 @@ app.use("/api/v1/patient" , patientrouter)
 app.use("/api/v1/lab" , labrouter)
 app.use("/api/v1/slot" , slotRouter)
 app.use("/api/v1/address" , addressRouter)
+app.use("/api/v1/order" , orderRoute)
+
 
 
 

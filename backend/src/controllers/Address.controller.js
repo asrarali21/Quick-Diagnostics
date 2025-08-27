@@ -34,6 +34,8 @@ const saveAddress  = asyncHandler(async(req , res)=>{
 
 const getaddress = asyncHandler(async(req , res)=>{
    const addresses = await Address.find({ user: req.user._id });
+   console.log(addresses);
+   
 
   if (!addresses || addresses.length === 0) {
    throw new ApiError(400, "no address found")
