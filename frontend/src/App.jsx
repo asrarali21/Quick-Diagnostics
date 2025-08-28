@@ -16,6 +16,7 @@ import SelectAppointment from './Pages/SelectAppointment';
 import AddAddress from './Pages/AddAddress';
 import ReviewOrder from './Pages/ReviewOrder';
 import Register from './Pages/Register';
+import EntermobileNum from './Pages/EntermobileNum';
 
 function App() {
         
@@ -25,6 +26,7 @@ function App() {
     <>
     <Routes>
       <Route path='/' element ={ <Register/>  }/>
+      <Route path='/mobileNo' element ={ <EntermobileNum/>  }/>
       <Route path='/home' element ={ <Home/>  }/>
       <Route path='/reports' element ={ <>
          <Navbar/>

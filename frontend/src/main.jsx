@@ -5,11 +5,13 @@ import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import {RecoilRoot} from 'recoil'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ToastContainer } from 'react-toastify'
 
 createRoot(document.getElementById('root')).render(
 
    <RecoilRoot>
   <BrowserRouter>
+  <ToastContainer/>
     <App />
   </BrowserRouter>
   </RecoilRoot>

@@ -1,18 +1,21 @@
 import React from 'react'
 import logoname from "../assets/LogoName.svg"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useState } from 'react'
+import { handleError, handlesuccess } from '../toast.util'
 
 function Register() {
   const PRIMARY = '#6B4DE0'
   const PRIMARY_HOVER = '#5a3ec7'
 
+   const navigate =useNavigate()
 
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
-    email: ''
+    email: '',
+    password: ''
   })
   console.log(form);
   
@@ -28,8 +31,14 @@ function Register() {
       const {firstName , lastName  , email} =form
         try {
             const response =await axios.post("http://localhost:8000/api/v1/users/signup" , form , {withCredentials:true})
-            console.log(response);
+            console.log(response.data.message);
+            handlesuccess(response.data.message)
+            setTimeout(()=>{
+                navigate("/mobileNo")
+            },1500)
+         
         } catch (error) {
+            handleError(error.response.data.message)
             console.log(error);
         }
     }
@@ -107,6 +116,27 @@ function Register() {
                   onFocus={(e) => (e.currentTarget.parentElement.style.borderColor = PRIMARY)}
                   onBlur={(e) => (e.currentTarget.parentElement.style.borderColor = '#6B7280')}
                    value={form.email}
+                     onChange={handleChange}
+                />
+              </div>
+            </div>
+
+            {/* Password */}
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+                Password
+              </label>
+              {/* underline container */}
+              <div className="border-b-2 border-gray-500" style={{ outline: 'none' }}>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  className="w-full px-0 py-3 text-gray-900 bg-transparent outline-none border-none placeholder-gray-400"
+                  placeholder="Enter your password"
+                  onFocus={(e) => (e.currentTarget.parentElement.style.borderColor = PRIMARY)}
+                  onBlur={(e) => (e.currentTarget.parentElement.style.borderColor = '#6B7280')}
+                   value={form.password}
                      onChange={handleChange}
                 />
               </div>
