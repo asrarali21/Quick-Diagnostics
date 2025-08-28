@@ -15,59 +15,17 @@ import SelectLab from './Pages/SelectLab';
 import SelectAppointment from './Pages/SelectAppointment';
 import AddAddress from './Pages/AddAddress';
 import ReviewOrder from './Pages/ReviewOrder';
+import Register from './Pages/Register';
 
 function App() {
- 
-  const setApiData = useSetRecoilState(apiDataState)
-  const setTestmonialData = useSetRecoilState(apiTestimonialState)
-  const setFaqData = useSetRecoilState(ApiFaqState)
-
-
-  useEffect(() => {
-    const FetchedData = async () => { 
-        try {
-              let response = await fetch("http://localhost:3001/tests")
-          let data = await response.json()
-          
-          setApiData(data)
-          
-        } catch (error) {
-          console.error("Failed to fetch data" , error)
-        }
-      
-       }
-       FetchedData()
-      }, [])
-
-      useEffect(() => {
-        const TestimonialDataFetch = async ()=>{
-        const TestimonialData = await  axios.get("http://localhost:3001/testimonials")
-        setTestmonialData(TestimonialData.data);
-        
-        }
-      
-       TestimonialDataFetch()
-      }, [])
-
-            useEffect(() => {
-        const FaqDataFetch = async ()=>{
-
-        const FaqData = await  axios.get("http://localhost:3001/faqs")
-        setFaqData(FaqData.data);
-        
-        }
-      
-       FaqDataFetch()
-      }, [])
-
-
         
           
       
   return (
     <>
     <Routes>
-      <Route path='/' element ={ <Home/>  }/>
+      <Route path='/' element ={ <Register/>  }/>
+      <Route path='/home' element ={ <Home/>  }/>
       <Route path='/reports' element ={ <>
          <Navbar/>
           <Reports/>  
