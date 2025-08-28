@@ -4,10 +4,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useState } from 'react'
 import { handleError, handlesuccess } from '../toast.util'
+import { useSetRecoilState } from 'recoil'
+import { userState } from '../store/userstate'
 
 function Register() {
   const PRIMARY = '#6B4DE0'
   const PRIMARY_HOVER = '#5a3ec7'
+
+  const setUser = useSetRecoilState(userState)
 
    const navigate =useNavigate()
 
@@ -31,8 +35,12 @@ function Register() {
       const {firstName , lastName  , email} =form
         try {
             const response =await axios.post("http://localhost:8000/api/v1/users/signup" , form , {withCredentials:true})
-            console.log(response.data.message);
+            console.log(response);
             handlesuccess(response.data.message)
+            setUser({
+                userID:response.data.data.userID,
+                firstName:response.data.data.firstName
+            })
             setTimeout(()=>{
                 navigate("/mobileNo")
             },1500)
