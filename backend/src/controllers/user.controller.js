@@ -10,8 +10,14 @@ import jwt from "jsonwebtoken"
 const signupUserBasic = asyncHandler(async(req , res)=>{
           const {firstName , lastName , email ,password} = req.body
       
-          if ([firstName , lastName , email].some((item)=>item.trim()=== "")) {
+          if ([firstName , lastName , email ,password].some((item)=>item.trim()=== "")) {
             throw new  ApiError(400 , "all fields are required")
+          }
+
+          // Check if user already exists
+          const existingUser = await User.findOne({ email })
+          if (existingUser) {
+            throw new ApiError(400, "User with this email already exists")
           }
 
           const user = await User.create({
@@ -22,7 +28,7 @@ const signupUserBasic = asyncHandler(async(req , res)=>{
           })
      
      res.status(200)
-     .json( new ApiResponse(200 , {userID : user._id} , "basic info saved") )
+     .json( new ApiResponse(200 , {userID : user._id ,firstName} , "basic info saved") )
 
 })
 
@@ -85,6 +91,16 @@ const verifyOtp = asyncHandler(async (req, res) => {
 
     res.status(200).json(new ApiResponse(200, {}, "OTP verified successfully"));
 });
+
+
+const myinfo = asyncHandler(async(req , res)=>{
+
+
+  const user = await User.findById(req.user._id).select("firstName , lastName , email")
+
+  res.status(200)
+  .json(new ApiResponse(200 , user , "succesfully got my info"))
+})
 
 const userLogin = asyncHandler(async(req , res)=>{
   const{email , password} = req.body
@@ -189,4 +205,4 @@ const adminlogout = asyncHandler(async(req , res)=>{
 
 
 
-export {signupUserBasic , sendOtp , verifyOtp ,userLogin,userlogout, adminLogin ,adminlogout} 
+export {signupUserBasic , sendOtp , verifyOtp ,myinfo , userLogin,userlogout, adminLogin ,adminlogout} 

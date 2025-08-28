@@ -23,7 +23,7 @@ const createOrder = asyncHandler(async(req , res)=>{
     test, 
     lab, 
     slot,
-     address
+   address
   })
 
 
@@ -33,26 +33,28 @@ const createOrder = asyncHandler(async(req , res)=>{
 
 
 const getbyorderId = asyncHandler(async(req, res)=>{
-    const {orderID} = req.params
+    const {orderId} = req.params
+    console.log("get order id:",orderId);
     
     
 
 
-    const order = await Order.findById(orderID)
-    .populate("user" , "name,email")
-    .populate("lab" , "name,price")
-    .populate("patient" , "name,bookingforWhom,DOB,gender")
-    .populate("slot" , "date,startTIme,ndTime")
-    .populate("address" , "houseNo,road,zipCode,cityState")
+    const order = await Order.findById(orderId)
+    .populate("user" , "name email")
+    .populate("lab" , "name price")
+    .populate("patient" , "name bookingforWhom DOB gender")
+    .populate("slot" , "date startTIme endTime")
+    .populate("address" , "houseNo road zipCode cityState")
     
    if (!order) {
         throw new ApiError(400 , "order not found")
     }
      
 
-
+ res.status(200)
+ .json(new ApiResponse(200 , order , "got review order sucessfully"))
 
 
 })
 
-export {createOrder}
+export {createOrder ,getbyorderId}
