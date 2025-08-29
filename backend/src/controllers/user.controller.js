@@ -20,15 +20,27 @@ const signupUserBasic = asyncHandler(async(req , res)=>{
             throw new ApiError(400, "User with this email already exists")
           }
 
+
           const user = await User.create({
             firstName,
             lastName,
             email,
             password
           })
+
+          const accessToken = user.GenerateAccessToken()
+           const refreshToken = user.generateRefreshToken()
+
+     const options ={
+      httpOnly : true,
+      secure : false ,
+        sameSite: 'lax'
+      }
      
      res.status(200)
-     .json( new ApiResponse(200 , {userID : user._id ,firstName} , "basic info saved") )
+       .cookie("accessToken", accessToken , options)
+        .cookie("refreshToken" ,refreshToken , options) 
+     .json( new ApiResponse(200 , {userID : user._id ,firstName: user.firstName} , "basic info saved") )
 
 })
 
@@ -97,6 +109,15 @@ const myinfo = asyncHandler(async(req , res)=>{
 
 
   const user = await User.findById(req.user._id).select("firstName , lastName , email")
+  console.log("my info user:",user);
+  
+
+
+
+   if (!user) {
+    throw new ApiError(400 , "user not found")
+  }
+
 
   res.status(200)
   .json(new ApiResponse(200 , user , "succesfully got my info"))
