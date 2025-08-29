@@ -43,7 +43,6 @@ function EntermobileNum() {
              console.log(response);
              setmyinfo(response.data.data.firstName)
              setmyUserID(response.data.data._id)
-             
         } catch (error) {
             console.log(error);
         }

@@ -1,10 +1,14 @@
+import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
 
 function VerifyOtp() {
   const PRIMARY = '#6B4DE0'
+
+
   const [otp, setOtp] = useState(['', '', '', ''])
   const refs = useRef([])
 
+   // automatically swtiching to next position for entering otp 
   useEffect(() => {
     refs.current[0]?.focus()
   }, [])
@@ -38,15 +42,44 @@ function VerifyOtp() {
     setOtp(next)
     const last = Math.min(i + text.length, 3)
     refs.current[last]?.focus()
+  }
+    
+ const [firstName, setFirstName] = useState("")
+ console.log(firstName);
 
-
+ 
+const [userId, setUserId] = useState("")
+  console.log(userId);
+  
+   // for persistent name showing
     useEffect(()=>{
-      
+        const userData = async()=>{
+            try {
+                const response = await axios.get("http://localhost:8000/api/v1/users/me",  {withCredentials:true} )
+                console.log(response);
+                setFirstName(response.data.data.firstName)
+                setUserId(response.data.data._id)
+                
+            } catch (error) {
+                console.log(error);
+                
+            }
+        }
+        userData()
     } ,[])
 
+    // to verify otp 
+
+    const verifyotp = async()=>{
+      try {
+        const response  = await axios.post("http://localhost:8000/api/v1/users/verifyotp" , )
+      } catch (error) {
+        
+      }
+    }
 
 
-  }
+
   return (
     <div className="min-h-screen bg-[#F8F5FF] flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-md">
@@ -59,7 +92,7 @@ function VerifyOtp() {
 
           {/* Heading */}
           <div className="mb-10">
-            <h1 className="text-2xl font-semibold text-gray-800">Hey Patrick</h1>
+            <h1 className="text-2xl font-semibold text-gray-800">Hey {firstName}</h1>
             <p className="text-gray-500 mt-1">Enter the OTP to verify your details</p>
           </div>
 
