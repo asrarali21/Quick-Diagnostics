@@ -14,7 +14,7 @@ function Navbar() {
         </div>
         {/* Nav Links */}
         <div className="hidden md:flex space-x-8">
-          <NavLink to={"/"} className="text-gray-600 text-base font-medium hover:text-[#7C5CFC] transition-colors duration-150">Home</NavLink>
+          <NavLink to={"/home"} className="text-gray-600 text-base font-medium hover:text-[#7C5CFC] transition-colors duration-150">Home</NavLink>
           <NavLink to={"/reports"} className="text-gray-600 text-base font-medium hover:text-[#7C5CFC] transition-colors duration-150">Reports</NavLink>
           <NavLink to={"/appointments"} className="text-gray-600 text-base font-medium hover:text-[#7C5CFC] transition-colors duration-150">My Appointments</NavLink>
         </div>

@@ -17,6 +17,8 @@ import AddAddress from './Pages/AddAddress';
 import ReviewOrder from './Pages/ReviewOrder';
 import Register from './Pages/Register';
 import EntermobileNum from './Pages/EntermobileNum';
+import Login from './Pages/Login';
+import VerifyOtp from './Pages/VerifyOtp';
 
 function App() {
         
@@ -26,7 +28,9 @@ function App() {
     <>
     <Routes>
       <Route path='/' element ={ <Register/>  }/>
+      <Route path='/login' element ={ <Login/>  }/>
       <Route path='/mobileNo' element ={ <EntermobileNum/>  }/>
+      <Route path='/verifyOtp' element ={ <VerifyOtp/>  }/>
       <Route path='/home' element ={ <Home/>  }/>
       <Route path='/reports' element ={ <>
          <Navbar/>

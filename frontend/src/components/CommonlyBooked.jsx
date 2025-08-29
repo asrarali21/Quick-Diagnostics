@@ -4,15 +4,16 @@ import { apiDataState } from '../apiState'
 import { ChevronsRight } from 'lucide-react'
 import  ChooseBanner from "../assets/ChooseBanner.png"
 import { useNavigate } from 'react-router-dom'
+import { TestdataApiState } from '../store/test.state'
 
 function CommonlyBooked() {
-    const apidata = useRecoilValue(apiDataState)
+    const TestDataicon = useRecoilValue(TestdataApiState)
+    console.log(TestDataicon);
+    
     const navigate = useNavigate()
 
     function HandleClick(id) {
-        navigate(`/testinfo/${id}`)
-     
-        
+        navigate(`/testinfo/${id}`) 
     }
     
   return (
@@ -23,8 +24,11 @@ function CommonlyBooked() {
         
         </div>
     <div className='flex w-full max-w-7xl mx-auto px-4 sm:px-8 flex-wrap my-12'>
-        {apidata.map((item , i )=>(
+        {TestDataicon.map((item , i )=>(
+            <>
             <img onClick={()=>HandleClick(item.id)} key={i} className='cursor-pointer' src={item.icon} alt="" />
+            <p>{item.testName}</p>
+            </>
         ))}
         </div>
         <div className='w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]'>
