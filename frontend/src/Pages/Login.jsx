@@ -1,9 +1,33 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { handleError, handlesuccess } from '../toast.util';
 
 function Login() {
 
     const navigate = useNavigate()
+
+    const [Userinfo , setUserInfo] = useState({
+       email:"",
+       password:""
+    })
+    console.log(Userinfo);
+
+    async function handleClick() {
+      try {
+        const response = await axios.post("http://localhost:8000/api/v1/users/login" , Userinfo , {withCredentials:true})
+        console.log(response);
+        handlesuccess(response.data.message)
+        setTimeout(() => {
+          navigate("/home")
+        }, 1000);
+      } catch (error) {
+        console.log(error);
+        handleError(error.response.data.message)
+        
+      }
+    }
+    
 
   return (
     <div className="min-h-screen bg-neutral-900 flex items-center justify-center p-6">
@@ -27,6 +51,8 @@ function Login() {
             type="email"
             className="w-full rounded-md border-2 border-[#6B4DE0] bg-white px-3 py-3 text-gray-900 placeholder-gray-400"
             placeholder=""
+            value={Userinfo.email}
+            onChange={(e) => setUserInfo(prev => ({ ...prev, email: e.target.value }))}
           />
         </div>
 
@@ -37,6 +63,8 @@ function Login() {
               type="password"
               className="w-full rounded-md border border-gray-300 bg-white px-3 py-3 text-gray-900 placeholder-gray-400"
               placeholder="Password"
+               value={Userinfo.password}
+                 onChange={(e) => setUserInfo(prev => ({ ...prev, password: e.target.value }))}
             />
             <span className="absolute inset-y-0 right-3 flex items-center text-gray-400">
               {/* eye icon */}
@@ -58,7 +86,8 @@ function Login() {
         {/* Login button (pale primary as in screenshot) */}
         <button
           type="button"
-          className="w-full rounded-lg bg-[#CCD4FF] text-white font-semibold py-3 mb-6"
+          className="w-full rounded-lg bg-[#CCD4FF] hover:bg-[#5a3ec7] text-white font-semibold py-3 mb-6"
+          onClick={handleClick}
         >
           Login
         </button>

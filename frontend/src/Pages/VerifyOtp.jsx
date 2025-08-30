@@ -1,18 +1,24 @@
 import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
+import { handleError, handlesuccess } from '../toast.util';
+import { useNavigate } from 'react-router-dom';
 
 function VerifyOtp() {
   const PRIMARY = '#6B4DE0'
 
 
   const [otp, setOtp] = useState(['', '', '', ''])
+  console.log(otp);
+  
+  const navigate = useNavigate()
+ 
+  
   const refs = useRef([])
 
    // automatically swtiching to next position for entering otp 
   useEffect(() => {
     refs.current[0]?.focus()
   }, [])
-
   const handleChange = (i) => (e) => {
     const val = e.target.value.replace(/\D/g, '')
     const next = [...otp]
@@ -70,10 +76,24 @@ const [userId, setUserId] = useState("")
 
     // to verify otp 
 
-    const verifyotp = async()=>{
+   
+
+ 
+
+    const handleOtpclick = async()=>{
       try {
-        const response  = await axios.post("http://localhost:8000/api/v1/users/verifyotp" , )
+        const numOtp = otp.join("")
+        console.log(numOtp);
+        
+        const response  = await axios.post("http://localhost:8000/api/v1/users/verifyotp" ,{otp:numOtp , userID:userId} ,{withCredentials:true} )
+        console.log(response);
+        handlesuccess(response.data.message)
+        setTimeout(()=>{
+        navigate("/home")
+        })
       } catch (error) {
+        console.log(error);
+        handleError(error.response.data.message)
         
       }
     }
@@ -127,6 +147,7 @@ const [userId, setUserId] = useState("")
           <button
             type="button"
             className="w-full rounded-lg bg-[#6B4DE0] text-white font-semibold py-3"
+            onClick={handleOtpclick}
           >
             Verify
           </button>
