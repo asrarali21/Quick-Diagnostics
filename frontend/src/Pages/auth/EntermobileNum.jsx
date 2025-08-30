@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import logoname from "../assets/LogoName.svg"
+import logoname from "../../assets/LogoName.svg"
 import { useRecoilValue } from 'recoil'
 import { userState } from '../../store/userstate'
 import { useEffect } from 'react'

@@ -1,5 +1,5 @@
 import React from 'react'
-import logoname from "../assets/LogoName.svg"
+import logoname from "../../assets/LogoName.svg"
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useState } from 'react'
