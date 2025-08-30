@@ -1,6 +1,6 @@
 import React from 'react'
 
-import StepTracker from '../components/StepTracker'
+import StepTracker from '../../components/StepTracker'
 import { useNavigate } from 'react-router-dom'
 
 function SelectLab() {

@@ -3,9 +3,9 @@ import logoname from "../assets/LogoName.svg"
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useState } from 'react'
-import { handleError, handlesuccess } from '../toast.util'
+import { handleError, handlesuccess } from '../../toast.util'
 import { useSetRecoilState } from 'recoil'
-import { userState } from '../store/userstate'
+import { userState } from '../../store/userstate'
 
 function Register() {
   const PRIMARY = '#6B4DE0'

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
-import { handleError, handlesuccess } from '../toast.util';
+import { handleError, handlesuccess } from '../../toast.util';
 import { useNavigate } from 'react-router-dom';
 
 function VerifyOtp() {

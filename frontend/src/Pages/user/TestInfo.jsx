@@ -3,8 +3,8 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 
 
 import { useRecoilValue } from 'recoil'
-import { apiDataState } from '../apiState'
-import BreadCrum from '../components/BreadCrum'
+import { apiDataState } from '../../apiState'
+import BreadCrum from '../../components/BreadCrum'
 function TestInfo() {
   const navigate = useNavigate()
     const {id} =useParams()

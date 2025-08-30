@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import logoname from "../assets/LogoName.svg"
 import { useRecoilValue } from 'recoil'
-import { userState } from '../store/userstate'
+import { userState } from '../../store/userstate'
 import { useEffect } from 'react'
 import axios from 'axios'
-import { handlesuccess } from '../toast.util'
+import { handlesuccess } from '../../toast.util'
 import { useNavigate } from 'react-router-dom'
 
 function EntermobileNum() {

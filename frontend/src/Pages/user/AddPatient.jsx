@@ -1,6 +1,6 @@
 import React from 'react'
 
-import BreadCrum from '../components/BreadCrum'
+import BreadCrum from '../../components/BreadCrum'
 import { useNavigate } from 'react-router-dom'
 
 function AddPatient() {

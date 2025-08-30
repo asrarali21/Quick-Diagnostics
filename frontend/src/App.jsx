@@ -48,6 +48,9 @@ function App() {
         <Route path='/SelectAppointment' element={<SelectAppointment/>}/>
         <Route path='/AddAddress' element={<AddAddress/>}/>
         <Route path='/reviewOrder' element={<ReviewOrder/>}/>
+
+        {/* admin routes */}
+        <Route path='adminLogin' element/>
      </Routes>
     </>
   )

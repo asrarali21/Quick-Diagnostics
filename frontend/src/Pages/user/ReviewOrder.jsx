@@ -1,5 +1,5 @@
 import React from 'react'
-import StepTracker from '../components/StepTracker'
+import StepTracker from '../../components/StepTracker'
 
 function ReviewOrder() {
   return (
