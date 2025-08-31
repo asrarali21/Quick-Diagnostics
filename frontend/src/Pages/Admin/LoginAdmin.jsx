@@ -1,6 +1,29 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
+import { handlesuccess } from '../../toast.util';
+import { useNavigate } from 'react-router-dom';
 
 function LoginAdmin() {
+  const navigate = useNavigate()
+  const [info , setinfo] = useState({
+    email:"",
+    password:""
+  })
+
+ const handleAdminLoginClick =  async()=>{
+    try {
+      const response = await axios.post("http://localhost:8000/api/v1/users/adminlogin" , info , {withCredentials:true})
+      console.log(response);
+      handlesuccess(response.data.data)
+      setTimeout(() => {
+        navigate("/admin")
+      }, 1500);
+    } catch (error) {
+      
+    }
+   } 
+  console.log(info);
+  
   return (
     <div className="min-h-screen bg-[#F8F5FF] flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-md">
@@ -25,6 +48,8 @@ function LoginAdmin() {
                 type="email"
                 placeholder="admin@example.com"
                 className="w-full bg-transparent outline-none border-none py-3 text-gray-900 placeholder-gray-400"
+                value={info.email}
+                onChange={(e)=>setinfo(prev =>({...prev ,email: e.target.value}))}
               />
             </div>
           </div>
@@ -37,6 +62,8 @@ function LoginAdmin() {
                 type="password"
                 placeholder="Enter your password"
                 className="w-full bg-transparent outline-none border-none py-3 text-gray-900 placeholder-gray-400"
+                value={info.password}
+                  onChange={(e)=>setinfo(prev =>({...prev ,password: e.target.value}))}
               />
             </div>
           </div>
@@ -45,6 +72,7 @@ function LoginAdmin() {
           <button
             type="button"
             className="w-full rounded-lg bg-[#6B4DE0] text-white font-semibold py-3 transition-colors duration-200 hover:opacity-90"
+            onClick={handleAdminLoginClick}
           >
             Login
           </button>

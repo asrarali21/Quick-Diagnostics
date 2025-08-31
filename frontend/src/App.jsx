@@ -17,12 +17,14 @@ import AddAddress from './Pages/user/AddAddress';
 import ReviewOrder from './Pages/user/ReviewOrder';
 // public/auth pages kept at Pages root
 import Register from './Pages/auth/Register';
-import EntermobileNum from './Pages/Auth/EntermobileNum';
-
+import EntermobileNum from './Pages/auth/EntermobileNum';
+import Login from './Pages/auth/Login';
 import VerifyOtp from './Pages/auth/VerifyOtp';
 // admin
 import LoginAdmin from './Pages/Admin/LoginAdmin';
-import Login from './Pages/auth/Login';
+import AdminLayout from './Pages/Admin/AdminLayout';
+import AdminDashboard from './Pages/Admin/AdminDashboard';
+import AdminAddTest from './Pages/Admin/AdminAddTest';
 
 function App() {
         
@@ -36,10 +38,13 @@ function App() {
       <Route path='/mobileNo' element ={ <EntermobileNum/>  }/>
       <Route path='/verifyOtp' element ={ <VerifyOtp/>  }/>
       <Route path='/home' element ={ <Home/>  }/>
-      <Route path='/reports' element ={ <>
+      <Route path='/reports' element ={ 
+        <>
          <Navbar/>
           <Reports/>  
-        </>}/>
+        </>
+      }
+      />
       <Route path='/appointments' element ={
         <>
         <Navbar/>
@@ -53,8 +58,15 @@ function App() {
         <Route path='/AddAddress' element={<AddAddress/>}/>
         <Route path='/reviewOrder' element={<ReviewOrder/>}/>
 
-        {/* admin routes */}
+        {/* admin auth */}
         <Route path='/adminLogin' element={<LoginAdmin/>}/>
+
+        {/* admin app layout + children */}
+        <Route path='/admin' element={<AdminLayout/>}>
+          <Route index element={<AdminDashboard/>} />
+          <Route path='add-test' element={<AdminAddTest/>} />
+          {/* add more sections here: tests, reports, appointments, users, settings */}
+        </Route>
      </Routes>
     </>
   )
