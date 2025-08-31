@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 
 // Lightweight Tags input (chips) with Enter/comma/paste support
@@ -94,25 +95,35 @@ const AdminAddTest = () => {
   
 
 
-  const handleSave = () => {
-    // Example payload (send directly; arrays are already arrays)
-   try {
-     const payload = { ...TestInfo }
-     console.log('Save payload:', payload)
-    
-     
+  const handleSave = async () => {
+    try {
+      const {
+        testName, price, report_time, tat, description, inclusions,
+        disclaimers, features, why_book
+      } = TestInfo
 
+      const fd = new FormData()
+      fd.append('testName', testName)
+      fd.append('price', price)
+      fd.append('report_time', report_time)
+      fd.append('tat', tat)
+      fd.append('description', description)
+      fd.append('inclusions', inclusions)
 
-     
-   } catch (error) {
-    
-   }
-    // If using FormData with files later:
-    // const fd = new FormData()
-    // Object.entries(payload).forEach(([k,v]) => {
-    //   if (Array.isArray(v)) v.forEach(item => fd.append(`${k}[]`, item))
-    //   else fd.append(k, v)
-    // })
+      ;(disclaimers || []).forEach(v => fd.append('disclaimers', v))
+      ;(features || []).forEach(v => fd.append('features', v))
+      ;(why_book || []).forEach(v => fd.append('why_book', v))
+
+      if (images.icon) fd.append('icon', images.icon)
+      if (images.image) fd.append('image', images.image)
+
+      const res = await axios.post('http://localhost:8000/api/v1/tests/test', fd, {
+        withCredentials: true, // only if your server uses cookies
+      })
+      console.log('created:', res.data)
+    } catch (err) {
+      console.log('create test error:', err.response?.data || err.message)
+    }
   }
 
   return (
