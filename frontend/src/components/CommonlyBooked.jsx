@@ -1,40 +1,46 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil'
-import { apiDataState } from '../apiState'
 import { ChevronsRight } from 'lucide-react'
-import  ChooseBanner from "../assets/ChooseBanner.png"
 import { useNavigate } from 'react-router-dom'
 import { TestdataApiState } from '../store/test.state'
 
 function CommonlyBooked() {
-    const TestDataicon = useRecoilValue(TestdataApiState)
-    console.log(TestDataicon);
-    
-    const navigate = useNavigate()
+  const tests = useRecoilValue(TestdataApiState)
+  const navigate = useNavigate()
 
-    function HandleClick(id) {
-        navigate(`/testinfo/${id}`) 
-    }
-    
+  const handleClick = (id) => navigate(`/testinfo/${id}`)
+
   return (
-    <>
-    <div className='flex w-full max-w-7xl mx-auto px-4 sm:px-8 justify-between m-3 pr-5 my-12 '>
-        <h1 className='text-2xl font-semibold text-gray-900'>Commonly Booked Test</h1>
-        <span className='text-[#7C5CFC] font-medium cursor-pointer hover:underline flex items-center  font-medium'>see more<ChevronsRight className='w-5 h-5 ml-1  '/> </span>
-        
+    <section className="w-full">
+      {/* Header */}
+      <div className="flex w-full max-w-7xl mx-auto px-4 sm:px-8 items-center justify-between mt-6 mb-6">
+        <h2 className="text-2xl font-semibold text-gray-900">Commonly Booked Test</h2>
+        <button type="button" className="text-[#7C5CFC] font-medium flex items-center gap-1 hover:underline">
+          See more <ChevronsRight className="w-5 h-5" />
+        </button>
+      </div>
+
+      {/* Cards grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {tests.map((item, i) => (
+            <div
+              key={item?._id}
+              role="button"
+              onClick={() => handleClick(item?._id)}
+              className="cursor-pointer"
+            >
+              <div className="bg-white rounded-2xl border border-[#F1EAFE] shadow-[0_12px_30px_-12px_rgba(124,92,252,0.25)] p-8 flex flex-col items-center justify-center min-h-[140px]">
+                <div className="h-14 w-14 rounded-xl bg-[#F1EAFE] grid place-items-center mb-3">
+                  <img src={item.icon} alt="" className="h-7 w-7 object-contain" />
+                </div>
+                <p className="text-sm font-medium text-gray-700 text-center">{item.testName}</p>
+              </div>
+            </div>
+          ))}
         </div>
-    <div className='flex w-full max-w-7xl mx-auto px-4 sm:px-8 flex-wrap my-12'>
-        {TestDataicon.map((item , i )=>(
-            <>
-            <img onClick={()=>HandleClick(item.id)} key={i} className='cursor-pointer' src={item.icon} alt="" />
-            <p>{item.testName}</p>
-            </>
-        ))}
-        </div>
-        <div className='w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]'>
-            <img className='w-full' src={ChooseBanner} alt="" />
-        </div>
-    </>
+      </div>
+    </section>
   )
 }
 

@@ -3,14 +3,15 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 
 
 import { useRecoilValue } from 'recoil'
-import { apiDataState } from '../../apiState'
+
 import BreadCrum from '../../components/BreadCrum'
+import { SingletestInfo } from '../../store/test.state'
 function TestInfo() {
   const navigate = useNavigate()
     const {id} =useParams()
-     const TestInfoList =  useRecoilValue(apiDataState)
-     const test = TestInfoList.find(t => String(t.id) === id)
-     console.log(test);
+     const Test =  useRecoilValue(SingletestInfo(id))
+     console.log(Test);
+     
      
      
   return (
@@ -19,15 +20,18 @@ function TestInfo() {
        <BreadCrum/>
     </div >
      <div>
-      <h2 className='text-center'>{test.name}</h2>
+      <h2 className='text-center'>{Test.name}</h2>
       <div>
-      <p>{test.price}</p>
-      <p>{test.reportTime}</p>
-      <p>{test.description}</p>
+        <img src="" alt="" />
+        <p>{Test.features}</p>
+      <p>{Test.price}</p>
+      <p>{Test.reportTime}</p>
+      <p>{Test.description}</p>
+
       </div>
       <div></div>
       <span>Cancel</span>
-      <button onClick={()=>navigate("/AddPatient", {state:{test}})}>Add patients</button>
+      <button onClick={()=>navigate("/AddPatient", {state:{Test}})}>Add patients</button>
      </div>
     </>
   )

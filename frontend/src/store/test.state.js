@@ -1,5 +1,5 @@
 import axios from "axios";
-import { atom, selector } from "recoil";
+import { atom, selector, selectorFamily } from "recoil";
 
 
 
@@ -17,4 +17,21 @@ export const TestdataApiState = atom({
            }
         }
     })
+})
+
+
+
+export const SingletestInfo = selectorFamily({
+  key:"SingletestInfo",
+   get : (TestID) => async () =>{
+     if (!TestID) return null
+     try {
+       const response = await axios.get(`http://localhost:8000/api/v1/tests/singleTest/${TestID}`)
+       return response?.data?.data || null
+     } catch (error) {
+              console.error('Single product fetch failed:', e)
+            return null
+       
+     }
+   }
 })

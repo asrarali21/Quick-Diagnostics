@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { handleError, handlesuccess } from '../../toast.util'
 
 // Lightweight Tags input (chips) with Enter/comma/paste support
 function TagsInput({ label, values, onChange, placeholder = 'Type and press Enter or comma' }) {
@@ -121,8 +122,11 @@ const AdminAddTest = () => {
         withCredentials: true, // only if your server uses cookies
       })
       console.log('created:', res.data)
+    
+      handlesuccess(res.data.message)
     } catch (err) {
-      console.log('create test error:', err.response?.data || err.message)
+      console.log('create test error:', err.response?.data || err.message || err)
+      handleError(err.message)
     }
   }
 
