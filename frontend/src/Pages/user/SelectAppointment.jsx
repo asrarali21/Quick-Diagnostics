@@ -13,7 +13,7 @@ function SelectAppointment() {
     
 
 
-   const todayDate = new Date().toISOString().split("T")[0]
+  const todayDate = "2025-09-03" 
 
     const fetchSlots = async () => {
       try {
@@ -21,6 +21,7 @@ function SelectAppointment() {
         console.log(response);
         
       } catch (error) {
+        console.log(error);
         
       }
     }
