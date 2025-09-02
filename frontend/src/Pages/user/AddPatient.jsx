@@ -5,6 +5,8 @@ import { useState } from 'react'
 import BreadCrum from '../../components/BreadCrum'
 import axios from 'axios'
 import { handleError, handlesuccess } from '../../toast.util'
+import { useRecoilState } from 'recoil'
+import { orderState } from '../../store/order.state'
 
 function AddPatient() {
 
@@ -13,6 +15,9 @@ function AddPatient() {
   const [step , setstep] = useState(1)
   const [selected, setSelected] = useState(true)
   const [saveDetails , setSavedetails] = useState(false)
+  const [order , setOrder] = useRecoilState(orderState)
+  console.log(order);
+  
 
   const [FormData , setFormData] = useState({
     bookingforWhom:"Myself",
@@ -43,7 +48,12 @@ function AddPatient() {
       try {
         const base = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
         const response = await axios.post(`${base}/api/v1/patient/patientdetails` , normalized , {withCredentials:true})
-        console.log(response);
+        console.log(response.data.data._id);
+        setOrder({
+          ...order,
+          patientId:response.data.data._id
+        })
+        
         // go to selection screen on success
         setstep(2)
       } catch (error) {

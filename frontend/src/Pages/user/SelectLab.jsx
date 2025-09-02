@@ -4,17 +4,26 @@ import StepTracker from '../../components/StepTracker'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Plus, ArrowUpDown, Star, Calendar, Check } from 'lucide-react'
+import { orderState } from '../../store/order.state'
+import { useRecoilState } from 'recoil'
 
 function SelectLab() {
   const navigate = useNavigate()
 
   const [labInfo , setlabInfo]= useState([])
   const [selectedIndex, setSelectedIndex] = useState(0)
+  const [order,setOrder ] = useRecoilState(orderState)
+  console.log(order);
+  
+
 
       const fetchLabs = async()=>{
     try {
       const response = await axios.get("http://localhost:8000/api/v1/lab/getlab")
       setlabInfo(response.data.data || [])
+      console.log(response);
+      
+    
     } catch (error) {
       console.log(error);
       
@@ -27,7 +36,17 @@ function SelectLab() {
   }, [])
 
   const selectedLab = labInfo?.[selectedIndex]
-  console.log(selectedLab);
+
+
+
+    useEffect(() => {
+    if (selectedLab?._id) {
+      setOrder(prev => ({ ...prev, labId: selectedLab._id }))
+    }
+  }, [selectedLab, setOrder])
+
+  
+  
   
 
   return (
@@ -57,9 +76,7 @@ function SelectLab() {
           <div className="mt-4 space-y-4">
             {labInfo.map((item, idx) => {
               const selected = idx === selectedIndex
-              console.log(selected
-
-              );
+              console.log("selected ",selected );
               
               return (
                 <button
