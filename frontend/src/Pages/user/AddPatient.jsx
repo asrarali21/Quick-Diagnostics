@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import BreadCrum from '../../components/BreadCrum'
 import axios from 'axios'
+import { handleError, handlesuccess } from '../../toast.util'
 
 function AddPatient() {
 
@@ -47,7 +48,7 @@ function AddPatient() {
         setstep(2)
       } catch (error) {
         console.log("patient details : " , error?.response?.data || error.message);
-        alert(error?.response?.data?.message || 'Failed to save patient')
+        handleError(error.response.data.message)
       }
    }
 
@@ -248,7 +249,7 @@ function AddPatient() {
             <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 py-4 flex items-center justify-between">
               <button type="button" className="text-red-500 font-medium">Cancel</button>
               <div className="text-gray-700 font-medium">{selected ? '1 Patient Selected' : 'No Patient Selected'}</div>
-              <button type="button" disabled={!selected} className={`inline-flex items-center justify-center h-12 px-10 rounded-xl font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)] ${selected ? 'bg-[#7C5CFC] text-white' : 'bg-[#7C5CFC]/60 text-white/80 cursor-not-allowed'}`}>Select Lab</button>
+              <button onClick={()=>navigate("/lab")} type="button" disabled={!selected} className={`inline-flex items-center justify-center h-12 px-10 rounded-xl font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)] ${selected ? 'bg-[#7C5CFC] text-white' : 'bg-[#7C5CFC]/60 text-white/80 cursor-not-allowed'}`}>Select Lab</button>
             </div>
           </div>
         </div>
