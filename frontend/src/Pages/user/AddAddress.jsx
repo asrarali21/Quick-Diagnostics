@@ -3,7 +3,7 @@ import StepTracker from '../../components/StepTracker'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { ArrowLeft, Plus } from 'lucide-react'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { orderState } from '../../store/order.state'
 import { handleError } from '../../toast.util'
 
@@ -14,6 +14,8 @@ function AddAddress() {
     const [order , setOrder] = useRecoilState(orderState)
   console.log(order);
   
+     const reviewOrderDetails = useRecoilValue(orderState)
+
     const [addressInfo , setAddressInfo] = useState({
       houseNo:"",
       road:"",
@@ -37,6 +39,17 @@ function AddAddress() {
       } catch (error) {
         console.log(error);
         handleError(error.response.data.message)
+      }
+    }
+    
+   async function HandleClick() {
+      try {
+        const response = await axios.post("http://localhost:8000/api/v1/order/createorder" , order , {withCredentials:true})
+        console.log(response);
+        
+      } catch (error) {
+        console.log(error);
+        
       }
     }
 
@@ -190,7 +203,7 @@ function AddAddress() {
           <div className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
             <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 py-4 flex items-center justify-between">
               <button type="button" className="text-red-500 font-medium">Cancel</button>
-              <button type="button" disabled={!selected} className={`inline-flex items-center justify-center h-12 px-10 rounded-xl font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)] ${selected ? 'bg-[#7C5CFC] text-white' : 'bg-[#7C5CFC]/60 text-white/80 cursor-not-allowed'}`}>Complete Order</button>
+              <button onClick={HandleClick} type="button" disabled={!selected} className={`inline-flex items-center justify-center h-12 px-10 rounded-xl font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)] ${selected ? 'bg-[#7C5CFC] text-white' : 'bg-[#7C5CFC]/60 text-white/80 cursor-not-allowed'}`}>Complete Order</button>
             </div>
           </div>
         </div>
