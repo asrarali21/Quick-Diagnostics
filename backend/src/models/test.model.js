@@ -19,7 +19,7 @@ const testSchema = new Schema({
     },
     image: {
         type: String,
-        required: true
+        
     },
     report_time: {
         type: String,

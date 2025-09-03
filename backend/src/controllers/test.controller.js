@@ -13,19 +13,20 @@ const Testinfo = asyncHandler (async(req , res)=>{
 
  console.log(req.body);
  
+ 
        const iconlocalfilepath = req.files?.icon?.[0].path;
-       const imagelocalfilepath  = req.files?.image?.[0].path;
+       const imagelocalfilepath  = req.files?.image?.[0]?.path;
        console.log(req.files);
        
 
 
-       if (!iconlocalfilepath && !imagelocalfilepath) {
+       if (!iconlocalfilepath) {
             throw new ApiError(400 , "file doesnt exist")
             
        }
 
        const icon =await uploadoncloudinary(iconlocalfilepath)
-       const image = await uploadoncloudinary(imagelocalfilepath)
+      const image = imagelocalfilepath ? await uploadoncloudinary(imagelocalfilepath) : null
        
        console.log(icon);
        console.log(image);
@@ -43,7 +44,7 @@ const Testinfo = asyncHandler (async(req , res)=>{
         features,
         why_book,
         icon :icon.secure_url,
-        image:image.secure_url
+       ...(image?.secure_url ? { image: image.secure_url } : {}),
        })
 
 
