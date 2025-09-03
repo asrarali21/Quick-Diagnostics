@@ -51,7 +51,7 @@ function AddPatient() {
         console.log(response.data.data._id);
         setOrder({
           ...order,
-          patientId:response.data.data._id
+          patient:response.data.data._id
         })
         
         // go to selection screen on success

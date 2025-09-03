@@ -14,7 +14,7 @@ function AddAddress() {
     const [order , setOrder] = useRecoilState(orderState)
   console.log(order);
   
-     const reviewOrderDetails = useRecoilValue(orderState)
+     const reviewOrder = useRecoilValue(orderState)
 
     const [addressInfo , setAddressInfo] = useState({
       houseNo:"",
@@ -33,7 +33,7 @@ function AddAddress() {
         console.log(response);
         setOrder({
           ...order ,
-          addressId:response.data.data._id
+          address:response.data.data._id
         })
         setstep(1)
       } catch (error) {
@@ -44,9 +44,12 @@ function AddAddress() {
     
    async function HandleClick() {
       try {
-        const response = await axios.post("http://localhost:8000/api/v1/order/createorder" , order , {withCredentials:true})
+        const response = await axios.post("http://localhost:8000/api/v1/order/createorder" , reviewOrder , {withCredentials:true})
         console.log(response);
+        const orderId = response?.data?.data?._id
+        console.log(orderId);
         
+        navigate(`/revieworder/${orderId}`)
       } catch (error) {
         console.log(error);
         

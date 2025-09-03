@@ -32,7 +32,7 @@ function SelectAppointment() {
   if (selectedslot?._id) {
     setOrder({
       ...order,
-      slotId: selectedslot._id
+      slot: selectedslot._id
     })
   }
 }, [selectedslot])
@@ -89,11 +89,11 @@ function SelectAppointment() {
   // fetch
   const todayDate = "2025-09-03"
   const fetchSlots = async () => {
-    if (!order?.labId) return
+    if (!order?.lab) return
     try {
       const response = await axios.get(
         "http://localhost:8000/api/v1/slot/getslot",
-        { params:{ labId: orders.labId, date: todayDate } }
+        { params:{ labId: orders.lab, date: todayDate } }
       )
       console.log(response);
     

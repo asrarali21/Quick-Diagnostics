@@ -41,7 +41,7 @@ function SelectLab() {
 
     useEffect(() => {
     if (selectedLab?._id) {
-      setOrder(prev => ({ ...prev, labId: selectedLab._id }))
+      setOrder(prev => ({ ...prev, lab: selectedLab._id }))
     }
   }, [selectedLab, setOrder])
 

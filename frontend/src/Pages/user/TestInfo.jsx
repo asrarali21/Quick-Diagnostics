@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { ArrowLeft, Clock, DollarSign } from 'lucide-react'
 
 import BreadCrum from '../../components/BreadCrum'
@@ -10,11 +10,23 @@ import doctorImg from '../../assets/TestInfoAssets/doctor.svg'
 import homeImg from '../../assets/TestInfoAssets/home.svg'
 import reportsImg from '../../assets/TestInfoAssets/reports.svg'
 import testImg from '../../assets/TestInfoAssets/test.svg'
+import { orderState } from '../../store/order.state'
 
 function TestInfo() {
   const navigate = useNavigate()
   const { id } = useParams()
   const Test = useRecoilValue(SingletestInfo(id))
+
+  const [order , setOrer] =useRecoilState(orderState)
+  console.log(order);
+  
+
+   useEffect(()=>{
+     setOrer({
+      ...order,
+      test :id
+     })
+   },[])
 
   const title = Test?.testName || Test?.name || 'Covid RTPCR Test'
   const price = Test?.price ?? 1200

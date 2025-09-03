@@ -56,7 +56,7 @@ function App() {
         <Route path='/Lab' element={<SelectLab/>}/>
         <Route path='/SelectAppointment' element={<SelectAppointment/>}/>
         <Route path='/AddAddress' element={<AddAddress/>}/>
-        <Route path='/reviewOrder' element={<ReviewOrder/>}/>
+        <Route path='/reviewOrder/:orderId' element={<ReviewOrder/>}/>
 
         {/* admin auth */}
         <Route path='/adminLogin' element={<LoginAdmin/>}/>
