@@ -39,7 +39,7 @@ function ReviewOrder() {
         <div className="bg-white rounded-2xl p-6">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-              <span className="text-gray-600 font-bold">{orderInfo?.lab?.name?.charAt(0) || 'L'}</span>
+              <span className="text-gray-600 font-bold">{orderInfo?.lab?.name?.charAt(0)}</span>
             </div>
             <h2 className="text-xl font-semibold text-gray-900">{orderInfo?.lab?.name}</h2>
           </div>
@@ -50,7 +50,7 @@ function ReviewOrder() {
           <div className="space-y-4">
             <div className="flex justify-between">
               <span className="text-gray-600">Item Total</span>
-              <span className="text-gray-900 font-medium">${orderInfo?.test?.price}</span>
+              <span className="text-gray-900 font-medium">${orderInfo?.lab?.price}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-gray-600">Discount</span>
@@ -59,7 +59,7 @@ function ReviewOrder() {
             <div className="border-t pt-4">
               <div className="flex justify-between">
                 <span className="text-lg font-semibold text-gray-900">Grand Total</span>
-                <span className="text-lg font-bold text-gray-900">${(orderInfo?.test?.price)}</span>
+                <span className="text-lg font-bold text-gray-900">${(orderInfo?.lab?.price)}</span>
               </div>
             </div>
           </div>

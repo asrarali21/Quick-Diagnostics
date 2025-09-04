@@ -4,6 +4,7 @@ import { useRecoilValue } from 'recoil'
 import { apiDataState } from '../apiState'
 import banner from '../assets/banner.png'
 import { useNavigate } from 'react-router-dom'
+import { TestdataApiState } from '../store/test.state'
 
 function Search() {
     const [Searchquery, setSearchquery] = useState("")
@@ -11,11 +12,13 @@ function Search() {
     const [FilterData, setFilterData] = useState([])
      const navigate = useNavigate()
 
-      const apiData = useRecoilValue(apiDataState)
+      const apiData = useRecoilValue(TestdataApiState)
+      console.log(apiData);
+      
 
     useEffect(() => {
       const  filtereddata = apiData.filter((item )=> {
-        if (item.name.toLowerCase().includes(Searchquery.toLowerCase())) {
+        if (item.testName.toLowerCase().includes(Searchquery.toLowerCase())) {
           return true
         }
       })
@@ -44,20 +47,22 @@ function Search() {
             {FilterData.length} {FilterData.length === 1 ? 'result' : 'results'} found
           </p>
           {FilterData.map((item, i) => (
-            <div key={i}>
-              <p
-                className="cursor-pointer hover:text-[#7C5CFC] transition-colors"
-                onClick={() => navigate(`testinfo/${item.id}`)}
-              >
-                {item.name}
+            <div 
+              key={i}
+              className="flex items-center gap-3 py-3 px-2 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors"
+              onClick={() => navigate(`/testinfo/${item?._id}`)}
+            >
+              <div className="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <img src={item.icon} alt="" className="w-8 h-8 object-contain" />
+              </div>
+              <p className="text-gray-700 font-medium hover:text-[#7C5CFC] transition-colors">
+                {item.testName}
               </p>
             </div>
           ))}
         </div>
       ) : null}
-      <div className="w-full flex justify-center">
-        <img className="w-full max-w-[100%] mt-8 rounded-2xl" src={banner} alt="" />
-    </div>
+
       </div>
     </>
   )
