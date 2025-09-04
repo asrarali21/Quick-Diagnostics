@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../assets/logo.svg';
 import  { NavLink } from "react-router-dom"
 import  { ChevronDown, MapPin, ShoppingCart, User,  } from "lucide-react"
+import AccountSidebar from './AccountSidebar'
 
 function Navbar() {
+  const [isAccountSidebarOpen, setIsAccountSidebarOpen] = useState(false)
   return (
     <div className="fixed top-0 left-0 w-full z-50 bg-white border-b border-[#E5E5E5]">
       <div className="flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-8 h-14">
@@ -14,9 +16,9 @@ function Navbar() {
         </div>
         {/* Nav Links */}
         <div className="hidden md:flex space-x-8">
-          <NavLink to={"/home"}  style={{ color: '#000', textDecoration: 'none' }}  className="text-gray-600 text-base font-medium hover:text-[#7C5CFC] transition-colors duration-150">Home</NavLink>
-          <NavLink to={"/reports"} style={{ color: '#000', textDecoration: 'none' }} className="text-gray-600 text-base font-medium hover:text-[#7C5CFC] transition-colors duration-150">Reports</NavLink>
-          <NavLink to={"/appointments"} style={{ color: '#000', textDecoration: 'none' }} className="text-gray-600 text-base font-medium hover:text-[#7C5CFC] transition-colors duration-150">My Appointments</NavLink>
+          <NavLink to={"/home"}  style={{ color: '#5A5766', textDecoration: 'none' }}  className="text-gray-600 text-base font-medium hover:text-[#7C5CFC] transition-colors duration-150">Home</NavLink>
+          <NavLink to={"/reports"} style={{ color: '#5A5766', textDecoration: 'none' }} className="text-gray-600 text-base font-medium hover:text-[#7C5CFC] transition-colors duration-150">Reports</NavLink>
+          <NavLink to={"/appointments"} style={{ color: '#5A5766', textDecoration: 'none' }} className="text-gray-600 text-base font-medium hover:text-[#7C5CFC] transition-colors duration-150">My Appointments</NavLink>
         </div>
         {/* Location and Icons */}
         <div className="flex items-center space-x-6 min-w-[260px] justify-end">
@@ -25,7 +27,11 @@ function Navbar() {
             <span className="text-base">Mountain view, CA, USA</span>
             <ChevronDown className="w-5 h-5" color="#7C5CFC" />
           </div>
-          <User className="w-6 h-6 cursor-pointer" color="#7C5CFC" />
+          <User 
+            className="w-6 h-6 cursor-pointer" 
+            color="#7C5CFC" 
+            onClick={() => setIsAccountSidebarOpen(true)}
+          />
           <ShoppingCart className="w-6 h-6" color="#7C5CFC" />
         </div>
         {/* Mobile Nav */}
@@ -39,6 +45,12 @@ function Navbar() {
         <NavLink to={"/reports"} className="text-gray-600 text-base font-medium hover:text-[#7C5CFC] transition-colors duration-150">Reports</NavLink>
         <NavLink to={"/appointments"} className="text-gray-600 text-base font-medium hover:text-[#7C5CFC] transition-colors duration-150">My Appointments</NavLink>
       </div>
+
+      {/* Account Sidebar */}
+      <AccountSidebar 
+        isOpen={isAccountSidebarOpen}
+        onClose={() => setIsAccountSidebarOpen(false)}
+      />
     </div>
   )
 }
