@@ -145,17 +145,17 @@ function ReviewOrder() {
       </div>
 
       {/* Fixed Bottom Buttons */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4">
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-8px_24px_-12px_rgba(17,24,39,0.12)] p-4">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <button 
             onClick={() => navigate(-1)}
-            className="text-red-500 font-semibold text-lg hover:text-red-600"
+            className="h-12 px-2 text-red-500 font-medium hover:text-red-600"
           >
             Cancel
           </button>
           <button 
             onClick={() => {/* Handle continue */}}
-            className="bg-[#7C5CFC] text-white px-8 py-3 rounded-xl font-semibold text-lg hover:bg-[#6B4EE6] shadow-lg"
+            className="inline-flex items-center justify-center h-12 px-8 rounded-xl bg-[#7C5CFC] text-white font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)] hover:bg-[#6B4EE6]"
           >
             Continue
           </button>

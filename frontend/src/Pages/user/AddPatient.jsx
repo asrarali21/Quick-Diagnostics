@@ -196,9 +196,9 @@ function AddPatient() {
       </div>
 
       {/* Bottom action bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-8px_24px_-12px_rgba(17,24,39,0.12)]">
         <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 py-4 flex items-center justify-between">
-          <button type="button" className="text-red-500 font-medium">Cancel</button>
+          <button type="button" className="h-12 px-2 text-red-500 font-medium hover:text-red-600">Cancel</button>
           <button onClick={handleNextclick} type="button" className="inline-flex items-center justify-center h-12 px-10 rounded-xl bg-[#7C5CFC] text-white font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)]">Next</button>
         </div>
       </div>
@@ -255,11 +255,11 @@ function AddPatient() {
           </div>
 
           {/* Bottom action bar */}
-          <div className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+          <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-8px_24px_-12px_rgba(17,24,39,0.12)]">
             <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 py-4 flex items-center justify-between">
-              <button type="button" className="text-red-500 font-medium">Cancel</button>
+              <button type="button" className="h-12 px-2 text-red-500 font-medium hover:text-red-600">Cancel</button>
               <div className="text-gray-700 font-medium">{selected ? '1 Patient Selected' : 'No Patient Selected'}</div>
-              <button onClick={()=>navigate("/lab")} type="button" disabled={!selected} className={`inline-flex items-center justify-center h-12 px-10 rounded-xl font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)] ${selected ? 'bg-[#7C5CFC] text-white' : 'bg-[#7C5CFC]/60 text-white/80 cursor-not-allowed'}`}>Select Lab</button>
+              <button onClick={()=>navigate("/lab")} type="button" disabled={!selected} className={`inline-flex items-center justify-center h-12 px-10 rounded-xl font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)] ${selected ? 'bg-[#7C5CFC] text-white hover:bg-[#6B4EE6]' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}>Select Lab</button>
             </div>
           </div>
         </div>

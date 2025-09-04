@@ -248,9 +248,9 @@ function SelectAppointment() {
       </div>
 
       {/* Sticky footer (exact style) */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/85 backdrop-blur border-t border-gray-200">
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
         <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 py-4 flex items-center justify-between">
-          <button type="button" className="text-red-500 font-medium" onClick={() => navigate(-1)}>Cancel</button>
+          <button type="button" className="h-12 px-2 text-red-500 font-medium hover:text-red-600" onClick={() => navigate(-1)}>Cancel</button>
           <div className="text-gray-700 font-medium">{footerText}</div>
           <button
             type="button"
