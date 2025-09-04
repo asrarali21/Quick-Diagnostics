@@ -154,9 +154,13 @@ function TestInfo() {
       </div>
 
       {/* Bottom action bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-8px_24px_-12px_rgba(17,24,39,0.12)]">
         <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 py-4 flex items-center justify-between">
-          <button type="button" onClick={() => navigate(-1)} className="text-red-500 font-medium">
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            className="h-12 px-2 text-red-500 font-medium hover:text-red-600"
+          >
             Cancel
           </button>
           <button
