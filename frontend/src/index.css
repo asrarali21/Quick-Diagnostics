@@ -3,3 +3,16 @@
 *{
   font-family: "Inter", sans-serif;
 }
+
+/* Hide native date icon, keep our custom icon */
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="date"]::-webkit-clear-button {
+  display: none;
+  -webkit-appearance: none;
+}
+/* Firefox + general normalization */
+input[type="date"] {
+  appearance: none;
+  -moz-appearance: textfield;
+}

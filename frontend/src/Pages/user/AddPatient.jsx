@@ -183,7 +183,7 @@ function AddPatient() {
           </div>
 
           {/* Save details */}
-          <div className="mt-6">
+          {/* <div className="mt-6">
             <label className="inline-flex items-center gap-3">
               <span className="w-5 h-5 rounded-md bg-[#7C5CFC] grid place-items-center">
                 
@@ -191,7 +191,7 @@ function AddPatient() {
               </span>
               <span className="text-[14px] text-gray-700">Save details for future</span>
             </label>
-          </div>
+          </div> */}
         </div>
       </div>
 
