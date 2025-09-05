@@ -42,6 +42,7 @@ const getbyorderId = asyncHandler(async(req, res)=>{
     const order = await Order.findById(orderId)
     .populate("user" , "name email")
     .populate("lab" , "name price")
+    .populate("test" , "testName price")
     .populate("patient" , "name bookingforWhom DOB gender")
     .populate("slot" , "date startTIme endTime")
     .populate("address" , "houseNo road zipCode cityState")

@@ -32,6 +32,27 @@ const orderschema = new Schema({
         ref:"Address",
         required:true
     },
+  amount: 
+  { type: Number, 
+    required: true 
+}, // store in paise (e.g. Rs 499 => 49900)
+  currency: 
+  { type: String, 
+    default: "INR" 
+},
+  paymentStatus: { 
+    type: 
+    String,enum: ["PENDING","SUCCESS","FAILED"],
+     default: "PENDING" },
+  razorpayOrderId: { 
+    type: String
+ },
+  razorpayPaymentId: {
+     type: String 
+    },
+  razorpaySignature: {
+     type: String },
+  paidAt: { type: Date }
 
 },{timestamps:true})
 
