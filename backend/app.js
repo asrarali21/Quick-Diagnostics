@@ -11,6 +11,8 @@ import addressRouter from "./src/routes/Address.route.js"
 import orderRoute from "./src/routes/Order.route.js"
 import { errorHandler } from "./src/middlewares/error.middleware.js"
 import paymentRouter from "./src/routes/payment.route.js"
+import faqRoute from "./src/routes/Faq.route.js"
+import testimonialRoute from "./src/routes/Testimonial.route.js"
 
 
 const app = express()
@@ -40,6 +42,8 @@ app.use("/api/v1/slot" , slotRouter)
 app.use("/api/v1/address" , addressRouter)
 app.use("/api/v1/order" , orderRoute)
 app.use("/api/v1/payment" , paymentRouter)
+app.use("/api/v1/faq" , faqRoute)
+app.use("/api/v1/testimonial" , testimonialRoute)
 
 
 app.use(errorHandler)
