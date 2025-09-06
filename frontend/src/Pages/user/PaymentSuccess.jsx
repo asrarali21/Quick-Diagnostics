@@ -56,7 +56,7 @@ function PaymentSuccess() {
         <div className="max-w-7xl mx-auto px-4 sm:px-8 py-5 flex items-center justify-end gap-6">
           <button
             type="button"
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/home')}
             className="h-12 px-6 rounded-lg border border-[#7C5CFC] text-[#4E34D8] font-medium hover:bg-[#F5F1FF] transition"
           >
             Back to Home

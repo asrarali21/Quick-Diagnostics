@@ -1,9 +1,10 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil'
 import { apiTestimonialState } from '../apiState'
+import { TestimonialDataState } from '../store/Testimonial.state';
 
 function Testimonial() {
-    const Testimonialdata = useRecoilValue(apiTestimonialState)
+    const Testimonialdata = useRecoilValue(TestimonialDataState)
     console.log(Testimonialdata);
     
   return (
