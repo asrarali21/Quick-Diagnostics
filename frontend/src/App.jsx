@@ -15,6 +15,7 @@ import SelectLab from './Pages/user/SelectLab';
 import SelectAppointment from './Pages/user/SelectAppointment';
 import AddAddress from './Pages/user/AddAddress';
 import ReviewOrder from './Pages/user/ReviewOrder';
+import Checkout from './Pages/user/Checkout';
 // public/auth pages kept at Pages root
 import Register from './Pages/auth/Register';
 import EntermobileNum from './Pages/auth/EntermobileNum';
@@ -25,6 +26,7 @@ import LoginAdmin from './Pages/Admin/LoginAdmin';
 import AdminLayout from './Pages/Admin/AdminLayout';
 import AdminDashboard from './Pages/Admin/AdminDashboard';
 import AdminAddTest from './Pages/Admin/AdminAddTest';
+import PaymentSuccess from './Pages/user/PaymentSuccess';
 
 function App() {
         
@@ -57,6 +59,8 @@ function App() {
         <Route path='/SelectAppointment' element={<SelectAppointment/>}/>
         <Route path='/AddAddress' element={<AddAddress/>}/>
         <Route path='/reviewOrder/:orderId' element={<ReviewOrder/>}/>
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/payment-success" element={<PaymentSuccess />} />
 
         {/* admin auth */}
         <Route path='/adminLogin' element={<LoginAdmin/>}/>

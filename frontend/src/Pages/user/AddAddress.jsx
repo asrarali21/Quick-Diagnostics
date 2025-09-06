@@ -14,7 +14,8 @@ function AddAddress() {
     const [order , setOrder] = useRecoilState(orderState)
   console.log(order);
   
-     const reviewOrder = useRecoilValue(orderState)
+    
+     
 
     const [addressInfo , setAddressInfo] = useState({
       houseNo:"",
@@ -41,20 +42,30 @@ function AddAddress() {
         handleError(error.response.data.message)
       }
     }
-    
-   async function HandleClick() {
-      try {
-        const response = await axios.post("http://localhost:8000/api/v1/order/createorder" , reviewOrder , {withCredentials:true})
-        console.log(response);
-        const orderId = response?.data?.data?._id
-        console.log(orderId);
-        
-        navigate(`/revieworder/${orderId}`)
-      } catch (error) {
-        console.log(error);
-        
+    async function HandleClick() {
+    try {
+      // build payload from current order (IDs expected by backend)
+      const payload = {
+        patient: order.patient,
+        test: order.test,
+        lab: order.lab,
+        slot: order.slot,
+        address: order.address
       }
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/order/createorder",
+        payload,
+        { withCredentials: true }
+      )
+      console.log(response);
+      
+      const orderId = response?.data?.data?._id
+      if (!orderId) return
+      navigate(`/revieworder/${orderId}`)
+    } catch (error) {
+      console.log(error)
     }
+  }
 
   return (
     <div className="min-h-screen relative pb-24">

@@ -85,7 +85,7 @@ function ReviewOrder() {
             <div className="border-l-4 border-gray-200 pl-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="font-medium text-gray-900">{orderInfo?.test?.name }</p>
+                  <p className="font-medium text-gray-900">{orderInfo?.test?.testName }</p>
                   <p className="text-sm text-gray-600">1 Test</p>
                 </div>
                 <div className="flex items-center gap-3">
@@ -154,7 +154,7 @@ function ReviewOrder() {
             Cancel
           </button>
           <button 
-            onClick={() => {/* Handle continue */}}
+            onClick={() => navigate('/checkout', { state: { order: orderInfo } })}
             className="inline-flex items-center justify-center h-12 px-8 rounded-xl bg-[#7C5CFC] text-white font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)] hover:bg-[#6B4EE6]"
           >
             Continue
