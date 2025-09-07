@@ -41,70 +41,64 @@ function TestList() {
   const currency = (n) => `$${Number(n || 0)}`
 
   return (
-    <section className="w-full mt-20">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Heading row */}
-        <div className="flex items-center justify-between mb-10">
-          <h2 className="text-[42px] leading-[1.1] font-semibold text-gray-900 tracking-tight">
+    <section className="w-full mt-10">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        {/* Section Heading */}
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-[26px] md:text-[30px] font-semibold text-gray-900 leading-snug decoration-[#1F2840]">
             Tests You Can Choose From
           </h2>
           <button
             type="button"
             onClick={() => navigate(`/testinfo/${tests[0].key}`)}
-            className="text-[#5B3AE6] font-medium text-sm sm:text-base hover:text-[#4528c9] inline-flex items-center gap-1"
+            className="text-[#5B3AE6] font-medium text-sm md:text-base hover:text-[#4528c9] inline-flex items-center gap-1"
           >
-            See more <span className="text-lg">»»</span>
+            See more <span className="text-base md:text-lg">»»</span>
           </button>
         </div>
-
-        {/* Cards */}
-        <div className="grid gap-8 md:grid-cols-3">
+        {/* Cards Row */}
+        <div className="grid gap-6 md:grid-cols-3">
           {tests.map(t => (
             <div
               key={t.key}
-              className="group bg-white border border-gray-200 rounded-[28px] shadow-[0_8px_28px_-12px_rgba(17,24,39,0.10)] hover:shadow-[0_14px_46px_-14px_rgba(17,24,39,0.18)] transition-all duration-300"
+              className="relative flex rounded-2xl border border-[#F1EAFE] bg-white px-4 py-4 md:px-5 md:py-5 hover:shadow-[0_8px_28px_-14px_rgba(124,92,252,0.25)] transition-shadow"
+              style={{ minHeight: 170 }}
             >
-              <div className="flex gap-6 p-6 h-full">
-                {/* Illustration block */}
-                <div className="w-40 shrink-0">
-                  <div className="w-40 h-48 rounded-2xl bg-[#F5F1FF] flex items-center justify-center overflow-hidden">
-                    <img
-                      src={t.image}
-                      alt={t.alt}
-                      className="w-full h-full object-contain p-3 select-none"
-                      draggable="false"
-                    />
-                  </div>
+              {/* Image */}
+              <div className="shrink-0 mr-5 md:mr-6">
+                <div className="w-[158px] h-[160px] rounded-lg bg-[#F5F1FF] flex items-center justify-center overflow-hidden">
+                  <img
+                    src={t.image}
+                    alt={t.alt}
+                    className="w-full h-full object-contain p-3 select-none"
+                    draggable="false"
+                  />
                 </div>
-
-                {/* Text content */}
-                <div className="flex flex-col flex-1">
-                  <h3 className="text-[18px] sm:text-[19px] font-semibold text-gray-900 leading-snug">
-                    {t.name}
-                  </h3>
-                  <p className="mt-2 text-[15px] font-medium text-gray-900">
-                    Starting from {currency(t.price)}
-                  </p>
-                  <p className="mt-2 text-[13px] text-gray-600">
-                    Reports ready in {t.reportTime}
-                  </p>
-                  <p className="mt-1 text-[13px] text-gray-600">
-                    {t.testCount} tests
-                  </p>
-
+              </div>
+              {/* Text (aligned stack) */}
+              <div className="flex flex-col flex-1 min-w-0">
+                <div className="flex flex-col flex-1 justify-start">
                   <button
                     type="button"
                     onClick={() => navigate(`/testinfo/${t.key}`)}
-                    className="mt-auto pt-4 text-[13px] font-semibold text-gray-900 underline underline-offset-2 decoration-gray-400 group-hover:text-[#5B3AE6] group-hover:decoration-[#5B3AE6] transition"
+                    className="text-left font-semibold text-[17px] leading-snug text-gray-900 underline underline-offset-[3px] decoration-transparent hover:decoration-[#5B3AE6] transition-colors"
                   >
-                    View Details
+                    {t.name}
                   </button>
+                  <p className="text-[15px] font-medium text-gray-900 tracking-tight mt-2">
+                    Starting from {currency(t.price)}
+                  </p>
+                  <p className="text-[13px] text-gray-600 mt-2">
+                    Reports ready in {t.reportTime}
+                  </p>
+                  <p className="text-[13px] text-gray-600 mt-2">
+                    {t.testCount} tests
+                  </p>
                 </div>
               </div>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   )

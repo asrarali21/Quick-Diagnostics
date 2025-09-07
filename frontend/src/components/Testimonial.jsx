@@ -10,7 +10,7 @@ function Testimonial() {
   return (
     <div className='bg-[#4D1C8C] py-16'>
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-8">
-        <h1 className="text-2xl font-semibold text-white mb-8">Customer Testimonials</h1>
+        <h1 style={{marginBottom:"25px", fontSize:"25px"}} className="text-2xl md:text-3xl font-semibold  mb-32 text-white">Customer Testimonials</h1>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center'>
           {Testimonialdata.map((item ,i )=>(
             <div key={i} className="bg-white rounded-2xl shadow-sm p-8 flex flex-col items-start w-full max-w-sm">
