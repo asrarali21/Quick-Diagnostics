@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { handleError, handlesuccess } from '../../toast.util';
+import logo from "../../assets/logo.svg"
 
 function Login() {
 
@@ -34,9 +35,7 @@ function Login() {
       <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl ring-1 ring-black/5 px-8 py-10">
         {/* Brand circle */}
         <div className="flex justify-center mb-4">
-          <div className="h-12 w-12 rounded-full bg-[#6B4DE0] text-white grid place-items-center text-xl font-semibold">
-            Z
-          </div>
+          <img src={logo} alt="" />
         </div>
 
         {/* Title */}
