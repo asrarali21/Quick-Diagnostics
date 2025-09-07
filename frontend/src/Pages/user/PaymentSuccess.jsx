@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import successIllustration from '../../assets/paymentsuccess.png' // update path if different
+import Navlogoname from '../../components/Navlogoname'
 
 function PaymentSuccess() {
   const navigate = useNavigate()
@@ -8,6 +9,7 @@ function PaymentSuccess() {
 
   return (
     <div className="min-h-screen bg-white relative pb-28">
+      <Navlogoname/>
       {/* Main content */}
       <div className="max-w-7xl mx-auto w-full px-4 sm:px-8 pt-10">
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-24">

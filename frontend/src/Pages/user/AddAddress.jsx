@@ -71,20 +71,9 @@ function AddAddress() {
     <div className="min-h-screen relative pb-24">
       {step === 0 ? (
         <>
-          {/* Header */}
-          <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 pt-6">
-            <div className="grid grid-cols-3 items-center">
-              <div className="justify-self-start">
-                <button onClick={()=>navigate(-1)} type="button" className="inline-flex items-center gap-2 text-[#7C5CFC]">
-                  <ArrowLeft className="w-5 h-5" />
-                  <span className="font-medium">Back</span>
-                </button>
-              </div>
-              <div className="justify-self-center">
-                <StepTracker currentStep={2} />
-              </div>
-              <div className="justify-self-end" />
-            </div>
+          {/* Header centered */}
+          <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 pt-6 flex justify-center">
+            <StepTracker currentStep={2} />
           </div>
 
           {/* Main card */}
@@ -149,38 +138,18 @@ function AddAddress() {
               </div>
             </div>
           </div>
-
-          {/* Bottom action bar */}
-          <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-8px_24px_-12px_rgba(17,24,39,0.12)]">
-            <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 py-4 flex items-center justify-between">
-              <button type="button" className="h-12 px-2 text-red-500 font-medium hover:text-red-600">Cancel</button>
-              <button onClick={addressPost} type="button" className="inline-flex items-center justify-center h-12 px-10 rounded-xl bg-[#7C5CFC] text-white font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)]">Save Address</button>
-            </div>
-          </div>
         </>
       ) : (
         <div className="min-h-screen relative pb-24">
-          {/* Header */}
-          <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 pt-6">
-            <div className="grid grid-cols-3 items-center">
-              <div className="justify-self-start">
-                <button onClick={()=>navigate(-1)} type="button" className="inline-flex items-center gap-2 text-[#7C5CFC]">
-                  <ArrowLeft className="w-5 h-5" />
-                  <span className="font-medium">Back</span>
-                </button>
-              </div>
-              <div className="justify-self-center">
-                <StepTracker currentStep={2} />
-              </div>
-              <div className="justify-self-end" />
+          {/* Header centered */}
+            <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 pt-6 flex justify-center">
+              <StepTracker currentStep={2} />
             </div>
-          </div>
-
           {/* Main card: Address Selection */}
           <div className="max-w-[900px] mx-auto mt-6 px-4 sm:px-6">
             <div className="border-2 border-blue-400 rounded-3xl bg-white shadow-[0_24px_60px_-28px_rgba(17,24,39,0.15)] p-6 sm:p-8">
               <div className="flex items-center justify-between">
-                <h2 className="text-[24px] font-semibold text-gray-900">Select Address</h2>
+                <h2 style={{color:"#5A5766"}} className="text-[24px] font-semibold ">Select Address</h2>
                 <button type="button" onClick={()=>setstep(0)} className="inline-flex items-center gap-2 text-[#7C5CFC] font-medium">
                   <Plus className="w-5 h-5" />
                   <span>Add Address</span>
@@ -212,16 +181,32 @@ function AddAddress() {
               </div>
             </div>
           </div>
+        </div>
+      )}
 
-          {/* Bottom action bar */}
+      {/* Unified Sticky Footer */}
+      {(() => {
+        const ctaText = step === 0 ? 'Save Address' : 'Complete Order'
+        const ctaHandler = step === 0 ? addressPost : HandleClick
+        const ctaDisabled = step !== 0 && !selected
+        return (
           <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-8px_24px_-12px_rgba(17,24,39,0.12)]">
             <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 py-4 flex items-center justify-between">
               <button type="button" className="h-12 px-2 text-red-500 font-medium hover:text-red-600">Cancel</button>
-              <button onClick={HandleClick} type="button" disabled={!selected} className={`inline-flex items-center justify-center h-12 px-10 rounded-xl font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)] ${selected ? 'bg-[#7C5CFC] text-white hover:bg-[#6B4EE6]' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}>Complete Order</button>
+              {/* Center spacer for alignment (optional placeholder) */}
+              <div className="flex-1 text-center" />
+              <button
+                onClick={ctaHandler}
+                type="button"
+                disabled={ctaDisabled}
+                className={`inline-flex items-center justify-center h-12 px-8 rounded-full font-semibold transition-colors shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)] ${ctaDisabled ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-[#7C5CFC] text-white hover:bg-[#6B4EE6]'}`}
+              >
+                {ctaText}
+              </button>
             </div>
           </div>
-        </div>
-      )}
+        )
+      })()}
     </div>
   )
 }

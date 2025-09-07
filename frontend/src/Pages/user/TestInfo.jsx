@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { ArrowLeft, Clock, DollarSign } from 'lucide-react'
+import { ArrowLeft, Clock, DollarSign, IndianRupee } from 'lucide-react'
 
 import BreadCrum from '../../components/BreadCrum'
 import { SingletestInfo } from '../../store/test.state'
@@ -11,6 +11,7 @@ import homeImg from '../../assets/TestInfoAssets/home.svg'
 import reportsImg from '../../assets/TestInfoAssets/reports.svg'
 import testImg from '../../assets/TestInfoAssets/test.svg'
 import { orderState } from '../../store/order.state'
+import Navlogoname from '../../components/Navlogoname'
 
 function TestInfo() {
   const navigate = useNavigate()
@@ -76,6 +77,7 @@ function TestInfo() {
   return (
     <div className="min-h-screen relative pb-24">
       {/* Header row: Back (left) + Breadcrumb (center) */}
+      <Navlogoname/>
       <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 pt-6">
         <div className="grid grid-cols-3 items-center">
           <div className="justify-self-start">
@@ -99,7 +101,7 @@ function TestInfo() {
       <div className="max-w-[900px] mx-auto mt-6 px-4 sm:px-6">
         <div className="bg-white rounded-3xl border border-gray-200 shadow-[0_24px_60px_-28px_rgba(17,24,39,0.15)] p-6 sm:p-8">
           {/* Title */}
-          <h1 className="text-[28px] leading-9 font-semibold text-gray-900">{title}</h1>
+          <h1 style={{color:'#2D2A38', letterSpacing:'-0.5px'}} className="text-[20px] leading-[24px] tracking-[-0.5px] font-semibold ">{title}</h1>
 
           {/* Feature badges */}
           <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -121,7 +123,7 @@ function TestInfo() {
           <div className="mt-6">
             <div className="inline-flex items-center gap-4 border border-gray-200 rounded-full px-4 py-2">
               <span className="inline-flex items-center gap-2 text-gray-700">
-                <DollarSign className="w-4 h-4 text-gray-500" />
+                <IndianRupee className="w-4 h-4 text-gray-500" />
                 <span className="text-[14px] font-medium">Starting from {currency(price)}</span>
               </span>
               <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
@@ -142,7 +144,7 @@ function TestInfo() {
           </ul>
 
           {/* Why book section */}
-          <h3 className="mt-8 text-gray-900 font-semibold text-[18px]">Why you should book this package?</h3>
+          <h3 style={{color:'#757380', letterSpacing:'-0.5px'}}className="mt-8  font-semibold text-[18px]">Why you should book this package?</h3>
           <div className="mt-4 grid gap-4 sm:grid-cols-3">
             {whyBook.slice(0, 3).map((text, i) => (
               <div key={i} className="bg-[#F6F1FF] rounded-2xl px-5 py-4 text-[14px] leading-6 text-[#6F6C90]">

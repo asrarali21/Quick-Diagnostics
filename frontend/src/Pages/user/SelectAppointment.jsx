@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { orderState } from '../../store/order.state'
+import Navlogoname from '../../components/Navlogoname'
 
 function SelectAppointment() {
   const navigate = useNavigate()
@@ -157,6 +158,7 @@ function SelectAppointment() {
 
   return (
     <div className="min-h-screen relative pb-24 bg-gray-50">
+      <Navlogoname/>
       <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 pt-4">
         <StepTracker currentStep={1}/>
       </div>
@@ -173,9 +175,9 @@ function SelectAppointment() {
                 type="button"
                 onClick={() => { setSelectedDate(d.ymd); setSelectedSlotIndex(null); }}
                 className={[
-                  'w-20 h-[72px] rounded-2xl flex flex-col items-center justify-center border transition-colors',
+                  'w-20 h-[72px] rounded-[36px] flex flex-col items-center justify-center border transition-colors',
                   d.ymd === selectedDate
-                    ? 'bg-[#7C5CFC] text-white border-[#7C5CFC]'
+                    ? 'bg-[#9E62B2] text-white border-[#9E62B2]'
                     : 'bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200'
                 ].join(' ')}
               >
@@ -198,11 +200,10 @@ function SelectAppointment() {
                       key={`${s._id}-m`}
                       type="button"
                       onClick={() => setSelectedSlotIndex(globalIndex)}
-                       
                       className={[
-                        'h-12 rounded-xl text-sm font-medium transition-colors border',
+                        'h-12 rounded-[30px] text-sm font-medium transition-colors border px-4',
                         selected
-                          ? 'bg-[#7C5CFC] text-white border-[#7C5CFC]'
+                          ? 'bg-[#9E62B2] text-white border-[#9E62B2]'
                           : 'bg-gray-100 text-gray-700 border-gray-200 hover:border-[#7C5CFC]/50'
                       ].join(' ')}
                     >
@@ -221,19 +222,16 @@ function SelectAppointment() {
               <div className="grid grid-cols-2 gap-3">
                 {afternoonSlots.map((s) => {
                   const globalIndex = slotsForSelected.indexOf(s)
-                  
                   const selected = selectedSlotIndex === globalIndex
-                 
-                  
                   return (
                     <button
                       key={`${s._id}-a`}
                       type="button"
                       onClick={() => setSelectedSlotIndex(globalIndex)}
                       className={[
-                        'h-12 rounded-xl text-sm font-medium transition-colors border',
+                        'h-12 rounded-[30px] text-sm font-medium transition-colors border px-4',
                         selected
-                          ? 'bg-[#7C5CFC] text-white border-[#7C5CFC]'
+                          ? 'bg-[#9E62B2] text-white border-[#9E62B2]'
                           : 'bg-gray-100 text-gray-700 border-gray-200 hover:border-[#7C5CFC]/50'
                       ].join(' ')}
                     >
@@ -250,14 +248,14 @@ function SelectAppointment() {
       {/* Sticky footer (exact style) */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
         <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 py-4 flex items-center justify-between">
-          <button type="button" className="h-12 px-2 text-red-500 font-medium hover:text-red-600" onClick={() => navigate(-1)}>Cancel</button>
+          <button type="button" className="h-12 px-5 rounded-full text-red-500 font-medium hover:text-red-600" onClick={() => navigate(-1)}>Cancel</button>
           <div className="text-gray-700 font-medium">{footerText}</div>
           <button
             type="button"
             disabled={selectedSlotIndex === null}
             onClick={() => navigate('/AddAddress')}
             className={[
-              'inline-flex items-center justify-center h-12 px-8 rounded-xl font-semibold transition-colors',
+              'inline-flex items-center justify-center h-12 px-8 rounded-full font-semibold transition-colors',
               selectedSlotIndex !== null
                 ? 'bg-[#7C5CFC] text-white shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)] hover:bg-[#6B4EE6]'
                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'

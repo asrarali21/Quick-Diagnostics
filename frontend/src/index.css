@@ -4,6 +4,13 @@
   font-family: "Inter", sans-serif;
 }
 
+/* Custom color utilities (ensure override after Tailwind + Bootstrap) */
+@layer utilities {
+  .text-heading { color:#2D2A38 !important; }
+  .text-muted { color:#5A5766 !important; }
+  .text-primary-brand { color:#7C5CFC !important; }
+}
+
 /* Hide native date icon, keep our custom icon */
 input[type="date"]::-webkit-inner-spin-button,
 input[type="date"]::-webkit-calendar-picker-indicator,

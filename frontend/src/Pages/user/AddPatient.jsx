@@ -7,6 +7,7 @@ import axios from 'axios'
 import { handleError, handlesuccess } from '../../toast.util'
 import { useRecoilState } from 'recoil'
 import { orderState } from '../../store/order.state'
+import Navlogoname from '../../components/Navlogoname'
 
 function AddPatient() {
 
@@ -33,7 +34,7 @@ function AddPatient() {
    const handleNextclick = async()=>{
    
       if(!FormData.name?.trim() || !FormData.DOB || !FormData.gender){
-        alert('Please fill all fields')
+        handleError('Please fill all fields')
         return
       }
 
@@ -81,6 +82,7 @@ function AddPatient() {
     step === 1 ? (
 
         <div className="min-h-screen relative pb-24">
+          <Navlogoname/>
         {/* Header: Back (left) + centered breadcrumb */}
         <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 pt-6">
         <div className="grid grid-cols-3 items-center">
@@ -100,7 +102,7 @@ function AddPatient() {
         {/* Main card */}
         <div className="max-w-[900px] mx-auto mt-6 px-4 sm:px-6">
         <div className="bg-white rounded-3xl border border-gray-200 shadow-[0_24px_60px_-28px_rgba(17,24,39,0.15)] p-6 sm:p-8">
-        <h2 className="text-[24px] font-semibold text-gray-900">Add Patient Details</h2>
+        <h2 style={{color:"#5a5766"}}className="text-[24px] font-semibold ">Add Patient Details</h2>
       
 
           {/* Booking for whom */}
@@ -114,7 +116,7 @@ function AddPatient() {
               onClick={()=> setFormData({...FormData , bookingforWhom:options})}
                className={`h-10 px-4 rounded-full ${
                 FormData.bookingforWhom === options
-                  ? "bg-[#7C5CFC] text-white"
+                  ? "bg-[#9E62B2] text-white"
                   : "bg-[#EDEDF3] text-[#6F6C90]"
               } text-[14px] font-medium`}
             >
@@ -223,6 +225,7 @@ function AddPatient() {
 
           {/* Main card: Patients list */}
           <div className="max-w-[900px] mx-auto mt-6 px-4 sm:px-6">
+            <Navlogoname/>
             <div className="bg-white rounded-3xl border border-gray-200 shadow-[0_24px_60px_-28px_rgba(17,24,39,0.15)] p-6 sm:p-8">
               <div className="flex items-center justify-between">
                 <h2 className="text-[24px] font-semibold text-gray-900">Add Patient</h2>
@@ -239,7 +242,7 @@ function AddPatient() {
                       type="button"
                       onClick={()=>setSelected(v=>!v)}
                       aria-pressed={selected}
-                      className={`mt-1 w-4 h-4 rounded-[4px] grid place-items-center ${selected ? 'bg-[#7C5CFC]' : 'bg-gray-200'}`}
+                      className={`mt-1 w-4 h-4 rounded-[4px] grid place-items-center ${selected ? 'bg-[#9E62B2]' : 'bg-gray-200'}`}
                     >
                       <Check className={`w-3 h-3 ${selected ? 'text-white' : 'text-transparent'}`} />
                     </button>

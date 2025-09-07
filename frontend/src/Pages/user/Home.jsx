@@ -9,30 +9,25 @@ import Footer from '../../components/Footer'
 import Banner from '../../components/Banner'
 import WhyChooseUs from '../../components/WhyChooseUs'
 
-
-
-
 function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar/>
-      <div className="pt-14 flex-1">
-        <Search/>
-         <div className='mt-10'>
-        <Banner/>
+    <div className="min-h-screen flex flex-col bg-white">
+      <Navbar />
+      <main className="pt-14 flex-1">
+        {/* Top stack: Search + Banner */}
+        <div className="space-y-5">
+          <Search />
+          <Banner />
         </div>
-        <div className='mt-10 '>
-        <CommonlyBooked/>
+        {/* Content sections with controlled vertical rhythm */}
+        <div className="mt-10 space-y-14">
+          <CommonlyBooked />
+          <WhyChooseUs />
+          <TestList />
+          <Testimonial />
+          <div className="pb-14"><FAQ /></div>
         </div>
-           <div className='mt-10 '>
-        <WhyChooseUs/>
-        </div>
-        <TestList/>
-        <Testimonial/>
-        <div className='mb-14'>
-        <FAQ/>
-        </div>
-      </div>
+      </main>
       <Footer className="mt-auto" />
     </div>
   )

@@ -6,6 +6,7 @@ import axios from 'axios'
 import { Plus, ArrowUpDown, Star, Calendar, Check } from 'lucide-react'
 import { orderState } from '../../store/order.state'
 import { useRecoilState } from 'recoil'
+import Navlogoname from '../../components/Navlogoname'
 
 function SelectLab() {
   const navigate = useNavigate()
@@ -51,6 +52,7 @@ function SelectLab() {
 
   return (
     <div className="min-h-screen relative pb-24">
+      <Navlogoname/>
       <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 pt-4">
         <StepTracker currentStep ={0}/>
       </div>
@@ -59,13 +61,13 @@ function SelectLab() {
       <div className="max-w-[900px] mx-auto mt-4 px-4 sm:px-6">
         <div className="bg-white rounded-3xl border border-gray-200 shadow-[0_24px_60px_-28px_rgba(17,24,39,0.15)] p-6 sm:p-8">
           <div className="flex items-center justify-between">
-            <h2 className="text-[24px] font-semibold text-gray-900">Select Lab</h2>
+            <h2 className="text-[24px] font-semibold text-heading">Select Lab</h2>
             <div className="flex items-center gap-6">
-              <button type="button" className="inline-flex items-center gap-2 text-[#7C5CFC] font-medium">
+              <button type="button" className="inline-flex items-center gap-2 text-[#6B4DE0] font-medium">
                 <Plus className="w-5 h-5" />
                 <span>Add Test</span>
               </button>
-              <button type="button" className="inline-flex items-center gap-2 text-gray-700">
+              <button type="button" className="inline-flex items-center gap-2 text-[#757380] font-medium">
                 <ArrowUpDown className="w-5 h-5" />
                 <span>Sort</span>
               </button>
@@ -73,46 +75,37 @@ function SelectLab() {
           </div>
 
           {/* Labs list */}
-          <div className="mt-4 space-y-4">
+          <div className="mt-4 space-y-6">
             {labInfo.map((item, idx) => {
               const selected = idx === selectedIndex
-              console.log("selected ",selected );
-              
               return (
                 <button
                   type="button"
                   key={item._id || idx}
                   onClick={() => setSelectedIndex(idx)}
-                  className={`w-full text-left rounded-2xl border p-5 sm:p-6 transition-colors ${selected ? 'border-2 border-[#7C5CFC]' : 'border-gray-200'}`}
+                  className={`relative w-full text-left rounded-2xl p-6 transition-colors bg-white border ${selected ? 'border-[#9E62B2]' : 'border-gray-200 hover:border-gray-300'}`}
                 >
-                  {/* top-right check */}
-                  <span className={`absolute translate-x-[calc(100%-1.75rem)] -translate-y-3 sm:translate-x-[calc(100%-1.5rem)] right-0 ${selected ? '' : ''}`}></span>
-                  <div className="relative">
-                    <div className="absolute right-0 -top-2">
-                      <span className={`w-6 h-6 rounded-full border grid place-items-center ${selected ? 'bg-[#7C5CFC] border-[#7C5CFC]' : 'border-gray-300 bg-white'}`}>
-                        <Check className={`w-4 h-4 ${selected ? 'text-white' : 'text-transparent'}`} />
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      {/* Tiny brand/monogram */}
-                      <div className="mt-1 text-[10px] tracking-[0.2em] text-gray-500 font-semibold">
-                       <img src={item.image} alt="" />
+                  {selected && (
+                    <span className="absolute top-4 right-4 w-7 h-7 rounded-full bg-[#9E62B2] grid place-items-center shadow-sm">
+                      <Check className="w-4 h-4 text-white" />
+                    </span>
+                  )}
+                  <div className="flex items-start gap-6">
+                    <div className="pt-1 text-[11px] leading-4 tracking-[0.25em] font-semibold text-heading w-[52px] flex-shrink-0"><img src={item.image} alt="" className="w-12 h-12 object-cover rounded-md" /></div>
+                    <div className="flex-1">
+                      <p className="text-heading text-[20px] leading-6 font-semibold">{item.name}</p>
+                      <div className="mt-3 flex flex-wrap items-center gap-8 text-sm">
+                        <span className="inline-flex items-center gap-1 text-[#5A5766]">
+                          <Star className="w-4 h-4 text-[#C5C3CA]" />
+                          {item.rating}
+                        </span>
+                        <span className="inline-flex items-center gap-2 text-green-600">
+                          <Calendar className="w-4 h-4" />
+                          {item.slotsAvailable} Slots Available
+                        </span>
                       </div>
-                      <div className="flex-1">
-                        <p className="text-gray-900 text-[18px] font-semibold">{item.name}</p>
-                        <div className="mt-2 flex items-center gap-6 text-sm">
-                          <span className="inline-flex items-center gap-1 text-gray-700">
-                            <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                            {item.rating}
-                          </span>
-                          <span className="inline-flex items-center gap-2 text-green-600">
-                            <Calendar className="w-4 h-4" />
-                            {item.slotsAvailable} Slots Available
-                          </span>
-                        </div>
-                        <p className="mt-3 text-gray-600">Reports ready in {item.reportTime}</p>
-                        <p className="mt-4 text-gray-900 font-medium">${item.price} <span className="font-normal text-gray-600">for 1 Test</span></p>
-                      </div>
+                      <p className="mt-4 text-[#5A5766] text-[15px] leading-5">Reports ready in {item.reportTime}</p>
+                      <p className="mt-5 text-heading font-semibold text-[20px] leading-6">{item.price} <span className="font-normal text-[#5A5766] text-[16px] ml-1">for 1 Test</span></p>
                     </div>
                   </div>
                 </button>
@@ -126,12 +119,12 @@ function SelectLab() {
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-8px_24px_-12px_rgba(17,24,39,0.12)]">
         <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 py-4 flex items-center justify-between">
           <button type="button" className="h-12 px-2 text-red-500 font-medium hover:text-red-600">Cancel</button>
-          <div className="flex items-baseline gap-2 text-gray-700">
-            <span className="hidden sm:inline">{selectedLab?.name}</span>
-            <span className="text-gray-900 font-semibold">${selectedLab?.price}</span>
-            <span className="text-gray-500">for 1 Test</span>
+          <div className="flex items-baseline gap-2 text-[#5A5766] text-sm">
+            <span className="hidden sm:inline text-heading font-medium">{selectedLab?.name}</span>
+            <span className="text-heading font-semibold text-[16px]">${selectedLab?.price}</span>
+            <span className="text-[#5A5766]">for 1 Test</span>
           </div>
-          <button onClick={()=>navigate('/SelectAppointment')} type="button" className="inline-flex items-center justify-center h-12 px-10 rounded-xl bg-[#7C5CFC] text-white font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)]">Select Date & Time</button>
+          <button  onClick={()=>navigate('/SelectAppointment')} type="button" className="inline-flex items-center justify-center h-12 px-10 rounded-xl bg-[#6B4DE0] text-white font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)]">Select Date & Time</button>
         </div>
       </div>
     </div>
