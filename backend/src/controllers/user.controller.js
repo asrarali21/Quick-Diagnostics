@@ -108,11 +108,9 @@ const verifyOtp = asyncHandler(async (req, res) => {
 const myinfo = asyncHandler(async(req , res)=>{
 
 
-  const user = await User.findById(req.user._id).select("firstName , lastName , email")
+  const user = await User.findById(req.user._id).select("firstName , lastName , email , phoneNumber")
   console.log("my info user:",user);
   
-
-
 
    if (!user) {
     throw new ApiError(400 , "user not found")
@@ -170,7 +168,7 @@ const options = {
      res.status(200)
     .clearCookie("accessToken" ,options)
     .clearCookie("refreshToken" ,options)
-    .json(new ApiResponse(200 , {} , "admiin logout sucessfully"))
+    .json(new ApiResponse(200 , {} , "user logout sucessfully"))
       
 })
 

@@ -89,6 +89,7 @@ const verifyPayment = asyncHandler(async (req, res) => {
   }
 
   update.paymentStatus = "SUCCESS"
+  update.status="ORDER_PLACED"
   update.paidAt = new Date()
   const order = await Order.findByIdAndUpdate(orderId, update, { new: true })
 

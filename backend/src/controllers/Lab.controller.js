@@ -8,7 +8,7 @@ import { uploadoncloudinary } from "../utils/cloudinary.js";
 
 
 const addLab = asyncHandler(async(req , res)=>{
-   const { name, location, rating, slotsAvailable, reportTime, price } = req.body;
+   const { name, location, rating, slotsAvailable, reportTime, discount ,price } = req.body;
 
 
    const labimagelocalpath = req.file.path
@@ -34,6 +34,7 @@ const addLab = asyncHandler(async(req , res)=>{
        slotsAvailable, 
        reportTime,
        price,
+       discount,
        image: image.secure_url || image.url
     } )
 

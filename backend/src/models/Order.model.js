@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 
+
 const orderschema = new Schema({
     user:{
         type:Schema.Types.ObjectId,
@@ -52,7 +53,17 @@ const orderschema = new Schema({
     },
   razorpaySignature: {
      type: String },
-  paidAt: { type: Date }
+  paidAt: { type: Date },
+
+
+  status: {
+    type: String,
+    enum: ['ORDER_PLACED', 'TECHNICIAN_ASSIGNED', 'SAMPLE_COLLECTED', 'EXAMINED', 'REPORT_READY'],
+    default: 'ORDER_PLACED'
+  },
+  technician: { type: String },
+  sampleCollectionDate: { type: Date },
+  
 
 },{timestamps:true})
 

@@ -21,6 +21,9 @@ const labSchema = new Schema({
         required: true,
         trim: true
     },
+    discount: {
+        type: Number,
+    },
     price: {
         type: Number,
         required: true

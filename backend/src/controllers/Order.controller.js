@@ -47,7 +47,7 @@ const getbyorderId = asyncHandler(async(req, res)=>{
 
     const order = await Order.findById(orderId)
     .populate("user" , "name email")
-    .populate("lab" , "name price")
+    .populate("lab" , "name price image")
     .populate("test" , "testName price")
     .populate("patient" , "name bookingforWhom DOB gender")
     .populate("slot" , "date startTime endTime")
@@ -66,5 +66,7 @@ const getbyorderId = asyncHandler(async(req, res)=>{
 
 
 })
+
+
 
 export {createOrder ,getbyorderId}
