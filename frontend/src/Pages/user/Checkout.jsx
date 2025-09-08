@@ -52,9 +52,10 @@ export default function Checkout() {
       console.log("Verify payment response:", verifyRes.data);
 
     const paymentStatus = verifyRes?.data?.data?.order?.paymentStatus
+    const orderId = verifyRes?.data?.data?.order?._id
 if (paymentStatus === "SUCCESS" ||
     verifyRes?.data?.message?.toLowerCase().includes("payment verified")) {
-  navigate("/payment-success")
+  navigate(`/payment-success/${orderId}`)
 } else {
   // fallback: still navigate or show alert
   alert("Payment verification failed (status: " + paymentStatus + ").")

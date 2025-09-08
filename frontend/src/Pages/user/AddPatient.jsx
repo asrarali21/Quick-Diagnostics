@@ -81,7 +81,7 @@ function AddPatient() {
   return (
     step === 1 ? (
 
-        <div className="min-h-screen relative pb-24">
+      <div className="min-h-screen relative pb-24">
           <Navlogoname/>
         {/* Header: Back (left) + centered breadcrumb */}
         <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 pt-6">
@@ -207,6 +207,7 @@ function AddPatient() {
     </div>
    ) : (
         <div className="min-h-screen relative pb-24">
+            <Navlogoname/>
           {/* Header */}
           <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 pt-6">
             <div className="grid grid-cols-3 items-center">
@@ -225,7 +226,6 @@ function AddPatient() {
 
           {/* Main card: Patients list */}
           <div className="max-w-[900px] mx-auto mt-6 px-4 sm:px-6">
-            <Navlogoname/>
             <div className="bg-white rounded-3xl border border-gray-200 shadow-[0_24px_60px_-28px_rgba(17,24,39,0.15)] p-6 sm:p-8">
               <div className="flex items-center justify-between">
                 <h2 className="text-[24px] font-semibold text-gray-900">Add Patient</h2>

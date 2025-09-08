@@ -65,7 +65,7 @@ function PaymentSuccess() {
           </button>
           <button
             type="button"
-            onClick={() => navigate(`/orders/${orderId || ''}`)}
+            onClick={() => navigate(`/trackOrder/${orderId}`)}
             className="h-12 px-8 rounded-lg bg-[#6747F9] hover:bg-[#5B3AE6] text-white font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.55)] transition"
           >
             Track Your Order

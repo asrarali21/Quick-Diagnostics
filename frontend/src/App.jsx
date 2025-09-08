@@ -27,6 +27,7 @@ import AdminLayout from './Pages/Admin/AdminLayout';
 import AdminDashboard from './Pages/Admin/AdminDashboard';
 import AdminAddTest from './Pages/Admin/AdminAddTest';
 import PaymentSuccess from './Pages/user/PaymentSuccess';
+import TrackOrder from './Pages/user/TrackOrder';
 
 function App() {
         
@@ -60,7 +61,8 @@ function App() {
         <Route path='/AddAddress' element={<AddAddress/>}/>
         <Route path='/reviewOrder/:orderId' element={<ReviewOrder/>}/>
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/payment-success" element={<PaymentSuccess />} />
+        <Route path="/payment-success/:orderId" element={<PaymentSuccess />} />
+        <Route path="/trackOrder/:orderId" element={<TrackOrder />} />
 
         {/* admin auth */}
         <Route path='/adminLogin' element={<LoginAdmin/>}/>
