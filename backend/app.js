@@ -13,6 +13,7 @@ import { errorHandler } from "./src/middlewares/error.middleware.js"
 import paymentRouter from "./src/routes/payment.route.js"
 import faqRoute from "./src/routes/Faq.route.js"
 import testimonialRoute from "./src/routes/Testimonial.route.js"
+import AiRoute from "./src/routes/Ai.route.js"
 
 
 const app = express()
@@ -44,6 +45,7 @@ app.use("/api/v1/order" , orderRoute)
 app.use("/api/v1/payment" , paymentRouter)
 app.use("/api/v1/faq" , faqRoute)
 app.use("/api/v1/testimonial" , testimonialRoute)
+app.use("/api/v1/Aichat/" , AiRoute)
 
 
 app.use(errorHandler)
