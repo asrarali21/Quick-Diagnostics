@@ -8,6 +8,7 @@ import FAQ from '../../components/FAQ'
 import Footer from '../../components/Footer'
 import Banner from '../../components/Banner'
 import WhyChooseUs from '../../components/WhyChooseUs'
+import Chatbot from '../../components/Chatbot'
 
 function Home() {
   return (
@@ -29,6 +30,7 @@ function Home() {
         </div>
       </main>
       <Footer className="mt-auto" />
+          <Chatbot/>
     </div>
   )
 }
