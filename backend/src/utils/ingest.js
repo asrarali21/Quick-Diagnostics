@@ -1,12 +1,15 @@
-import {Document} from "@langchain/document"
+import {Document} from "@langchain/core/documents"
 import {RecursiveCharacterTextSplitter} from "@langchain/textsplitters"
-import {OllamaEmbeddings} from "@langchain/community/embeddings/ollama"
+import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai"
 import {Chroma} from "@langchain/community/vectorstores/chroma"
 
 import axios from "axios"
-
+ 
   //ye banati vector store for RAG
 const ingestDocs = async() =>{
+
+
+   
     console.log("starting ingestion");
 
 
@@ -51,9 +54,9 @@ const ingestDocs = async() =>{
 
     //step 4 : abbh embedding create karna konsa toh bhi model use karke 
 
-    const embedding = new OllamaEmbeddings({
-         model: "mistral", 
-    baseUrl: "http://localhost:11434"
+    const embedding = new GoogleGenerativeAIEmbeddings({
+         model: "text-embedding-004", 
+         apiKey:process.env.GEMINI_API_KEY
     })
 
 
