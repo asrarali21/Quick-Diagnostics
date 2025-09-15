@@ -5,9 +5,6 @@ import {Chroma} from "@langchain/community/vectorstores/chroma"
 
 import axios from "axios"
 
-
-
-
   //ye banati vector store for RAG
 const ingestDocs = async() =>{
     console.log("starting ingestion");
@@ -70,3 +67,5 @@ const ingestDocs = async() =>{
     console.log("Ingestion complete! The knowledge base has been created.");
    
 }
+
+ingestDocs().catch(console.error)
