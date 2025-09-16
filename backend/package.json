@@ -13,6 +13,7 @@
     "@langchain/community": "^0.3.55",
     "@langchain/core": "^0.3.75",
     "@langchain/google-genai": "^0.2.17",
+    "@langchain/weaviate": "^0.2.3",
     "axios": "^1.11.0",
     "bcrypt": "^6.0.0",
     "cloudinary": "^2.7.0",
@@ -26,6 +27,7 @@
     "multer": "^2.0.2",
     "nodemailer": "^7.0.5",
     "nodemon": "^3.1.10",
-    "razorpay": "^2.9.6"
+    "razorpay": "^2.9.6",
+    "weaviate-client": "^3.8.1"
   }
 }
