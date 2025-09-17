@@ -1,11 +1,12 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
+import logo from "../assets/logo.svg"
 
 function Chatbot() {
   // Basic state only (no refs)
   const [open, setOpen] = useState(false)
   const [collapsed, setCollapsed] = useState(false)
-  const [input, setInput] = useState('')
+  const [input, setInput] = useState("")
   const [firstName , setFirstName] = useState()
   // store messages as objects: {role:'user'|'bot', content:string}
   const [chatHistory , setChatHistory] = useState([])
@@ -20,7 +21,6 @@ function Chatbot() {
       
     } catch (error) {
       console.log(error);
-      
     }
    }
   fetchDetails()
@@ -57,8 +57,14 @@ function Chatbot() {
     setInput('')
     setLoadingReply(true)
     try {
-      const response = await axios.post("http://localhost:8000/api/v1/Aichat/chat" , {question:userText} , {withCredentials:true})
-      const botText = response?.data?.answer || response?.data?.reply || response?.data?.data || 'Okay.'
+      const response = await axios.post("http://localhost:8000/api/v1/rag/ask" , {question:userText} , {withCredentials:true})
+      console.log(response);  
+         const payload = response?.data?.data
+         console.log(payload);
+         
+    const botText = typeof payload === 'string'
+      ? payload
+      : (payload?.answer ?? 'Okay.')
       setChatHistory(h => [...h, { role:'bot', content: botText }])
     } catch (error) {
       console.log("error while sending" , error)
@@ -79,7 +85,7 @@ function Chatbot() {
             onClick={() => setOpen(true)}
           className="fixed bottom-6 right-6 z-50 group"
         >
-          <span className="relative flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#7C5CFC] via-[#6B4DF8] to-[#4D1C8C] shadow-[0_8px_24px_-6px_rgba(98,52,246,0.55)] ring-4 ring-transparent hover:ring-[#7C5CFC]/25 transition-all duration-300">
+          <span className="relative flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#4D1C8C] via-[#6B4DF8] to-[#4D1C8C] shadow-[0_8px_24px_-6px_rgba(98,52,246,0.55)] ring-4 ring-transparent hover:ring-[#7C5CFC]/25 transition-all duration-300">
             <svg width="30" height="30" viewBox="0 0 24 24" className="text-white drop-shadow">
               <path fill="currentColor" d="M12 3c-3.9 0-7 2.7-7 6 0 1.3.5 2.5 1.5 3.5-.1 1.1-.6 2.5-1.9 3.7 1.6-.2 3-.7 4-1.3a8.6 8.6 0 0 0 3.4.7c3.9 0 7-2.7 7-6s-3.1-6-7-6Z"/>
             </svg>
@@ -106,8 +112,7 @@ function Chatbot() {
           {/* Header */}
           <div className="flex items-start gap-3 px-5 pt-4 pb-3 border-b border-[#E9E6F5] bg-white/70 backdrop-blur">
             <div className="relative w-11 h-11 rounded-2xl bg-gradient-to-br from-[#7C5CFC] to-[#4D1C8C] flex items-center justify-center">
-              <svg width="28" height="28" viewBox="0 0 24 24" className="text-white"><path fill="currentColor" d="M12 2a1 1 0 0 1 1 1v1.05A7.002 7.002 0 0 1 19 11v2.6l1.2 2.6A1 1 0 0 1 19.3 18H4.7a1 1 0 0 1-.9-1.4L5 13.6V11a7.002 7.002 0 0 1 6-6.95V3a1 1 0 0 1 1-1Zm0 7a3 3 0 0 0-3 3v1h6v-1a3 3 0 0 0-3-3Z"/></svg>
-              <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 ring-2 ring-white" />
+             <img src={logo} alt="" />
             </div>
             <div className="flex-1 min-w-0">
               <h3 className="text-sm font-semibold text-[#2D2A38]">AI Assistant</h3>
@@ -138,7 +143,7 @@ function Chatbot() {
           {/* Content */}
           <div className={`flex-1 flex flex-col min-h-0 ${collapsed ? 'hidden' : ''}`}> 
             <div className="flex-1 overflow-y-auto px-5 pt-5 pb-4 space-y-5 bg-gradient-to-b from-white/90 via-white/70 to-white/60">
-              {/* Greeting (static) */}
+            
               <div className="flex items-start gap-2.5">
                 <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#7C5CFC] to-[#4D1C8C] flex items-center justify-center text-[11px] text-white font-semibold">AI</div>
                 <div className="max-w-[78%] rounded-2xl bg-[#F2EEF9] text-[#2D2A38] px-4 py-3 text-sm leading-relaxed ring-1 ring-[#E2DAF7]">
@@ -201,7 +206,7 @@ function Chatbot() {
                   disabled={!input.trim() || loadingReply}
                   className="h-11 px-5 rounded-xl font-medium text-sm bg-gradient-to-br from-[#7C5CFC] to-[#4D1C8C] text-white disabled:opacity-40 disabled:cursor-not-allowed hover:shadow-md active:scale-[0.97] transition-all"
                 >
-                  {loadingReply ? '...' : 'Send'}
+                  {loadingReply ? 'Thinking...' : 'Send'}
                 </button>
               </div>
             </form>
