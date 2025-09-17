@@ -4,12 +4,6 @@ import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai"
 import { WeaviateStore } from "@langchain/weaviate";
 import { connectToCustom } from "weaviate-client";
 import axios from "axios"
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { config as dotenvConfig } from "dotenv";
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-dotenvConfig({ path: path.resolve(__dirname, "../../.env") });
  
   //ye banati vector store for RAG
 const ingestDocs = async() =>{
@@ -68,8 +62,8 @@ const ingestDocs = async() =>{
   })
 
 
-    // step 5 : embedding aur documents store karna in ChromaDB
-    // ChromaDB is a popular choice for a local vector store
+    // step 5 : embedding aur documents store karna in Weaviate
+   
 const client = await connectToCustom({
   http: { host: process.env.WEAVIATE_HTTP_HOST || "localhost:8080", secure: false },
   grpc: { host: process.env.WEAVIATE_GRPC_HOST || "localhost:50051", secure: false },

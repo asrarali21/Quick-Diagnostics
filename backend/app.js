@@ -14,6 +14,7 @@ import paymentRouter from "./src/routes/payment.route.js"
 import faqRoute from "./src/routes/Faq.route.js"
 import testimonialRoute from "./src/routes/Testimonial.route.js"
 import AiRoute from "./src/routes/Ai.route.js"
+import RagRouter from "./src/routes/RagAns.route.js"
 
 
 const app = express()
@@ -46,6 +47,7 @@ app.use("/api/v1/payment" , paymentRouter)
 app.use("/api/v1/faq" , faqRoute)
 app.use("/api/v1/testimonial" , testimonialRoute)
 app.use("/api/v1/Aichat/" , AiRoute)
+app.use("/api/v1/rag/" , RagRouter)
 
 
 app.use(errorHandler)
