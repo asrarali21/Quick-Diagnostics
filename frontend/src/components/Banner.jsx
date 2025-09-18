@@ -3,7 +3,7 @@ import FamilyBanner from "../assets/family.svg"
 
 function Banner() {
   return (
-    <div className="max-w-7xl  mx-auto px-4 md:px-6 lg:px-2">
+  <div className="max-w-7xl  mx-auto px-4 md:px-6 lg:px-2">
       <div 
         className="relative rounded-3xl overflow-hidden"
         style={{ backgroundColor: '#4D1C8C' }}

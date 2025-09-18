@@ -1,5 +1,4 @@
 import React from 'react'
-import logoname from "../../assets/LogoName.svg"
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useState } from 'react'
@@ -10,6 +9,8 @@ import { userState } from '../../store/userstate'
 function Register() {
   const PRIMARY = '#6B4DE0'
   const PRIMARY_HOVER = '#5a3ec7'
+
+  const [showPassword , setShowPassword] = useState(false)
 
   const setUser = useSetRecoilState(userState)
   const navigate =useNavigate()
@@ -58,9 +59,8 @@ function Register() {
       {/* Constrain width and prevent card from stretching tall */}
       <div className="w-full max-w-lg">
         <div className="bg-white shadow-[0_12px_40px_-18px_rgba(17,24,39,0.18)] rounded-2xl px-8 pt-8 pb-10">
-          {/* Logo */}
           <div className="text-center mb-6">
-            <img src={logoname} alt="Zemoso Diagnostics" className="mx-auto h-7 w-auto" />
+             <p>Quick Diagnostic</p>
           </div>
           {/* Form: tighter vertical rhythm */}
           <form className="space-y-5" onSubmit={handleRegistersubmit}>
@@ -114,16 +114,22 @@ function Register() {
             {/* Password */}
             <div>
               <label htmlFor="password" className="block text-xs font-medium text-[#757380] mb-1 tracking-wide">Password</label>
-              <div className="border-b border-gray-400 focus-within:border-[#6B4DE0] transition-colors">
+              <div className="relative border-b border-gray-400 focus-within:border-[#6B4DE0] transition-colors">
                 <input
                   id="password"
                   name="password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="Enter your password"
                   value={form.password}
                   onChange={handleChange}
-                  className="w-full py-2 text-[15px] bg-transparent outline-none placeholder:text-gray-400"
+                  className="w-full py-2 text-[15px] bg-transparent outline-none placeholder:text-gray-400 pr-10"
                 />
+                <span onClick={()=> setShowPassword(!showPassword)} className="absolute inset-y-0 right-0 flex items-center text-gray-400">
+                  <svg className="w-5 h-5 cursor-pointer" viewBox="0 0 24 24" fill="none">
+                    <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" stroke="currentColor" strokeWidth="1.5"/>
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5"/>
+                  </svg>
+                </span>
               </div>
             </div>
             {/* Button */}

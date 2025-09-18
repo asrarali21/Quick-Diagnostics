@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import logo from '../assets/logo.svg';
 import  { NavLink } from "react-router-dom"
 import  { ChevronDown, MapPin, ShoppingCart, User,  } from "lucide-react"
 import AccountSidebar from './AccountSidebar'
@@ -23,12 +22,12 @@ function Navbar() {
 
             try {
               const response = await axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${position.coords.latitude}+${position.coords.longitude}&key=8dc34af6f7d34bf58b405b84f5eaecce`);
-               console.log(response.data.results[0].components.neighbourhood);
+               console.log(response.data.results[0].components);
                  
               
           const components = response.data.results[0]?.components;
 
-           const shortLocation = `${components.neighbourhood}, ${components.state_district || components.country}`;
+           const shortLocation = `${components.neighbourhood  || components.suburb || components.postcode}, ${components.state_district || components.country}`;
 
           setFormattedLocation(shortLocation);
                
@@ -60,12 +59,11 @@ function Navbar() {
 
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 bg-white border-b border-[#E5E5E5]">
+  <div className="fixed top-0 left-0 w-full z-50 bg-white border-b border-[#E5E5E5]">
       <div className="flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-8 h-14">
         {/* Logo and Name */}
         <div className="flex items-center space-x-2 min-w-[220px]">
-          <img src={logo} alt="" className="w-8 h-8" />
-          <span className="text-lg font-medium" style={{ color: '#7C5CFC' }}>Zemoso Diagnostics</span>
+          <span className="text-lg font-medium" style={{ color: '#7C5CFC' }}>Quick Diagnostics</span>
         </div>
         {/* Nav Links */}
         <div className="hidden md:flex space-x-8">
@@ -86,7 +84,6 @@ function Navbar() {
             color="#7C5CFC" 
             onClick={() => setIsAccountSidebarOpen(true)}
           />
-          <ShoppingCart className="w-6 h-6" color="#7C5CFC" />
         </div>
         {/* Mobile Nav */}
         <div className="flex md:hidden ml-2">

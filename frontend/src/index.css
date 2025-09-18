@@ -1,15 +1,28 @@
-@import "tailwindcss";
+@import "tailwindcss"; 
+@import "tailwindcss/theme";
+@import "tailwindcss/utilities";
 
 
 *{
   font-family: "Inter", sans-serif;
 }
 
+:root {
+  --bg: #F3FAF9;
+  --surface: #FFFFFF;
+  --brand: #0D9488;      /* teal-600 */
+  --brand-700: #0F766E;  /* teal-700 */
+  --accent: #0284C7;     /* sky-600 */
+  --text: #0B1324;
+  --muted: #48606B;
+  --ring: rgba(13,148,136,0.35);
+}
+
 /* Custom color utilities (ensure override after Tailwind + Bootstrap) */
 @layer utilities {
   .text-heading { color:#2D2A38 !important; }
   .text-muted { color:#5A5766 !important; }
-  .text-primary-brand { color:#7C5CFC !important; }
+  .text-primary-brand { color:var(--brand) !important; }
 }
 
 /* Hide native date icon, keep our custom icon */

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import logo from "../../assets/logo.svg"
+
 import axios from 'axios'
 
 function ResetPassword() {
@@ -38,11 +38,6 @@ function ResetPassword() {
   return (
     <div className="min-h-screen bg-neutral-900 flex items-center justify-center p-6">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl ring-1 ring-black/5 px-8 py-10">
-        {/* Brand */}
-        <div className="flex justify-center mb-4">
-          <img src={logo} alt="Zemoso Diagnostics" />
-        </div>
-
         {/* Title */}
         <h1 className="text-2xl font-semibold text-center text-gray-900 mb-2">
           Zemoso Diagnostics

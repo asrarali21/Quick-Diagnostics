@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import logo from "../assets/logo.svg"
+
 
 function Chatbot() {
   // Basic state only (no refs)
@@ -28,11 +28,10 @@ function Chatbot() {
 
   // Simple predefined suggestion buttons
   const suggestions = [
-    'Track my order',
-    'Pricing & discounts',
+    'What Tests are Availiable?',
+    'What are the prices of Tests?',
     'Report turnaround time',
     'Test preparation help',
-    'Something else'
   ]
 
   // When chat opens we can scroll to bottom using window (optional simple approach)
@@ -111,9 +110,6 @@ function Chatbot() {
         <div className="flex flex-col flex-1 rounded-t-3xl sm:rounded-3xl overflow-hidden shadow-[0_12px_48px_-12px_rgba(40,20,90,0.35)] bg-white/85 backdrop-blur-xl border border-white/60">
           {/* Header */}
           <div className="flex items-start gap-3 px-5 pt-4 pb-3 border-b border-[#E9E6F5] bg-white/70 backdrop-blur">
-            <div className="relative w-11 h-11 rounded-2xl bg-gradient-to-br from-[#7C5CFC] to-[#4D1C8C] flex items-center justify-center">
-             <img src={logo} alt="" />
-            </div>
             <div className="flex-1 min-w-0">
               <h3 className="text-sm font-semibold text-[#2D2A38]">AI Assistant</h3>
               <p className="text-xs text-[#6A6675]">We’re here to help</p>

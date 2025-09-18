@@ -2,11 +2,13 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { handleError, handlesuccess } from '../../toast.util';
-import logo from "../../assets/logo.svg"
+
 
 function Login() {
 
     const navigate = useNavigate()
+    
+    const [showPassword , setShowPassword] = useState(false)
 
     const [Userinfo , setUserInfo] = useState({
        email:"",
@@ -33,14 +35,9 @@ function Login() {
   return (
     <div className="min-h-screen bg-neutral-900 flex items-center justify-center p-6">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl ring-1 ring-black/5 px-8 py-10">
-        {/* Brand circle */}
-        <div className="flex justify-center mb-4">
-          <img src={logo} alt="" />
-        </div>
-
         {/* Title */}
         <h1 className="text-2xl font-semibold text-center text-gray-900 mb-8">
-          Zemoso Diagnostics
+          Quick Diagnostics
         </h1>
 
         {/* Email */}
@@ -59,13 +56,13 @@ function Login() {
         <div className="mb-3">
           <div className="relative">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               className="w-full rounded-md border border-gray-300 bg-white px-3 py-3 text-gray-900 placeholder-gray-400"
               placeholder="Password"
                value={Userinfo.password}
                  onChange={(e) => setUserInfo(prev => ({ ...prev, password: e.target.value }))}
             />
-            <span className="absolute inset-y-0 right-3 flex items-center text-gray-400">
+            <span onClick={()=>setShowPassword(!showPassword)} className="absolute inset-y-0 right-3 flex items-center text-gray-400">
               {/* eye icon */}
               <svg className="w-5 h-5 cursor-pointer"  viewBox="0 0 24 24" fill="none">
                 <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" stroke="currentColor" strokeWidth="1.5"/>

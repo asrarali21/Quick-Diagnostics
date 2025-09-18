@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import logoname from "../../assets/LogoName.svg"
 import { useRecoilValue } from 'recoil'
 import { userState } from '../../store/userstate'
 import { useEffect } from 'react'
@@ -55,10 +54,6 @@ function EntermobileNum() {
     <div className="min-h-screen bg-[#F8F5FF] flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl shadow-xl ring-1 ring-black/5 px-8 py-10">
-          {/* Brand */}
-          <div className="flex items-center justify-center gap-2 mb-8">
-            <img src={logoname} alt="" />
-          </div>
 
           {/* Heading */}
           <div className="mb-10">

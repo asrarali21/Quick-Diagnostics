@@ -1,5 +1,5 @@
 import React from 'react'
-import logoName from '../assets/logo.svg'
+
 import PlayStore from '../assets/Google play.png'
 
 import { FaFacebookF, FaTwitter } from 'react-icons/fa'
@@ -12,14 +12,13 @@ function Footer() {
           {/* Left: Logo and Links */}
           <div className="flex flex-col items-start mb-8 md:mb-0">
             <div className="flex items-center mb-6">
-              <img src={logoName} alt="" className="h-8 mr-2" />
-              <span className="text-white font-semibold text-lg">Zemoso Diagnostics</span>
+              <span className="text-white font-semibold text-lg">Quick Diagnostics</span>
             </div>
             <nav className="flex flex-col space-y-2">
-              <a href="#" className="text-white text-sm hover:underline">Home</a>
-              <a href="#" className="text-white text-sm hover:underline">Contact us</a>
-              <a href="#" className="text-white text-sm hover:underline">Privacy policy</a>
-              <a href="#" className="text-white text-sm hover:underline">Terms & conditions</a>
+              <a  className="text-white text-sm hover:underline">Home</a>
+              <a className="text-white text-sm hover:underline">Contact us</a>
+              <a  className="text-white text-sm hover:underline">Privacy policy</a>
+              <a  className="text-white text-sm hover:underline">Terms & conditions</a>
             </nav>
           </div>
           {/* Right: App Stores and Social */}
@@ -28,8 +27,8 @@ function Footer() {
               <img src={PlayStore} alt="Google Play" className="h-10" />
             </div>
             <div className="flex space-x-4">
-              <a href="#" className="text-white text-xl"><FaFacebookF /></a>
-              <a href="#" className="text-white text-xl"><FaTwitter /></a>
+              <a className="text-white text-xl"><FaFacebookF /></a>
+              <a className="text-white text-xl"><FaTwitter /></a>
             </div>
           </div>
         </div>

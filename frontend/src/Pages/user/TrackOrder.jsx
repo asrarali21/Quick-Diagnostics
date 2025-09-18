@@ -49,7 +49,7 @@ function TrackOrder() {
       key: 'assigned',
       title: 'Lab technician assigned',
       subtitle: orderInfo?.assignedAt ? formatDateTime(orderInfo.assignedAt) : '',
-      extra: orderInfo?.labTechnician?.name || 'Esther Howard',
+      extra: orderInfo?.labTechnician?.name || '',
       icon: UserSquare2,
     },
     {

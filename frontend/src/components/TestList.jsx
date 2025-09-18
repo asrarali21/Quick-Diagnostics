@@ -38,7 +38,7 @@ function TestList() {
     }
   ]
 
-  const currency = (n) => `$${Number(n || 0)}`
+  const currency = (n) => `₹${Number(n || 0)}`
 
   return (
     <section className="w-full mt-10">
@@ -48,13 +48,6 @@ function TestList() {
           <h2 className="text-[26px] md:text-[30px] font-semibold text-gray-900 leading-snug decoration-[#1F2840]">
             Tests You Can Choose From
           </h2>
-          <button
-            type="button"
-            onClick={() => navigate(`/testinfo/${tests[0].key}`)}
-            className="text-[#5B3AE6] font-medium text-sm md:text-base hover:text-[#4528c9] inline-flex items-center gap-1"
-          >
-            See more <span className="text-base md:text-lg">»»</span>
-          </button>
         </div>
         {/* Cards Row */}
         <div className="grid gap-6 md:grid-cols-3">
@@ -80,7 +73,7 @@ function TestList() {
                 <div className="flex flex-col flex-1 justify-start">
                   <button
                     type="button"
-                    onClick={() => navigate(`/testinfo/${t.key}`)}
+                    onClick={""}
                     className="text-left font-semibold text-[17px] leading-snug text-gray-900 underline underline-offset-[3px] decoration-transparent hover:decoration-[#5B3AE6] transition-colors"
                   >
                     {t.name}

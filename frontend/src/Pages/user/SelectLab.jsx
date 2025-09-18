@@ -105,7 +105,7 @@ function SelectLab() {
                         </span>
                       </div>
                       <p className="mt-4 text-[#5A5766] text-[15px] leading-5">Reports ready in {item.reportTime}</p>
-                      <p className="mt-5 text-heading font-semibold text-[20px] leading-6">{item.price} <span className="font-normal text-[#5A5766] text-[16px] ml-1">for 1 Test</span></p>
+                      <p className="mt-5 text-heading font-semibold text-[20px] leading-6">₹{item.price} <span className="font-normal text-[#5A5766] text-[16px] ml-1">for 1 Test</span></p>
                     </div>
                   </div>
                 </button>
