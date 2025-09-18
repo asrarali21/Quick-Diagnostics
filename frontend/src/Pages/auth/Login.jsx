@@ -67,7 +67,7 @@ function Login() {
             />
             <span className="absolute inset-y-0 right-3 flex items-center text-gray-400">
               {/* eye icon */}
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
+              <svg className="w-5 h-5 cursor-pointer"  viewBox="0 0 24 24" fill="none">
                 <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" stroke="currentColor" strokeWidth="1.5"/>
                 <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5"/>
               </svg>
@@ -77,15 +77,15 @@ function Login() {
 
         {/* Forgot password */}
         <div className="mb-6">
-          <a href="#" className="text-sm font-semibold text-[#6B4DE0]">
+          <Link to={"/forgotPassword"} style={{textDecoration:"none", color:"black"}} className="text-sm cursor-pointer font-semibold text-[#6B4DE0]">
             Forgot Password?
-          </a>
+          </Link>
         </div>
 
         {/* Login button (pale primary as in screenshot) */}
         <button
           type="button"
-          className="w-full rounded-lg bg-[#CCD4FF] hover:bg-[#5a3ec7] text-white font-semibold py-3 mb-6"
+          className="w-full rounded-lg bg-[#4d35ac] hover:bg-[#5a3ec7] text-white font-semibold py-3 mb-6"
           onClick={handleClick}
         >
           Login
@@ -94,30 +94,9 @@ function Login() {
         {/* Sign up prompt */}
         <p className="text-center text-sm text-gray-700 mb-6">
           Don’t have an account?{' '}
-          <Link to={"/"} className="font-semibold text-[#6B4DE0]">Sign up</Link>
+          <Link style={{textDecoration:"none", color:"black"}} to={"/"} className="font-semibold  text-[#6B4DE0]">Sign up</Link>
         </p>
 
-        {/* Divider */}
-        <div className="flex items-center gap-3 mb-6">
-          <div className="h-px bg-gray-200 flex-1" />
-          <span className="text-gray-500 text-sm">OR</span>
-          <div className="h-px bg-gray-200 flex-1" />
-        </div>
-
-        {/* Continue with Google */}
-        <button
-          type="button"
-          className="w-full rounded-md bg-white border border-gray-300 py-3 px-4 flex items-center justify-center gap-3 text-gray-800 hover:bg-gray-50"
-        >
-          {/* Google G */}
-          <svg className="w-5 h-5" viewBox="0 0 24 24">
-            <path fill="#EA4335" d="M12 10.2v3.9h5.5c-.2 1.3-1.7 3.8-5.5 3.8-3.3 0-6-2.7-6-6s2.7-6 6-6c1.9 0 3.2.8 4 1.5l2.7-2.6C16.7 2.6 14.5 1.8 12 1.8 6.9 1.8 2.8 5.9 2.8 11s4.1 9.2 9.2 9.2c5.3 0 8.8-3.7 8.8-8.9 0-.6-.1-1-.1-1.5H12Z"/>
-            <path fill="#34A853" d="M3.7 7.6l3.2 2.3C7.7 8 9.7 6.4 12 6.4c1.9 0 3.2.8 4 1.5l2.7-2.6C16.7 3.6 14.5 2.8 12 2.8 8.5 2.8 5.6 4.7 3.7 7.6Z"/>
-            <path fill="#FBBC05" d="M12 20.2c3.8 0 5.3-2.5 5.5-3.8h-5.5v-3.9h9.1c.1.5.1.9.1 1.5 0 5.2-3.5 8.9-8.8 8.9-4.1 0-7.6-2.8-8.8-6.6l3.3-2.6c.8 2.4 3 4.1 5.1 4.1Z"/>
-            <path fill="#4285F4" d="M3.2 13.6C2.9 12.8 2.8 11.9 2.8 11s.1-1.8.4-2.6l3.3 2.6c-.1.3-.1.7-.1 1s0 .7.1 1l-3.3 2.6Z"/>
-          </svg>
-          <span className="font-medium">Continue with Google</span>
-        </button>
       </div>
     </div>
   )

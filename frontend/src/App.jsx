@@ -19,7 +19,7 @@ import Checkout from './Pages/user/Checkout';
 // public/auth pages kept at Pages root
 import Register from './Pages/Auth/Register';
 import EntermobileNum from './Pages/auth/EntermobileNum';
-import Login from './Pages/auth/Login';
+import Login from './Pages/Auth/Login';
 import VerifyOtp from './Pages/auth/VerifyOtp';
 // admin
 import LoginAdmin from './Pages/Admin/LoginAdmin';
@@ -28,6 +28,8 @@ import AdminDashboard from './Pages/Admin/AdminDashboard';
 import AdminAddTest from './Pages/Admin/AdminAddTest';
 import PaymentSuccess from './Pages/user/PaymentSuccess';
 import TrackOrder from './Pages/user/TrackOrder';
+import ForgotPassword from './Pages/auth/ForgotPassword';
+import ResetPassword from './Pages/auth/ResetPassword';
 
 function App() {
         
@@ -40,6 +42,8 @@ function App() {
       <Route path='/login' element ={ <Login/>  }/>
       <Route path='/mobileNo' element ={ <EntermobileNum/>  }/>
       <Route path='/verifyOtp' element ={ <VerifyOtp/>  }/>
+      <Route path='/ForgotPassword' element ={ <ForgotPassword/>  }/>
+      <Route path='/resetPassword' element ={ <ResetPassword/>  }/>
       <Route path='/home' element ={ <Home/>  }/>
       <Route path='/reports' element ={ 
         <>
