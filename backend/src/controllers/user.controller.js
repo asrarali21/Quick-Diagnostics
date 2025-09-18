@@ -173,6 +173,67 @@ const options = {
 })
 
 
+const ForgetPassword = asyncHandler(async(req , res )=>{
+     const {email} = req.body
+   
+    if (!email) {
+      throw new ApiError(401 , "Please Enter Email")
+    }
+
+    const user = await User.findOne({email})
+   
+    if (!user) {
+      throw new ApiError(401 , "User Doesn't Exist")
+    }
+
+
+    const otp = crypto.randomInt(1000 , 10000)
+
+    const otpExpiry = new Date(Date.now() + 5 * 60 * 1000)
+
+
+    user.resetOtp = otp
+
+    user.resetOtpExpiry = otpExpiry
+
+
+    await user.save()
+
+    await sendemail(user.email , otp)
+
+
+    res.status(200)
+    .json(new ApiResponse(200 , user.email , "Successfully Generated Otp"))
+
+})
+
+const verifyOtpResetpassword = asyncHandler(async(req , res)=>{
+     const {email , otp , newPassword} = req.body
+
+      const user =await User.findOne({email})
+       if (!user) {
+        throw new ApiError(404, "User not found");
+    }
+
+      if (user.resetOtp !== Number(otp)) {
+          throw new ApiError(401 , "Invalid Otp")
+      }
+
+    if (user.resetOtpExpiry < Date.now()) {
+      throw new ApiError(401 , "Expired Otp")
+    }
+
+    user.password = newPassword
+
+    user.save()
+
+
+    res.status(200)
+    .json(new ApiResponse(200  , {} , "OTP verified Succesfully"))
+  
+})
+
+
 const adminLogin = asyncHandler(async(req ,res )=>{
 
     console.log(req.body);
@@ -224,4 +285,4 @@ const adminlogout = asyncHandler(async(req , res)=>{
 
 
 
-export {signupUserBasic , sendOtp , verifyOtp ,myinfo , userLogin,userlogout, adminLogin ,adminlogout} 
+export {signupUserBasic , sendOtp , verifyOtp ,myinfo , userLogin,userlogout, ForgetPassword , verifyOtpResetpassword , adminLogin ,adminlogout} 

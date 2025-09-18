@@ -22,9 +22,6 @@ export async function answerFromKb(question  , k =5) {
 
     console.log(client);
     
-
-
-
     const embedding = new GoogleGenerativeAIEmbeddings({
         apiKey:process.env.GOOGLE_API_KEY,
         model:"text-embedding-004"
@@ -75,5 +72,5 @@ export async function answerFromKb(question  , k =5) {
 
 
     return {answer , sources}
-    
+
 }
