@@ -19,7 +19,7 @@ function ResetPassword() {
    
      const handleClick = async()=>{
         try {
-            const response = await axios.post("http://localhost:8000/api/v1/users/resetPassword", { email, otp: inputData.otp.trim(), newPassword: inputData.newPassword })
+            const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/users/resetPassword`, { email, otp: inputData.otp.trim(), newPassword: inputData.newPassword })
             console.log(response);
             setTimeout(()=>{
                 navigate("/login")

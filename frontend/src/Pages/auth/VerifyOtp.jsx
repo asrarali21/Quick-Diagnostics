@@ -61,7 +61,7 @@ const [userId, setUserId] = useState("")
     useEffect(()=>{
         const userData = async()=>{
             try {
-                const response = await axios.get("http://localhost:8000/api/v1/users/me",  {withCredentials:true} )
+                const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/users/me`,  {withCredentials:true} )
                 console.log(response);
                 setFirstName(response.data.data.firstName)
                 setUserId(response.data.data._id)
@@ -85,7 +85,7 @@ const [userId, setUserId] = useState("")
         const numOtp = otp.join("")
         console.log(numOtp);
         
-        const response  = await axios.post("http://localhost:8000/api/v1/users/verifyotp" ,{otp:numOtp , userID:userId} ,{withCredentials:true} )
+        const response  = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/users/verifyotp` ,{otp:numOtp , userID:userId} ,{withCredentials:true} )
         console.log(response);
         handlesuccess(response.data.message)
         setTimeout(()=>{

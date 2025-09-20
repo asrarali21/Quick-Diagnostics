@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {  SearchIcon } from 'lucide-react'
 import { useRecoilValue } from 'recoil'
-import { apiDataState } from '../apiState'
 import banner from '../assets/banner.png'
 import { useNavigate } from 'react-router-dom'
 import { TestdataApiState } from '../store/test.state'

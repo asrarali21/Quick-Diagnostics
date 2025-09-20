@@ -1,6 +1,5 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil'
-import { apiTestimonialState } from '../apiState'
 import { TestimonialDataState } from '../store/Testimonial.state';
 
 function Testimonial() {

@@ -16,7 +16,7 @@ function AccountSidebar({ isOpen, onClose }) {
   // Logout handler: calls API with credentials, then redirects
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:8000/api/v1/users/logout', {}, { withCredentials: true })
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/users/logout`, {}, { withCredentials: true })
       setTimeout(() => {
             navigate('/login')
       onClose()

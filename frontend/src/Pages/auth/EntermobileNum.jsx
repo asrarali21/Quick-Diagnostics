@@ -23,7 +23,7 @@ function EntermobileNum() {
 
     const handleGetOtpClick = async()=>{
       try {
-        const response  = await axios.post("http://localhost:8000/api/v1/users/sendotp" , {  phoneNumber: number , userID } , {withCredentials:true})
+        const response  = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/users/sendotp`, {  phoneNumber: number , userID } , {withCredentials:true})
         console.log(response);
         handlesuccess(response.data.message)
         setTimeout(()=>{
@@ -38,7 +38,7 @@ function EntermobileNum() {
     useEffect(() => {
        const userdata = async()=>{
         try {
-             const response = await axios.get("http://localhost:8000/api/v1/users/me" ,{withCredentials:true})
+             const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/users/me` ,{withCredentials:true})
              console.log(response);
              setmyinfo(response.data.data.firstName)
              setmyUserID(response.data.data._id)

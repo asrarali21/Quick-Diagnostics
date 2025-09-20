@@ -30,7 +30,7 @@ function AddAddress() {
     
     const addressPost = async ()=>{
       try {
-        const response = await axios.post("http://localhost:8000/api/v1/address/saveaddress" , addressInfo , {withCredentials:true})
+        const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/address/saveaddress` , addressInfo , {withCredentials:true})
         console.log(response);
         setOrder({
           ...order ,
@@ -53,7 +53,7 @@ function AddAddress() {
         address: order.address
       }
       const response = await axios.post(
-        "http://localhost:8000/api/v1/order/createorder",
+        `${import.meta.env.VITE_API_BASE_URL}/api/v1/order/createorder`,
         payload,
         { withCredentials: true }
       )

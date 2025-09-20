@@ -20,7 +20,7 @@ function SelectLab() {
 
       const fetchLabs = async()=>{
     try {
-      const response = await axios.get("http://localhost:8000/api/v1/lab/getlab")
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/lab/getlab`)
       setlabInfo(response.data.data || [])
       console.log(response);
       

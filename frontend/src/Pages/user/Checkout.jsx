@@ -39,7 +39,7 @@ export default function Checkout() {
       console.log("Razorpay response:", response);
 
       const verifyRes = await axios.post(
-        "http://localhost:8000/api/v1/payment/verify",
+       `${import.meta.env.VITE_API_BASE_URL}/api/v1/payment/verify`,
         {
           razorpay_payment_id: response.razorpay_payment_id,
           razorpay_order_id: response.razorpay_order_id,

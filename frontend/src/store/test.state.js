@@ -9,7 +9,7 @@ export const TestdataApiState = atom({
         key:"TestState",
         get:async()=>{
            try {
-             const response = await axios.get("http://localhost:8000/api/v1/tests/alltests")
+             const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/tests/alltests`)
              return response?.data?.data || []
            } catch (error) {
              console.log(error);

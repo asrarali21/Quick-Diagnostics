@@ -93,7 +93,7 @@ function SelectAppointment() {
     if (!order?.lab) return
     try {
       const response = await axios.get(
-        "http://localhost:8000/api/v1/slot/getslot",
+        `${import.meta.env.VITE_API_BASE_URL}/api/v1/slot/getslot`,
         { params:{ labId: orders.lab, date: todayDate } }
       )
       console.log(response);

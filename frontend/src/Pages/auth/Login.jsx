@@ -18,7 +18,7 @@ function Login() {
 
     async function handleClick() {
       try {
-        const response = await axios.post("http://localhost:8000/api/v1/users/login" , Userinfo , {withCredentials:true})
+        const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/users/login` , Userinfo , {withCredentials:true})
         console.log(response);
         handlesuccess(response.data.message)
         setTimeout(() => {

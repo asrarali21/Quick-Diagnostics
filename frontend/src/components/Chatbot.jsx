@@ -15,7 +15,7 @@ function Chatbot() {
   useEffect(()=>{
    const fetchDetails = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/v1/users/me" , {withCredentials:true})
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/users/me`, {withCredentials:true})
       console.log("first name",response);
    setFirstName(response?.data?.data?.firstName)
       
@@ -56,7 +56,7 @@ function Chatbot() {
     setInput('')
     setLoadingReply(true)
     try {
-      const response = await axios.post("http://localhost:8000/api/v1/rag/ask" , {question:userText} , {withCredentials:true})
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/rag/ask` , {question:userText} , {withCredentials:true})
       console.log(response);  
          const payload = response?.data?.data
          console.log(payload);

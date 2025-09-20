@@ -34,7 +34,7 @@ function Register() {
     e.preventDefault();
       const {firstName , lastName  , email} =form
         try {
-            const response =await axios.post("http://localhost:8000/api/v1/users/signup" , form , {withCredentials:true})
+            const response =await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/users/signup` , form , {withCredentials:true})
             console.log(response);
             handlesuccess(response.data.message)
             setUser({

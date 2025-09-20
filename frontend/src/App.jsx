@@ -2,7 +2,6 @@ import { useEffect,  } from 'react';
 import './App.css'
 import Navbar from './components/Navbar';
 import { useSetRecoilState } from 'recoil';
-import { apiDataState, ApiFaqState, apiTestimonialState } from './apiState';
 import axios from 'axios'
 import { Route, Routes,  } from 'react-router-dom';
 // user pages under Pages/user

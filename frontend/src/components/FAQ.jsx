@@ -1,7 +1,6 @@
 import React from 'react'
 import Accordion from 'react-bootstrap/Accordion';
 import { useRecoilValue } from 'recoil';
-import { ApiFaqState } from '../apiState';
 import { faqDataSelector } from '../store/faq.state';
 
 function FAQ() {

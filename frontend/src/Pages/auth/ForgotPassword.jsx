@@ -12,7 +12,7 @@ function ForgotPassword() {
 
    const handleClick = async()=>{
     try {
-        const response = await axios.post("http://localhost:8000/api/v1/users/forgotPassword" , {email :email})
+        const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/users/forgotPassword`, {email :email})
         console.log(response);
         navigate("/resetPassword" , {state:{email:response.data.data}})
     } catch (error) {

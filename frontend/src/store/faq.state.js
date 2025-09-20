@@ -6,7 +6,7 @@ export const faqDataSelector = selector({
   key: "faqDataSelector",
   get: async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/v1/faq/getFaq", { withCredentials: true })
+      const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/faq/getFaq`, { withCredentials: true })
       return res?.data?.data || []
     } catch (e) {
       console.error("FAQ fetch error:", e)
