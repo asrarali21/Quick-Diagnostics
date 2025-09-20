@@ -1,6 +1,7 @@
 import { ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings } from "@langchain/google-genai"
-import { WeaviateStore } from "@langchain/weaviate"
-import { connectToCustom } from "weaviate-client"
+import { PineconeStore } from "@langchain/pinecone";
+import { Pinecone } from "@pinecone-database/pinecone";
+
 
 
 
@@ -15,23 +16,21 @@ export async function answerFromKb(question  , k =5) {
     }
 
     // 1) connnect to vector db which weaviate in my case
-    const  client = await connectToCustom({
-      http: { host: process.env.WEAVIATE_HTTP_HOST || "localhost:8080", secure: false },
-    grpc: { host: process.env.WEAVIATE_GRPC_HOST || "localhost:50051", secure: false },
-    })
-
-    console.log(client);
-    
+  
     const embedding = new GoogleGenerativeAIEmbeddings({
         apiKey:process.env.GOOGLE_API_KEY,
         model:"text-embedding-004"
     })
 
-    const store = await WeaviateStore.fromExistingIndex(embedding , {
-        client,
-        indexName:"tests_knowledge_base",
-        textKey:"text",
-        metadataKeys:["test_id" , "test_name"]
+    const pinecone = new Pinecone({
+        apiKey: process.env.PINECONE_API_KEY,
+    })
+
+    const pineconeIndex = pinecone.index(process.env.PINECONE_INDEX_NAME)
+
+    const store = new PineconeStore(embedding , {
+             pineconeIndex,
+        namespace: "test-knowledge",
     })
 
 

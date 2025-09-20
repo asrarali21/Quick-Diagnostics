@@ -4,13 +4,24 @@ import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai"
 import { WeaviateStore } from "@langchain/weaviate";
 import { connectToCustom } from "weaviate-client";
 import axios from "axios"
- 
+import { Pinecone } from "@pinecone-database/pinecone";
+import { PineconeStore } from "@langchain/pinecone";
+import dotenv from 'dotenv';
+
+// Add this line to load environment variables
+dotenv.config();
+
   //ye banati vector store for RAG
 const ingestDocs = async() =>{
 
 
    
     console.log("starting ingestion");
+
+    
+     console.log("GOOGLE_API_KEY exists:", !!process.env.GOOGLE_API_KEY);
+    console.log("PINECONE_API_KEY exists:", !!process.env.PINECONE_API_KEY);
+    console.log("PINECONE_INDEX_NAME:", process.env.PINECONE_INDEX_NAME);
 
 
     //ingestion karne se pehle data fetch karna jo data hona hai uska endpoint
@@ -62,21 +73,23 @@ const ingestDocs = async() =>{
   })
 
 
-    // step 5 : embedding aur documents store karna in Weaviate
+    // step 5 : embedding aur documents store karna in pinecone
    
-const client = await connectToCustom({
-  http: { host: process.env.WEAVIATE_HTTP_HOST || "localhost:8080", secure: false },
-  grpc: { host: process.env.WEAVIATE_GRPC_HOST || "localhost:50051", secure: false },
-})
+    const pinecone = new Pinecone({
+      apiKey:process.env.PINECONE_API_KEY,
+    })
+  
+   const pineconeIndex = pinecone.Index(process.env.PINECONE_INDEX_NAME);
 
 
-  const vectorStore = await WeaviateStore.fromDocuments(splitDocument, embeddings, {
-        client,                      // Pass the initialized Weaviate client
-        indexName: "tests_knowledge_base",   // Your class name (index name)
-          textKey: "text", // where pageContent is stored
-    metadataKeys: ["test_id", "test_name"],           // The property in schema where content is stored
-    
-  });
+  const vectorStore = await PineconeStore.fromDocuments(
+    splitDocument, 
+    embeddings,
+     {
+         pineconeIndex,
+        namespace: "test-knowledge",
+     }
+);
 
     console.log("Ingestion complete! The knowledge base has been created.");
    

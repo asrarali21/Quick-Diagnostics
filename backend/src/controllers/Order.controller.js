@@ -19,7 +19,9 @@ const createOrder = asyncHandler(async(req , res)=>{
 
   const testDoc = await Test.findById(test).select("price")
   if (!testDoc) throw new ApiError(400, "Invalid test")
-  const amount = testDoc.price * 100
+   const amount = Number(testDoc.price) >= 10000
+    ? Math.round(Number(testDoc.price) / 100) // looked like paise
+    : Math.round(Number(testDoc.price)) 
   const order = await Order.create({
     user:req.user._id,
     patient, 
