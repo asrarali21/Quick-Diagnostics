@@ -1,8 +1,6 @@
 import {Document} from "@langchain/core/documents"
 import {RecursiveCharacterTextSplitter} from "@langchain/textsplitters"
 import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai"
-import { WeaviateStore } from "@langchain/weaviate";
-import { connectToCustom } from "weaviate-client";
 import axios from "axios"
 import { Pinecone } from "@pinecone-database/pinecone";
 import { PineconeStore } from "@langchain/pinecone";
