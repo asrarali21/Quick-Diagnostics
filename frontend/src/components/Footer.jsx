@@ -1,6 +1,6 @@
 import React from 'react'
 
-import PlayStore from '../assets/Google play.png'
+import PlayStore from '../assets/Googleplay.png'
 
 import { FaFacebookF, FaTwitter } from 'react-icons/fa'
 
