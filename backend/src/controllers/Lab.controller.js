@@ -1,4 +1,4 @@
-import { Lab } from "../models/lab.model.js";
+import { Lab } from "../models/Lab.model.js";
 import { ApiError } from "../utils/apiError.js";
 import { ApiResponse } from "../utils/apiResponse.js";
 import { asyncHandler } from "../utils/asyncHandle.js";

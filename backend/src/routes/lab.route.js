@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { addLab, getlab } from "../controllers/lab.controller.js";
+import { addLab, getlab } from "../controllers/Lab.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
 
 
