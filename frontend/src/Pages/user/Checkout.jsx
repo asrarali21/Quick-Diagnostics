@@ -23,7 +23,7 @@ export default function Checkout() {
   
 
  async function handlePayment() {
-        const response = await axios.post("http://localhost:8000/api/v1/payment/create-order" ,{orderId:order._id} , {withCredentials:true})
+        const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/payment/create-order` ,{orderId:order._id} , {withCredentials:true})
         console.log(response)
 
     const { keyId, razorpayOrderId, amount, currency } = response.data.data
