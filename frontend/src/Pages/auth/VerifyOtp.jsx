@@ -106,8 +106,7 @@ const [userId, setUserId] = useState("")
         <div className="bg-white rounded-2xl shadow-xl ring-1 ring-black/5 px-8 py-10">
           {/* Brand */}
           <div className="flex items-center justify-center gap-2 mb-8">
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#E7E0FF] text-[#6B4DE0] text-sm font-semibold">Z</span>
-            <span className="text-sm font-medium text-[#6B4DE0]">Zemoso Diagnostics</span>
+            <span className="text-sm font-medium text-[#6B4DE0]">Quick Diagnostics</span>
           </div>
 
           {/* Heading */}
