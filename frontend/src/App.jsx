@@ -16,9 +16,9 @@ import AddAddress from './Pages/user/AddAddress';
 import ReviewOrder from './Pages/user/ReviewOrder';
 import Checkout from './Pages/user/Checkout';
 // public/auth pages kept at Pages root
-import Register from './Pages/Auth/Register';
+import Register from './Pages/auth/Register';
 import EntermobileNum from './Pages/auth/EntermobileNum';
-import Login from './Pages/Auth/Login';
+import Login from './Pages/auth/Login';
 import VerifyOtp from './Pages/auth/VerifyOtp';
 // admin
 import LoginAdmin from './Pages/Admin/LoginAdmin';
