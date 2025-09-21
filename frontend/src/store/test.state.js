@@ -26,7 +26,7 @@ export const SingletestInfo = selectorFamily({
    get : (TestID) => async () =>{
      if (!TestID) return null
      try {
-       const response = await axios.get(`http://localhost:8000/api/v1/tests/singleTest/${TestID}`)
+       const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/tests/singleTest/${TestID}`)
        return response?.data?.data || null
      } catch (error) {
               console.error('Single product fetch failed:', e)
