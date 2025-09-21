@@ -160,10 +160,11 @@ const userLogin = asyncHandler(async(req , res)=>{
 
 const userlogout = asyncHandler(async(req , res)=>{
 const options = {
-    httpOnly: true,
-    secure: false,     // Change this to false too
-    sameSite: 'lax'
-  }     
+  httpOnly: true,
+  secure: true,      // must be true for 'none'
+  sameSite: 'none',
+  path: '/',
+}   
 
      res.status(200)
     .clearCookie("accessToken" ,options)
@@ -257,11 +258,10 @@ const adminLogin = asyncHandler(async(req ,res )=>{
            process.env.REFRESH_TOKEN_SECRET,
            {expiresIn:process.env.REFRESH_TOKEN_EXPIRY}
         )
-
-      const options = {
+const options = {
   httpOnly: true,
-  secure: false,     // false on localhost
-  sameSite: 'lax',
+  secure: true,      // must be true for 'none'
+  sameSite: 'none',
   path: '/',
 }
    res
@@ -272,9 +272,11 @@ const adminLogin = asyncHandler(async(req ,res )=>{
 
 
 const adminlogout = asyncHandler(async(req , res)=>{
-                 const options = {
+const options = {
   httpOnly: true,
-  secure: true,     
+  secure: true,      // must be true for 'none'
+  sameSite: 'none',
+  path: '/',
 }
      res.status(200)
     .clearCookie("accessToken" ,options)
