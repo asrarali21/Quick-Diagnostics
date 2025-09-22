@@ -32,8 +32,8 @@ function PaymentSuccess() {
 
             <div className="mt-8 space-y-5">
               <div>
-                <p className="text-[15px] font-semibold text-[#5B3AE6] flex items-center gap-2">
-                  <span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#E9E3FF] text-[12px] font-bold text-[#5B3AE6]">
+                <p className="text-[15px] font-semibold text-[#647FBC] flex items-center gap-2">
+                  <span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#647FBC] text-[12px] font-bold text-white">
                     i
                   </span>
                   Instructions
@@ -59,14 +59,14 @@ function PaymentSuccess() {
           <button
             type="button"
             onClick={() => navigate('/home')}
-            className="h-12 px-6 rounded-lg border border-[#7C5CFC] text-[#4E34D8] font-medium hover:bg-[#F5F1FF] transition"
+            className="h-12 px-6 rounded-lg border border-[#647FBC] text-[#647FBC] font-medium hover:bg-[#F5F1FF] transition"
           >
             Back to Home
           </button>
           <button
             type="button"
             onClick={() => navigate(`/trackOrder/${orderId}`)}
-            className="h-12 px-8 rounded-lg bg-[#6747F9] hover:bg-[#5B3AE6] text-white font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.55)] transition"
+            className="h-12 px-8 rounded-lg bg-[#647FBC] hover:bg-[#50628d] text-white font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.55)] transition"
           >
             Track Your Order
           </button>

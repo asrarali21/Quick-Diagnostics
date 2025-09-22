@@ -111,7 +111,7 @@ function TestInfo() {
                   <span className="w-10 h-10 rounded-xl bg-[#c9cdcf] grid place-items-center">
                     <img src={f.icon} alt="" className="w-6 h-6 object-contain" />
                   </span>
-                  <span className="text-[14px] leading-[18px] font-medium text-[#6F6C90] whitespace-pre-line">
+                  <span className="text-[14px] leading-[18px] font-medium text-[#4b4b4b] whitespace-pre-line">
                     {f.label}
                   </span>
                 </div>

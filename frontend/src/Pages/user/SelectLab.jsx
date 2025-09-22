@@ -63,7 +63,7 @@ function SelectLab() {
           <div className="flex items-center justify-between">
             <h2 className="text-[24px] font-semibold text-heading">Select Lab</h2>
             <div className="flex items-center gap-6">
-              <button type="button" className="inline-flex items-center gap-2 text-[#6B4DE0] font-medium">
+              <button type="button" className="inline-flex items-center gap-2 text-[#647FBC] font-medium">
                 <Plus className="w-5 h-5" />
                 <span>Add Test</span>
               </button>
@@ -83,10 +83,10 @@ function SelectLab() {
                   type="button"
                   key={item._id || idx}
                   onClick={() => setSelectedIndex(idx)}
-                  className={`relative w-full text-left rounded-2xl p-6 transition-colors bg-white border ${selected ? 'border-[#9E62B2]' : 'border-gray-200 hover:border-gray-300'}`}
+                  className={`relative w-full text-left rounded-2xl p-6 transition-colors bg-white border ${selected ? 'border-[#647FBC]' : 'border-gray-200 hover:border-gray-300'}`}
                 >
                   {selected && (
-                    <span className="absolute top-4 right-4 w-7 h-7 rounded-full bg-[#9E62B2] grid place-items-center shadow-sm">
+                    <span className="absolute top-4 right-4 w-7 h-7 rounded-full bg-[#647FBC] grid place-items-center shadow-sm">
                       <Check className="w-4 h-4 text-white" />
                     </span>
                   )}
@@ -121,10 +121,10 @@ function SelectLab() {
           <button type="button" className="h-12 px-2 text-red-500 font-medium hover:text-red-600">Cancel</button>
           <div className="flex items-baseline gap-2 text-[#5A5766] text-sm">
             <span className="hidden sm:inline text-heading font-medium">{selectedLab?.name}</span>
-            <span className="text-heading font-semibold text-[16px]">${selectedLab?.price}</span>
+            <span className="text-heading font-semibold text-[16px]">₹{selectedLab?.price}</span>
             <span className="text-[#5A5766]">for 1 Test</span>
           </div>
-          <button  onClick={()=>navigate('/SelectAppointment')} type="button" className="inline-flex items-center justify-center h-12 px-10 rounded-xl bg-[#6B4DE0] text-white font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)]">Select Date & Time</button>
+          <button  onClick={()=>navigate('/SelectAppointment')} type="button" className="inline-flex items-center justify-center h-12 px-10 rounded-xl bg-[#647FBC] text-white font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)]">Select Date & Time</button>
         </div>
       </div>
     </div>

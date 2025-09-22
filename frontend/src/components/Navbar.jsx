@@ -92,7 +92,7 @@ function Navbar() {
       </div>
       {/* Mobile Nav Links */}
       <div className="md:hidden flex justify-center space-x-6 py-2 border-t border-[#E5E5E5] bg-white">
-        <NavLink to={"/"} className="text-gray-600 text-base font-medium hover:text-[#7C5CFC] transition-colors duration-150">Home</NavLink>
+        <NavLink to={"/home"} className="text-gray-600 text-base font-medium hover:text-[#7C5CFC] transition-colors duration-150">Home</NavLink>
         <NavLink to={"/reports"} className="text-gray-600 text-base font-medium hover:text-[#7C5CFC] transition-colors duration-150">Reports</NavLink>
         <NavLink to={"/appointments"} className="text-gray-600 text-base font-medium hover:text-[#7C5CFC] transition-colors duration-150">My Appointments</NavLink>
       </div>

@@ -85,7 +85,7 @@ function TrackOrder() {
             {/* Top patient/test block */}
             <div className="rounded-xl bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
               <div className="flex items-start gap-2.5">
-                <User className="w-5 h-5 text-[#7C5CFC] mt-0.5" />
+                <User className="w-5 h-5 text-[#647FBC] mt-0.5" />
                 <div className="flex-1 min-w-0">
                   <p className="text-[15px] font-medium text-gray-900 leading-tight mb-0.5 truncate">{orderInfo?.patient?.name || 'Patrick Smith'}</p>
                   <p className="text-[13px] text-gray-500 leading-tight truncate">{orderInfo?.test?.testName || 'COVID RT-PCR TEST'}</p>
@@ -100,8 +100,8 @@ function TrackOrder() {
               <div className="bg-[#E3E2E7] rounded-md px-4 py-3">
                 <button onClick={() => setShowInstructions(v=>!v)} className="w-full flex items-start justify-between text-left">
                   <div className="flex items-start gap-2.5 flex-1">
-                    <span className="mt-0.5 inline-flex items-center justify-center w-5 h-5 rounded-sm bg-[#6234F6]"><Info className="w-3 h-3 text-white" /></span>
-                    <p className="text-[13px] font-medium text-[#4E2DB4]">Instructions</p>
+                    <span className="mt-0.5 inline-flex items-center justify-center w-5 h-5 rounded-sm bg-[#647FBC]"><Info className="w-3 h-3 text-white" /></span>
+                    <p className="text-[13px] font-medium text-[#647FBC]">Instructions</p>
                   </div>
                   {showInstructions ? <ChevronUp className="w-4 h-4 text-gray-500" /> : <ChevronDown className="w-4 h-4 text-gray-500" />}
                 </button>
@@ -170,7 +170,7 @@ function TrackOrder() {
       <div className="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur border-t border-gray-200 py-4 px-10 flex justify-end">
         <button
           onClick={() => navigate('/home')}
-          className="px-8 py-3 rounded-md bg-[#6344F5] hover:bg-[#5837f3] text-white text-sm font-medium shadow-sm transition-colors"
+          className="px-8 py-3 rounded-md bg-[#647FBC] hover:bg-[#516594] text-white text-sm font-medium shadow-sm transition-colors"
         >
           Back to Home
         </button>

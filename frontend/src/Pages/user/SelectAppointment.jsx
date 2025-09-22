@@ -177,7 +177,7 @@ function SelectAppointment() {
                 className={[
                   'w-20 h-[72px] rounded-[36px] flex flex-col items-center justify-center border transition-colors',
                   d.ymd === selectedDate
-                    ? 'bg-[#9E62B2] text-white border-[#9E62B2]'
+                    ? 'bg-[#647FBC] text-white border-[#9E62B2]'
                     : 'bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200'
                 ].join(' ')}
               >
@@ -203,7 +203,7 @@ function SelectAppointment() {
                       className={[
                         'h-12 rounded-[30px] text-sm font-medium transition-colors border px-4',
                         selected
-                          ? 'bg-[#9E62B2] text-white border-[#9E62B2]'
+                          ? 'bg-[#647FBC] text-white border-[#647FBC]'
                           : 'bg-gray-100 text-gray-700 border-gray-200 hover:border-[#7C5CFC]/50'
                       ].join(' ')}
                     >
@@ -231,7 +231,7 @@ function SelectAppointment() {
                       className={[
                         'h-12 rounded-[30px] text-sm font-medium transition-colors border px-4',
                         selected
-                          ? 'bg-[#9E62B2] text-white border-[#9E62B2]'
+                          ? 'bg-[#647FBC] text-white border-[#647FBC]'
                           : 'bg-gray-100 text-gray-700 border-gray-200 hover:border-[#7C5CFC]/50'
                       ].join(' ')}
                     >
@@ -257,7 +257,7 @@ function SelectAppointment() {
             className={[
               'inline-flex items-center justify-center h-12 px-8 rounded-full font-semibold transition-colors',
               selectedSlotIndex !== null
-                ? 'bg-[#7C5CFC] text-white shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)] hover:bg-[#6B4EE6]'
+                ? 'bg-[#647FBC] text-white shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)] hover:bg-[#7791cd]'
                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
             ].join(' ')}
           >

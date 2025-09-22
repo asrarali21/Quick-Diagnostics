@@ -116,7 +116,7 @@ function AddPatient() {
               onClick={()=> setFormData({...FormData , bookingforWhom:options})}
                className={`h-10 px-4 rounded-full ${
                 FormData.bookingforWhom === options
-                  ? "bg-[#9E62B2] text-white"
+                  ? "bg-[#647FBC] text-white"
                   : "bg-[#EDEDF3] text-[#6F6C90]"
               } text-[14px] font-medium`}
             >
@@ -175,7 +175,7 @@ function AddPatient() {
                 required
               />
               <span className={`relative w-5 h-5 rounded-full border-2 grid place-items-center ${FormData.gender===item ? 'border-[#7C5CFC]' : 'border-gray-300'}`}>
-                <span className={`w-2.5 h-2.5 rounded-full ${FormData.gender===item ? 'bg-[#7C5CFC]' : 'bg-transparent'}`} />
+                <span className={`w-2.5 h-2.5 rounded-full ${FormData.gender===item ? 'bg-[#647FBC]' : 'bg-transparent'}`} />
               </span>
               <span className="text-[14px] text-gray-700">{item}</span>
             </label>
@@ -201,7 +201,7 @@ function AddPatient() {
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-8px_24px_-12px_rgba(17,24,39,0.12)]">
         <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 py-4 flex items-center justify-between">
           <button type="button" className="h-12 px-2 text-red-500 font-medium hover:text-red-600">Cancel</button>
-          <button onClick={handleNextclick} type="button" className="inline-flex items-center justify-center h-12 px-10 rounded-xl bg-[#7C5CFC] text-white font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)]">Next</button>
+          <button onClick={handleNextclick} type="button" className="inline-flex items-center justify-center h-12 px-10 rounded-xl bg-[#647FBC] text-white font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)]">Next</button>
         </div>
       </div>
     </div>
@@ -211,7 +211,7 @@ function AddPatient() {
           <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 pt-6">
             <div className="grid grid-cols-3 items-center">
               <div className="justify-self-start">
-                <button onClick={()=>navigate(-1)} type="button" className="inline-flex items-center gap-2 text-[#7C5CFC]">
+                <button onClick={()=>navigate(-1)} type="button" className="inline-flex items-center gap-2 text-[#647FBC]">
                   <ArrowLeft className="w-5 h-5" />
                   <span className="font-medium">Back</span>
                 </button>
@@ -229,7 +229,7 @@ function AddPatient() {
             <div className="bg-white rounded-3xl border border-gray-200 shadow-[0_24px_60px_-28px_rgba(17,24,39,0.15)] p-6 sm:p-8">
               <div className="flex items-center justify-between">
                 <h2 className="text-[24px] font-semibold text-gray-900">Add Patient</h2>
-                <button type="button" onClick={()=>setstep(1)} className="inline-flex items-center gap-2 text-[#7C5CFC] font-medium">
+                <button type="button" onClick={()=>setstep(1)} className="inline-flex items-center gap-2 text-[#647FBC647FBC] font-medium">
                   <Plus className="w-5 h-5" />
                   <span>New Patient</span>
                 </button>
@@ -242,7 +242,7 @@ function AddPatient() {
                       type="button"
                       onClick={()=>setSelected(v=>!v)}
                       aria-pressed={selected}
-                      className={`mt-1 w-4 h-4 rounded-[4px] grid place-items-center ${selected ? 'bg-[#9E62B2]' : 'bg-gray-200'}`}
+                      className={`mt-1 w-4 h-4 rounded-[4px] grid place-items-center ${selected ? 'bg-[#647FBC]' : 'bg-gray-200'}`}
                     >
                       <Check className={`w-3 h-3 ${selected ? 'text-white' : 'text-transparent'}`} />
                     </button>
@@ -251,7 +251,7 @@ function AddPatient() {
                       <p className="text-sm text-gray-500">{relationLabel}, {FormData.gender || 'Male'}, {calculateAge(FormData.DOB) || '30'} years</p>
                     </div>
                   </div>
-                  <button type="button" onClick={()=>setstep(1)} className="text-[#7C5CFC] font-medium">Edit</button>
+                  <button type="button" onClick={()=>setstep(1)} className="text-[#647FBC] font-medium">Edit</button>
                 </div>
               </div>
             </div>
@@ -262,7 +262,7 @@ function AddPatient() {
             <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 py-4 flex items-center justify-between">
               <button type="button" className="h-12 px-2 text-red-500 font-medium hover:text-red-600">Cancel</button>
               <div className="text-gray-700 font-medium">{selected ? '1 Patient Selected' : 'No Patient Selected'}</div>
-              <button onClick={()=>navigate("/lab")} type="button" disabled={!selected} className={`inline-flex items-center justify-center h-12 px-10 rounded-xl font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)] ${selected ? 'bg-[#7C5CFC] text-white hover:bg-[#6B4EE6]' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}>Select Lab</button>
+              <button onClick={()=>navigate("/lab")} type="button" disabled={!selected} className={`inline-flex items-center justify-center h-12 px-10 rounded-xl font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)] ${selected ? 'bg-[#647FBC] text-white hover:bg-[#9dadd2]' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}>Select Lab</button>
             </div>
           </div>
         </div>

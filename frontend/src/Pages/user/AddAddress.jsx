@@ -150,7 +150,7 @@ function AddAddress() {
             <div className="border-2 border-blue-400 rounded-3xl bg-white shadow-[0_24px_60px_-28px_rgba(17,24,39,0.15)] p-6 sm:p-8">
               <div className="flex items-center justify-between">
                 <h2 style={{color:"#5A5766"}} className="text-[24px] font-semibold ">Select Address</h2>
-                <button type="button" onClick={()=>setstep(0)} className="inline-flex items-center gap-2 text-[#7C5CFC] font-medium">
+                <button type="button" onClick={()=>setstep(0)} className="inline-flex items-center gap-2 text-[#647FBC] font-medium">
                   <Plus className="w-5 h-5" />
                   <span>Add Address</span>
                 </button>
@@ -165,9 +165,9 @@ function AddAddress() {
                       type="button"
                       onClick={()=>setSelected(v=>!v)}
                       aria-pressed={selected}
-                      className={`mt-1 w-5 h-5 rounded-full border-2 grid place-items-center ${selected ? 'border-[#7C5CFC]' : 'border-gray-300'}`}
+                      className={`mt-1 w-5 h-5 rounded-full border-2 grid place-items-center ${selected ? 'border-[#647FBC]' : 'border-gray-300'}`}
                     >
-                      <span className={`w-2.5 h-2.5 rounded-full ${selected ? 'bg-[#7C5CFC]' : 'bg-transparent'}`} />
+                      <span className={`w-2.5 h-2.5 rounded-full ${selected ? 'bg-[#647FBC]' : 'bg-transparent'}`} />
                     </button>
                     <div>
                       <p className="text-gray-900 font-semibold text-[16px]">HOME</p>
@@ -199,7 +199,7 @@ function AddAddress() {
                 onClick={ctaHandler}
                 type="button"
                 disabled={ctaDisabled}
-                className={`inline-flex items-center justify-center h-12 px-8 rounded-full font-semibold transition-colors shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)] ${ctaDisabled ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-[#7C5CFC] text-white hover:bg-[#6B4EE6]'}`}
+                className={`inline-flex items-center justify-center h-12 px-8 rounded-full font-semibold transition-colors shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)] ${ctaDisabled ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-[#647FBC] text-white hover:bg-[#647FBC]'}`}
               >
                 {ctaText}
               </button>
