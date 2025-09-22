@@ -64,7 +64,7 @@ function AccountSidebar({ isOpen, onClose }) {
               <p className="text-sm text-gray-600 leading-tight truncate">{userInfo?.email}</p>
               <p className="text-sm text-gray-600 leading-tight mt-1">{userInfo?.phoneNumber}</p>
             </div>
-            <button className="text-[#7C5CFC] text-sm font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-purple-500/30 rounded">Edit</button>
+            <button className="text-[#647FBC] text-sm font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-purple-500/30 rounded">Edit</button>
           </div>
         </div>
         {/* Simple scroll area */}
@@ -88,7 +88,7 @@ function MenuItem({ icon: Icon, title, description, onClick }) {
       className="group w-full flex items-start justify-between gap-4 px-8 py-4 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-colors"
     >
       <div className="flex items-start gap-4">
-        <Icon className="w-5 h-5 text-[#7C5CFC] mt-0.5" />
+        <Icon className="w-5 h-5 text-[#647FBC] mt-0.5" />
         <div className="text-left">
           <p className="text-[15px] font-medium text-gray-800 leading-tight mb-0.5">{title}</p>
           {description && <p className="text-[12px] text-gray-500 leading-snug line-clamp-1">{description}</p>}

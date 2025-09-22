@@ -12,7 +12,7 @@ function StepTracker({ currentStep = 0, onStepClick }) {
         <button
           type="button"
           onClick={() => navigate(-1)}
-          className="flex items-center gap-2 pr-8 text-[#7C5CFC] hover:text-[#6B4EE6] font-medium focus:outline-none flex-shrink-0 whitespace-nowrap"
+          className="flex items-center gap-2 pr-8 text-[#647FBC] hover:text-[#7287b9] font-medium focus:outline-none flex-shrink-0 whitespace-nowrap"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M15 18l-6-6 6-6" />

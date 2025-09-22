@@ -7,7 +7,7 @@ function Testimonial() {
     console.log(Testimonialdata);
     
   return (
-    <div className='bg-[#4D1C8C] py-16'>
+    <div className='bg-[#647FBC] py-16'>
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-8">
         <h1 style={{marginBottom:"25px", fontSize:"25px"}} className="text-2xl md:text-3xl font-semibold  mb-32 text-white">Customer Testimonials</h1>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center'>

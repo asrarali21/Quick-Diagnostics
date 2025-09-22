@@ -45,7 +45,7 @@ function ForgotPassword() {
         <button
           type="button"
           onClick={handleClick}
-          className="w-full rounded-lg bg-[#4d35ac] hover:bg-[#5a3ec7] text-white font-semibold py-3"
+          className="w-full rounded-lg bg-[#7287b9] hover:bg-[#647FBC] text-white font-semibold py-3"
         >
           Send OTP
         </button>

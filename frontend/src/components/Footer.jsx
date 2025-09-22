@@ -6,7 +6,7 @@ import { FaFacebookF, FaTwitter } from 'react-icons/fa'
 
 function Footer() {
   return (
-    <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-[#4D1C8C] py-12">
+    <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-[#647FBC] py-12">
       <footer className="w-full">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 flex flex-col md:flex-row justify-between items-start md:items-center">
           {/* Left: Logo and Links */}

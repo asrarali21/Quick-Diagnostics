@@ -6,7 +6,7 @@ function Banner() {
   <div className="max-w-7xl  mx-auto px-4 md:px-6 lg:px-2">
       <div 
         className="relative rounded-3xl overflow-hidden"
-        style={{ backgroundColor: '#4D1C8C' }}
+        style={{ backgroundColor: '#647FBC' }}
       >
         <div className="flex items-center justify-between px-6 py-6 lg:px-10 lg:py-8">
           {/* Left Content */}
@@ -17,7 +17,7 @@ function Banner() {
             <p className="text-white/90 text-sm lg:text-base mb-5">
               Your health is our priority
             </p>
-            <button className="bg-white text-[#4D1C8C] px-5 py-2 rounded-lg font-semibold text-sm lg:text-base hover:bg-gray-100 transition-colors shadow-md">
+            <button className="bg-white text-[#7287b9] px-5 py-2 rounded-lg font-semibold text-sm lg:text-base hover:bg-gray-100 transition-colors shadow-md">
               Book now
             </button>
           </div>

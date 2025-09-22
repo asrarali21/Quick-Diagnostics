@@ -84,7 +84,7 @@ function TestInfo() {
             <button
               type="button"
               onClick={() => navigate(-1)}
-              className="inline-flex items-center gap-2 text-[#7C5CFC] hover:opacity-80"
+              className="inline-flex items-center gap-2 text-[#647FBC] hover:opacity-80"
             >
               <ArrowLeft className="w-5 h-5" />
               <span className="font-medium">Back</span>
@@ -106,9 +106,9 @@ function TestInfo() {
           {/* Feature badges */}
           <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4">
             {featureItems.map((f, idx) => (
-              <div key={idx} className="bg-[#F6F1FF] h-[72px] rounded-2xl px-4 flex items-center">
+              <div key={idx} className="bg-[#d5e3f1] h-[72px] rounded-2xl px-4 flex items-center">
                 <div className="flex items-center gap-3">
-                  <span className="w-10 h-10 rounded-xl bg-[#F1EAFE] grid place-items-center">
+                  <span className="w-10 h-10 rounded-xl bg-[#c9cdcf] grid place-items-center">
                     <img src={f.icon} alt="" className="w-6 h-6 object-contain" />
                   </span>
                   <span className="text-[14px] leading-[18px] font-medium text-[#6F6C90] whitespace-pre-line">
@@ -147,7 +147,7 @@ function TestInfo() {
           <h3 style={{color:'#757380', letterSpacing:'-0.5px'}}className="mt-8  font-semibold text-[18px]">Why you should book this package?</h3>
           <div className="mt-4 grid gap-4 sm:grid-cols-3">
             {whyBook.slice(0, 3).map((text, i) => (
-              <div key={i} className="bg-[#F6F1FF] rounded-2xl px-5 py-4 text-[14px] leading-6 text-[#6F6C90]">
+              <div key={i} className="bg-[#cedcea] rounded-2xl px-5 py-4 text-[14px] leading-6 text-[#6F6C90]">
                 {text}
               </div>
             ))}
@@ -168,7 +168,7 @@ function TestInfo() {
           <button
             type="button"
             onClick={() => navigate('/AddPatient', { state: { Test } })}
-            className="inline-flex items-center justify-center h-12 px-6 rounded-xl bg-[#7C5CFC] text-white font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)] hover:opacity-95"
+            className="inline-flex items-center justify-center h-12 px-6 rounded-xl bg-[#647FBC] text-white font-semibold shadow-[0_12px_24px_-8px_rgba(124,92,252,0.6)] hover:opacity-95"
           >
             Add Patient
           </button>

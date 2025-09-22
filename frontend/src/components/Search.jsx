@@ -51,10 +51,10 @@ function Search() {
               className="flex items-center gap-3 py-3 px-2 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors"
               onClick={() => navigate(`/testinfo/${item?._id}`)}
             >
-              <div className="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 bg-[#cedcea] rounded-lg flex items-center justify-center flex-shrink-0">
                 <img src={item.icon} alt="" className="w-8 h-8 object-contain" />
               </div>
-              <p className="text-gray-700 font-medium hover:text-[#7C5CFC] transition-colors">
+              <p className="text-gray-700 font-medium hover:text-[#647FBC] transition-colors">
                 {item.testName}
               </p>
             </div>

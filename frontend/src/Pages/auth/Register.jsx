@@ -7,8 +7,8 @@ import { useSetRecoilState } from 'recoil'
 import { userState } from '../../store/userstate'
 
 function Register() {
-  const PRIMARY = '#6B4DE0'
-  const PRIMARY_HOVER = '#5a3ec7'
+  const PRIMARY = '#7287b9'
+  const PRIMARY_HOVER = '#647FBC' 
 
   const [showPassword , setShowPassword] = useState(false)
 

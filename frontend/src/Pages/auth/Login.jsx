@@ -82,7 +82,7 @@ function Login() {
         {/* Login button (pale primary as in screenshot) */}
         <button
           type="button"
-          className="w-full rounded-lg bg-[#4d35ac] hover:bg-[#5a3ec7] text-white font-semibold py-3 mb-6"
+          className="w-full rounded-lg bg-[#7287b9] hover:bg-[#647FBC] text-white font-semibold py-3 mb-6"
           onClick={handleClick}
         >
           Login

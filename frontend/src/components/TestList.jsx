@@ -54,12 +54,12 @@ function TestList() {
           {tests.map(t => (
             <div
               key={t.key}
-              className="relative flex rounded-2xl border border-[#F1EAFE] bg-white px-4 py-4 md:px-5 md:py-5 hover:shadow-[0_8px_28px_-14px_rgba(124,92,252,0.25)] transition-shadow"
+              className="relative flex rounded-2xl border border-[#F1EAFE] bg-[#cdd5e6] px-4 py-4 md:px-5 md:py-5 hover:shadow-[0_8px_28px_-14px_rgba(124,92,252,0.25)] transition-shadow"
               style={{ minHeight: 170 }}
             >
               {/* Image */}
               <div className="shrink-0 mr-5 md:mr-6">
-                <div className="w-[158px] h-[160px] rounded-lg bg-[#F5F1FF] flex items-center justify-center overflow-hidden">
+                <div className="w-[158px] h-[160px] rounded-lg bg-[#8697b7] flex items-center justify-center overflow-hidden">
                   <img
                     src={t.image}
                     alt={t.alt}
@@ -74,7 +74,7 @@ function TestList() {
                   <button
                     type="button"
                     onClick={""}
-                    className="text-left font-semibold text-[17px] leading-snug text-gray-900 underline underline-offset-[3px] decoration-transparent hover:decoration-[#5B3AE6] transition-colors"
+                    className="text-left font-semibold text-[17px] leading-snug text-gray-900 underline underline-offset-[3px] decoration-transparent hover:decoration-[#7287b9] transition-colors"
                   >
                     {t.name}
                   </button>

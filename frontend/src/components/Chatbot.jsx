@@ -84,7 +84,7 @@ function Chatbot() {
             onClick={() => setOpen(true)}
           className="fixed bottom-6 right-6 z-50 group"
         >
-          <span className="relative flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#4D1C8C] via-[#6B4DF8] to-[#4D1C8C] shadow-[0_8px_24px_-6px_rgba(98,52,246,0.55)] ring-4 ring-transparent hover:ring-[#7C5CFC]/25 transition-all duration-300">
+          <span className="relative flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#647FBC] via-[#647FBC] to-[#647FBC] shadow-[0_8px_24px_-6px_rgba(98,52,246,0.55)] ring-4 ring-transparent hover:ring-[#647FBC]/25 transition-all duration-300">
             <svg width="30" height="30" viewBox="0 0 24 24" className="text-white drop-shadow">
               <path fill="currentColor" d="M12 3c-3.9 0-7 2.7-7 6 0 1.3.5 2.5 1.5 3.5-.1 1.1-.6 2.5-1.9 3.7 1.6-.2 3-.7 4-1.3a8.6 8.6 0 0 0 3.4.7c3.9 0 7-2.7 7-6s-3.1-6-7-6Z"/>
             </svg>
@@ -118,7 +118,7 @@ function Chatbot() {
               <button
                 onClick={() => setCollapsed(c => !c)}
                 aria-label={collapsed ? 'Expand chat' : 'Collapse chat'}
-                className="p-2 rounded-lg hover:bg-[#F2EEF9] text-[#5B33D6]"
+                className="p-2 rounded-lg hover:bg-[#F2EEF9] text-[#647FBC]"
               >
                 {collapsed ? (
                   <svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M7 14h10v2H7zM7 8h10v2H7z"/></svg>
@@ -129,7 +129,7 @@ function Chatbot() {
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Close chat"
-                className="p-2 rounded-lg hover:bg-[#F2EEF9] text-[#5B33D6]"
+                className="p-2 rounded-lg hover:bg-[#F2EEF9] text-[#647FBC]"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="m12 10.586 4.95-4.95 1.414 1.414L13.414 12l4.95 4.95-1.414 1.414L12 13.414l-4.95 4.95-1.414-1.414L10.586 12l-4.95-4.95L7.05 5.636z"/></svg>
               </button>
@@ -141,8 +141,8 @@ function Chatbot() {
             <div className="flex-1 overflow-y-auto px-5 pt-5 pb-4 space-y-5 bg-gradient-to-b from-white/90 via-white/70 to-white/60">
             
               <div className="flex items-start gap-2.5">
-                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#7C5CFC] to-[#4D1C8C] flex items-center justify-center text-[11px] text-white font-semibold">AI</div>
-                <div className="max-w-[78%] rounded-2xl bg-[#F2EEF9] text-[#2D2A38] px-4 py-3 text-sm leading-relaxed ring-1 ring-[#E2DAF7]">
+                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#647FBC] to-[#647FBC] flex items-center justify-center text-[11px] text-white font-semibold">AI</div>
+                <div className="max-w-[78%] rounded-2xl bg-[#a4b2d4] text-[#2D2A38] px-4 py-3 text-sm leading-relaxed ring-1 ring-[#E2DAF7]">
                   <span className="mr-1">👋</span>Hi {firstName || 'there'}! What brings you here today?
                 </div>
               </div>
@@ -154,7 +154,7 @@ function Chatbot() {
                       key={s}
                       type="button"
                       onClick={() => handleSuggestion(s)}
-                      className="px-5 py-2.5 rounded-full text-[13px] font-medium bg-white/80 backdrop-blur border border-[#E5E1F3] text-[#4D1C8C] hover:text-white hover:bg-gradient-to-r hover:from-[#7C5CFC] hover:to-[#4D1C8C] shadow-sm hover:shadow-md transition-all"
+                      className="px-5 py-2.5 rounded-full text-[13px] font-medium bg-white/80 backdrop-blur border border-[#E5E1F3] text-[#7287b9] hover:text-white hover:bg-gradient-to-r hover:from-[#647FBC] hover:to-[#647FBC] shadow-sm hover:shadow-md transition-all"
                     >{s}</button>
                   ))}
                 </div>
@@ -165,7 +165,7 @@ function Chatbot() {
                   <div key={i} className={`flex w-full ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                     <div
                       className={`max-w-[75%] text-sm leading-relaxed rounded-2xl px-4 py-2 shadow-sm ring-1
-                        ${msg.role === 'user' ? 'bg-gradient-to-br from-[#7C5CFC] to-[#4D1C8C] text-white ring-transparent' : 'bg-[#F5F2FA] text-[#2D2A38] ring-[#E2DAF7]'}`}
+                        ${msg.role === 'user' ? 'bg-gradient-to-br from-[#7287b9] to-[#647FBC] text-white ring-transparent' : 'bg-[#F5F2FA] text-[#2D2A38] ring-[#E2DAF7]'}`}
                     >
                       {msg.content}
                     </div>
@@ -174,9 +174,9 @@ function Chatbot() {
                 {loadingReply && (
                   <div className="flex justify-start">
                     <div className="flex items-center gap-1 bg-[#F5F2FA] ring-1 ring-[#E2DAF7] rounded-2xl px-4 py-2 text-sm text-[#2D2A38]">
-                      <span className="w-2 h-2 rounded-full bg-[#7C5CFC] animate-pulse"></span>
-                      <span className="w-2 h-2 rounded-full bg-[#7C5CFC] animate-pulse delay-150"></span>
-                      <span className="w-2 h-2 rounded-full bg-[#7C5CFC] animate-pulse delay-300"></span>
+                      <span className="w-2 h-2 rounded-full bg-[#7287b9] animate-pulse"></span>
+                      <span className="w-2 h-2 rounded-full bg-[#7287b9] animate-pulse delay-150"></span>
+                      <span className="w-2 h-2 rounded-full bg-[#7287b9] animate-pulse delay-300"></span>
                     </div>
                   </div>
                 )}
@@ -200,7 +200,7 @@ function Chatbot() {
                 <button
                   type="submit"
                   disabled={!input.trim() || loadingReply}
-                  className="h-11 px-5 rounded-xl font-medium text-sm bg-gradient-to-br from-[#7C5CFC] to-[#4D1C8C] text-white disabled:opacity-40 disabled:cursor-not-allowed hover:shadow-md active:scale-[0.97] transition-all"
+                  className="h-11 px-5 rounded-xl font-medium text-sm bg-gradient-to-br from-[#7287b9] to-[#647FBC] text-white disabled:opacity-40 disabled:cursor-not-allowed hover:shadow-md active:scale-[0.97] transition-all"
                 >
                   {loadingReply ? 'Thinking...' : 'Send'}
                 </button>

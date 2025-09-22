@@ -87,7 +87,7 @@ function AddPatient() {
         <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 pt-6">
         <div className="grid grid-cols-3 items-center">
         <div className="justify-self-start">
-        <button onClick={()=>navigate(-1)} type="button" className="inline-flex items-center gap-2 text-[#7C5CFC]">
+        <button onClick={()=>navigate(-1)} type="button" className="inline-flex items-center gap-2 text-[#647FBC]">
         <ArrowLeft className="w-5 h-5" />
         <span className="font-medium">Back</span>
         </button>

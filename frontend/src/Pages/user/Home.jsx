@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import Navbar from '../../components/Navbar'
 import Search from '../../components/Search'
 import CommonlyBooked from '../../components/CommonlyBooked'
@@ -9,6 +9,8 @@ import Footer from '../../components/Footer'
 import Banner from '../../components/Banner'
 import WhyChooseUs from '../../components/WhyChooseUs'
 import Chatbot from '../../components/Chatbot'
+import GlobalSpinner from '../../components/GlobalSpinner'
+
 
 function Home() {
   return (
@@ -22,7 +24,11 @@ function Home() {
         </div>
         {/* Content sections with controlled vertical rhythm */}
         <div className="mt-10 space-y-14">
-          <CommonlyBooked />
+       
+            <Suspense fallback={<GlobalSpinner />}>
+      <CommonlyBooked />
+    </Suspense>
+          
           <WhyChooseUs />
           <TestList />
           <Testimonial />

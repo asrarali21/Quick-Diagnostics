@@ -63,7 +63,7 @@ function Navbar() {
       <div className="flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-8 h-14">
         {/* Logo and Name */}
         <div className="flex items-center space-x-2 min-w-[220px]">
-          <span className="text-lg font-medium" style={{ color: '#7C5CFC' }}>Quick Diagnostics</span>
+          <span className="text-lg font-medium" style={{ color: '#647FBC' }}>Quick Diagnostics</span>
         </div>
         {/* Nav Links */}
         <div className="hidden md:flex space-x-8">
@@ -74,14 +74,14 @@ function Navbar() {
         {/* Location and Icons */}
         <div className="flex items-center space-x-6 min-w-[260px] justify-end">
           <div className="flex items-center border-b border-gray-300 pr-2 space-x-1 text-gray-600">
-            <MapPin className="w-5 h-5" color="#7C5CFC" />
+            <MapPin className="w-5 h-5" color="#647FBC" />
           <span className="text-base">
   {formattedLocation || 'Fetching location...'}</span>
           
           </div>
           <User 
             className="w-6 h-6 cursor-pointer" 
-            color="#7C5CFC" 
+            color="#647FBC" 
             onClick={() => setIsAccountSidebarOpen(true)}
           />
         </div>
