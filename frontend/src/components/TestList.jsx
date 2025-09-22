@@ -59,7 +59,7 @@ function TestList() {
             >
               {/* Image */}
               <div className="shrink-0 mr-5 md:mr-6">
-                <div className="w-[158px] h-[160px] rounded-lg bg-[#8697b7] flex items-center justify-center overflow-hidden">
+                <div className="w-[158px] h-[160px] rounded-lg bg-[#939cae] flex items-center justify-center overflow-hidden">
                   <img
                     src={t.image}
                     alt={t.alt}

@@ -34,7 +34,7 @@ function ForgotPassword() {
           <label className="block text-sm text-gray-600 mb-2">Email address</label>
           <input
             type="email"
-            className="w-full rounded-md border-2 border-[#6B4DE0] bg-white px-3 py-3 text-gray-900 placeholder-gray-400"
+            className="w-full rounded-md border-2 border-[#647FBC] bg-white px-3 py-3 text-gray-900 placeholder-gray-400"
             placeholder=""
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -53,7 +53,7 @@ function ForgotPassword() {
         {/* Back to login */}
         <p className="text-center text-sm text-gray-700 mt-6">
           Remembered your password?{' '}
-          <Link style={{ textDecoration: "none", color: "black" }} to={"/login"} className="font-semibold text-[#6B4DE0]">Login</Link>
+          <Link style={{ textDecoration: "none", color: "black" }} to={"/login"} className="font-semibold text-[#a4b4d9]">Login</Link>
         </p>
       </div>
     </div>

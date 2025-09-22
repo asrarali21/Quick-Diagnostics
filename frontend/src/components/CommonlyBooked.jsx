@@ -25,9 +25,9 @@ function CommonlyBooked() {
       {/* Header */}
       <div className="flex w-full max-w-7xl mx-auto px-4 sm:px-8 items-center justify-between mt-6 mb-6">
         <h2 className="text-2xl font-semibold text-gray-900">Commonly Booked Test</h2>
-        <button type="button" className="text-[#647FBC] font-medium flex items-center gap-1 hover:underline">
+        {/* <button type="button" className="text-[#647FBC] font-medium flex items-center gap-1 hover:underline">
           See more <ChevronsRight className="w-5 h-5" />
-        </button>
+        </button> */}
       </div>
 
       {/* Cards grid */}

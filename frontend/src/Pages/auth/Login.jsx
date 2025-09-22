@@ -33,7 +33,7 @@ function Login() {
     
 
   return (
-    <div className="min-h-screen bg-neutral-900 flex items-center justify-center p-6">
+    <div className="min-h-screen bg-[#a4b4d9] flex items-center justify-center p-6">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl ring-1 ring-black/5 px-8 py-10">
         {/* Title */}
         <h1 className="text-2xl font-semibold text-center text-gray-900 mb-8">
@@ -45,7 +45,7 @@ function Login() {
           <label className="block text-sm text-gray-600 mb-2">Email address</label>
           <input
             type="email"
-            className="w-full rounded-md border-2 border-[#6B4DE0] bg-white px-3 py-3 text-gray-900 placeholder-gray-400"
+            className="w-full rounded-md border-2 border-[#647FBC] bg-white px-3 py-3 text-gray-900 placeholder-gray-400"
             placeholder=""
             value={Userinfo.email}
             onChange={(e) => setUserInfo(prev => ({ ...prev, email: e.target.value }))}

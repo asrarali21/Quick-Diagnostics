@@ -101,7 +101,7 @@ const [userId, setUserId] = useState("")
 
 
   return (
-    <div className="min-h-screen bg-[#F8F5FF] flex items-center justify-center px-4 py-10">
+    <div className="min-h-screen bg-[#a4b4d9] flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl shadow-xl ring-1 ring-black/5 px-8 py-10">
           {/* Brand */}

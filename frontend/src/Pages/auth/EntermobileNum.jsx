@@ -51,7 +51,7 @@ function EntermobileNum() {
 
     
   return (
-    <div className="min-h-screen bg-[#F8F5FF] flex items-center justify-center px-4 py-10">
+    <div className="min-h-screen bg-[#a4b4d9] flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl shadow-xl ring-1 ring-black/5 px-8 py-10">
 
@@ -80,9 +80,9 @@ function EntermobileNum() {
           <button
             type="button"
             className="mt-8 w-full rounded-lg bg-[#CCD4FF] text-white font-semibold py-3
-                       transition-colors duration-200 hover:bg-[#6B4DE0]
-                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6B4DE0]
-                       active:bg-[#6B4DE0] cursor-pointer"
+                       transition-colors duration-200 hover:bg-[#647FBC]
+                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#647FBC]
+                       active:bg-[#647FBC] cursor-pointer"
             onClick={handleGetOtpClick}
           >
             Get OTP
