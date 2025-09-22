@@ -30,8 +30,8 @@ function Chatbot() {
   const suggestions = [
     'What Tests are Availiable?',
     'What are the prices of Tests?',
-    'Report turnaround time',
-    'Test preparation help',
+    'What are the benefits of tests',
+    'what to do before test',
   ]
 
   // When chat opens we can scroll to bottom using window (optional simple approach)
