@@ -1,7 +1,7 @@
 # 🩺 Quick Diagnostics
 **AI-Powered Medical Diagnostics Platform | Full-Stack + RAG Implementation**
 
-[![Live Demo](https://img.shields.io/badge/Demo-Live-brightgreen)](your-deployed-url) [![Tech Stack](https://img.shields.io/badge/Stack-MERN%20%2B%20AI-blue)](#tech-stack)
+[![Live Demo](https://img.shields.io/badge/Demo-Live-brightgreen)](https://quickdiagnostics.vercel.app/) [![Tech Stack](https://img.shields.io/badge/Stack-MERN%20%2B%20AI-blue)](#tech-stack)
 
 > **Built a comprehensive healthcare platform with AI-powered diagnostic recommendations using Retrieval-Augmented Generation (RAG)**
 
@@ -107,7 +107,7 @@ npm run dev
 cd backend && node src/utils/ingest.js
 ```
 
-**Live Demo**: [quickdiagnostics.live](your-url) | **Payment**: Test mode with Razorpay test cards
+**Live Demo**: [quickdiagnostics](https://quickdiagnostics.vercel.app/) | **Payment**: Test mode with Razorpay test cards
 
 ---
 
@@ -132,7 +132,7 @@ cd backend && node src/utils/ingest.js
 
 Passionate about building modern web applications with AI integration. **Open to full-stack and AI engineering opportunities**.
 
-📧 **Email**: asrarpersonal6666@gmail.com  
+📧 **Email**: mohdasrar3825@gmail.com  
 
 ---
 
