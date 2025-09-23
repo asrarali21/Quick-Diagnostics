@@ -41,7 +41,7 @@ const signupUserBasic = asyncHandler(async(req , res)=>{
      res.status(200)
        .cookie("accessToken", accessToken , options)
         .cookie("refreshToken" ,refreshToken , options) 
-     .json( new ApiResponse(200 , {userID : user._id ,firstName: user.firstName} , "basic info saved") )
+     .json( new ApiResponse(200 , {userID : user._id ,firstName: user.firstName} , "Proceeding to the next step") )
 
 })
 
@@ -75,7 +75,7 @@ const sendOtp = asyncHandler(async(req , res)=>{
    
 
    return  res.status(200)
-   .json(new ApiResponse(200 , {} , "opt generated successfully"))
+   .json(new ApiResponse(200 , {} , "opt sent successfully"))
 })
 
 const verifyOtp = asyncHandler(async (req, res) => {
@@ -157,7 +157,7 @@ const userLogin = asyncHandler(async(req , res)=>{
   res.status(200)
   .cookie("accessToken", accessToken , options)
   .cookie("refreshToken" ,refreshToken , options) 
-    .json(new ApiResponse(200 , loggedInuser , "user login successfully"))
+    .json(new ApiResponse(200 , loggedInuser , "User login successfully"))
 })
 
 const userlogout = asyncHandler(async(req , res)=>{
@@ -171,7 +171,7 @@ const options = {
      res.status(200)
     .clearCookie("accessToken" ,options)
     .clearCookie("refreshToken" ,options)
-    .json(new ApiResponse(200 , {} , "user logout sucessfully"))
+    .json(new ApiResponse(200 , {} , "User logout sucessfully"))
       
 })
 
@@ -283,7 +283,7 @@ const options = {
      res.status(200)
     .clearCookie("accessToken" ,options)
     .clearCookie("refreshToken" ,options)
-    .json(new ApiResponse(200 , {} , "admiin logout sucessfully"))
+    .json(new ApiResponse(200 , {} , "admin logout sucessfully"))
       
 })
 
