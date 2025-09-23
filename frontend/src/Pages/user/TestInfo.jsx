@@ -108,7 +108,7 @@ function TestInfo() {
             {featureItems.map((f, idx) => (
               <div key={idx} className="bg-[#d5e3f1] h-[72px] rounded-2xl px-4 flex items-center">
                 <div className="flex items-center gap-3">
-                  <span className="w-10 h-10 rounded-xl bg-[#c9cdcf] grid place-items-center">
+                  <span className="w-10 h-10 rounded-xl bg-[#F2F2F2] grid place-items-center">
                     <img src={f.icon} alt="" className="w-6 h-6 object-contain" />
                   </span>
                   <span className="text-[14px] leading-[18px] font-medium text-[#4b4b4b] whitespace-pre-line">

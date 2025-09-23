@@ -2,21 +2,26 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import axios from 'axios'
+import { LoadingStateApi } from '../../store/Loading.State'
+import { useSetRecoilState } from 'recoil'
 
 function ForgotPassword() {
     const navigate = useNavigate()
   const [email, setEmail] = useState("")
   console.log(email);
   
-
+   const setLoading = useSetRecoilState(LoadingStateApi)
 
    const handleClick = async()=>{
     try {
+        setLoading(true)
         const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/users/forgotPassword`, {email :email})
         console.log(response);
         navigate("/resetPassword" , {state:{email:response.data.data}})
     } catch (error) {
         console.log(error);
+    }finally{
+        setLoading(false)
     }
    }
 

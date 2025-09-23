@@ -2,11 +2,15 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { handleError, handlesuccess } from '../../toast.util';
+import { useSetRecoilState } from 'recoil';
+import { LoadingStateApi } from '../../store/Loading.State';
 
 
 function Login() {
 
     const navigate = useNavigate()
+
+    const setLoading = useSetRecoilState(LoadingStateApi)
     
     const [showPassword , setShowPassword] = useState(false)
 
@@ -18,6 +22,7 @@ function Login() {
 
     async function handleClick() {
       try {
+        setLoading(true)
         const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/users/login` , Userinfo , {withCredentials:true})
         console.log(response);
         handlesuccess(response.data.message)
@@ -26,9 +31,10 @@ function Login() {
         }, 1000);
       } catch (error) {
         console.log(error);
-        handleError(error.response.data.message)
-        
-      }
+        handleError(error.response.data.message)        
+      } finally {
+    setLoading(false);  
+  }
     }
     
 

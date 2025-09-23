@@ -3,9 +3,10 @@ import StepTracker from '../../components/StepTracker'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { ArrowLeft, Plus } from 'lucide-react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { orderState } from '../../store/order.state'
 import { handleError } from '../../toast.util'
+import { LoadingStateApi } from '../../store/Loading.State'
 
 function AddAddress() {
     const navigate = useNavigate()
@@ -15,8 +16,7 @@ function AddAddress() {
   console.log(order);
   
     
-     
-
+     const setLoading = useSetRecoilState(LoadingStateApi)
     const [addressInfo , setAddressInfo] = useState({
       houseNo:"",
       road:"",
@@ -30,6 +30,7 @@ function AddAddress() {
     
     const addressPost = async ()=>{
       try {
+        setLoading(true)
         const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/address/saveaddress` , addressInfo , {withCredentials:true})
         console.log(response);
         setOrder({
@@ -40,6 +41,8 @@ function AddAddress() {
       } catch (error) {
         console.log(error);
         handleError(error.response.data.message)
+      }finally{
+        setLoading(false)
       }
     }
     async function HandleClick() {

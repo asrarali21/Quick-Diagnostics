@@ -1,5 +1,5 @@
 import axios from "axios";
-import { atom, selector,  } from "recoil";
+import {  selector,  } from "recoil";
 
 
 export const faqDataSelector = selector({

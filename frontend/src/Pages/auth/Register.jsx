@@ -5,10 +5,13 @@ import { useState } from 'react'
 import { handleError, handlesuccess } from '../../toast.util'
 import { useSetRecoilState } from 'recoil'
 import { userState } from '../../store/userstate'
+import { LoadingStateApi } from '../../store/Loading.State'
 
 function Register() {
   const PRIMARY = '#7287b9'
-  const PRIMARY_HOVER = '#647FBC' 
+  const PRIMARY_HOVER = '#647FBC'
+  
+  const setLoading = useSetRecoilState(LoadingStateApi)
 
   const [showPassword , setShowPassword] = useState(false)
 
@@ -34,6 +37,7 @@ function Register() {
     e.preventDefault();
       const {firstName , lastName  , email} =form
         try {
+          setLoading(true)
             const response =await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/users/signup` , form , {withCredentials:true})
             console.log(response);
             handlesuccess(response.data.message)
@@ -48,6 +52,8 @@ function Register() {
         } catch (error) {
             handleError(error.response.data.message)
             console.log(error);
+        }finally{
+            setLoading(false)
         }
     }
  
@@ -113,7 +119,7 @@ function Register() {
             </div>
             {/* Password */}
             <div>
-              <label htmlFor="password" className="block text-xs font-medium text-[#757380] mb-1 tracking-wide">Password</label>
+              <label htmlFor="password" className="block text-xs font-medium text-[#757380] mb-1 tracking-wide">Set Password</label>
               <div className="relative border-b border-gray-400 focus-within:border-[#647FBC] transition-colors">
                 <input
                   id="password"

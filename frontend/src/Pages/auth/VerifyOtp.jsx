@@ -2,11 +2,13 @@ import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
 import { handleError, handlesuccess } from '../../toast.util';
 import { useNavigate } from 'react-router-dom';
+import { LoadingStateApi } from '../../store/Loading.State';
+import { useSetRecoilState } from 'recoil';
 
 function VerifyOtp() {
   const PRIMARY = '#6B4DE0'
 
-
+const setLoading = useSetRecoilState(LoadingStateApi)
   const [otp, setOtp] = useState(['', '', '', ''])
   console.log(otp);
   
@@ -61,6 +63,7 @@ const [userId, setUserId] = useState("")
     useEffect(()=>{
         const userData = async()=>{
             try {
+                setLoading(true)
                 const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/users/me`,  {withCredentials:true} )
                 console.log(response);
                 setFirstName(response.data.data.firstName)
@@ -69,6 +72,8 @@ const [userId, setUserId] = useState("")
             } catch (error) {
                 console.log(error);
                 
+            }finally{
+                setLoading(false) 
             }
         }
         userData()
@@ -84,7 +89,7 @@ const [userId, setUserId] = useState("")
       try {
         const numOtp = otp.join("")
         console.log(numOtp);
-        
+          setLoading(true)
         const response  = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/users/verifyotp` ,{otp:numOtp , userID:userId} ,{withCredentials:true} )
         console.log(response);
         handlesuccess(response.data.message)
@@ -94,7 +99,8 @@ const [userId, setUserId] = useState("")
       } catch (error) {
         console.log(error);
         handleError(error.response.data.message)
-        
+      }finally{
+                setLoading(false) 
       }
     }
 
@@ -106,7 +112,7 @@ const [userId, setUserId] = useState("")
         <div className="bg-white rounded-2xl shadow-xl ring-1 ring-black/5 px-8 py-10">
           {/* Brand */}
           <div className="flex items-center justify-center gap-2 mb-8">
-            <span className="text-sm font-medium text-[#6B4DE0]">Quick Diagnostics</span>
+            <h1 className="text-sm font-medium text-[#647FBC]">Quick Diagnostics</h1>
           </div>
 
           {/* Heading */}
@@ -122,7 +128,7 @@ const [userId, setUserId] = useState("")
           <div className="flex items-center gap-8 mb-8">
             {[0, 1, 2, 3].map((i) => (
               <div key={i} className="w-10">
-                <div className="border-b border-gray-300 focus-within:border-[#6B4DE0]">
+                <div className="border-b border-gray-300 focus-within:border-[#647FBC]">
                   <input
                     ref={(el) => (refs.current[i] = el)}
                     type="text"
@@ -145,7 +151,7 @@ const [userId, setUserId] = useState("")
           {/* Verify Button */}
           <button
             type="button"
-            className="w-full rounded-lg bg-[#6B4DE0] text-white font-semibold py-3"
+            className="w-full rounded-lg bg-[#647FBC] text-white font-semibold py-3"
             onClick={handleOtpclick}
           >
             Verify

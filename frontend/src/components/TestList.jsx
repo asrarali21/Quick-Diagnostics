@@ -46,7 +46,7 @@ function TestList() {
         {/* Section Heading */}
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-[26px] md:text-[30px] font-semibold text-gray-900 leading-snug decoration-[#1F2840]">
-            Tests You Can Choose From
+          Commonly Booked Test
           </h2>
         </div>
         {/* Cards Row */}
@@ -54,12 +54,12 @@ function TestList() {
           {tests.map(t => (
             <div
               key={t.key}
-              className="relative flex rounded-2xl border border-[#F1EAFE] bg-[#cdd5e6] px-4 py-4 md:px-5 md:py-5 hover:shadow-[0_8px_28px_-14px_rgba(124,92,252,0.25)] transition-shadow"
+              className="relative flex rounded-2xl border border-[#F1EAFE] bg-white px-4 py-4 md:px-5 md:py-5 hover:shadow-[0_8px_28px_-14px_rgba(124,92,252,0.25)] transition-shadow"
               style={{ minHeight: 170 }}
             >
               {/* Image */}
               <div className="shrink-0 mr-5 md:mr-6">
-                <div className="w-[158px] h-[160px] rounded-lg bg-[#939cae] flex items-center justify-center overflow-hidden">
+                <div className="w-[158px] h-[160px] rounded-lg bg-white flex items-center justify-center overflow-hidden">
                   <img
                     src={t.image}
                     alt={t.alt}

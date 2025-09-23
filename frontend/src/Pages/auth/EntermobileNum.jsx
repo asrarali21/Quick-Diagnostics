@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { useRecoilValue } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { userState } from '../../store/userstate'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { handlesuccess } from '../../toast.util'
 import { useNavigate } from 'react-router-dom'
+import { LoadingStateApi } from '../../store/Loading.State'
 
 function EntermobileNum() {
 
@@ -16,13 +17,14 @@ function EntermobileNum() {
     const[userID , setmyUserID] = useState()
     console.log(userID);
     
-   
+   const setLoading = useSetRecoilState(LoadingStateApi)
     const [number , setNumber] = useState()
 
 
 
     const handleGetOtpClick = async()=>{
       try {
+        setLoading(true)
         const response  = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/users/sendotp`, {  phoneNumber: number , userID } , {withCredentials:true})
         console.log(response);
         handlesuccess(response.data.message)
@@ -31,7 +33,8 @@ function EntermobileNum() {
         })  
       } catch (error) {
         console.log(error);
-        
+      }finally{
+        setLoading(false)
       }
     }
 
@@ -85,7 +88,7 @@ function EntermobileNum() {
                        active:bg-[#647FBC] cursor-pointer"
             onClick={handleGetOtpClick}
           >
-            Get OTP
+           Continue
           </button>
         </div>
       </div>

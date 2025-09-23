@@ -1,8 +1,7 @@
-import { useEffect,  } from 'react';
+
 import './App.css'
 import Navbar from './components/Navbar';
-import { useSetRecoilState } from 'recoil';
-import axios from 'axios'
+
 import { Route, Routes,  } from 'react-router-dom';
 // user pages under Pages/user
 import Home from './Pages/user/Home';
@@ -29,6 +28,7 @@ import PaymentSuccess from './Pages/user/PaymentSuccess';
 import TrackOrder from './Pages/user/TrackOrder';
 import ForgotPassword from './Pages/auth/ForgotPassword';
 import ResetPassword from './Pages/auth/ResetPassword';
+
 
 
 function App() {
@@ -76,8 +76,10 @@ function App() {
           <Route index element={<AdminDashboard/>} />
           <Route path='add-test' element={<AdminAddTest/>} />
           {/* add more sections here: tests, reports, appointments, users, settings */}
+       
         </Route>
      </Routes>
+   
     </>
   )
 }

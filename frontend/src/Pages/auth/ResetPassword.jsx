@@ -2,12 +2,15 @@ import React, { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import axios from 'axios'
+import { LoadingStateApi } from '../../store/Loading.State'
+import { useSetRecoilState } from 'recoil'
 
 function ResetPassword() {
     const navigate = useNavigate()
   
      const  location = useLocation()
-
+   
+      const setLoading = useSetRecoilState(LoadingStateApi)
      const [inputData , setInputData] = useState({
         otp : "",
         newPassword:""
@@ -19,6 +22,7 @@ function ResetPassword() {
    
      const handleClick = async()=>{
         try {
+            setLoading(true)
             const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/users/resetPassword`, { email, otp: inputData.otp.trim(), newPassword: inputData.newPassword })
             console.log(response);
             setTimeout(()=>{
@@ -26,6 +30,8 @@ function ResetPassword() {
             }, 2000)
         } catch (error) {
              console.log(error);
+        }finally{
+            setLoading(false)
         }
      }
 

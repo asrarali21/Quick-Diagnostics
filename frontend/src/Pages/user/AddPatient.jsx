@@ -5,14 +5,16 @@ import { useState } from 'react'
 import BreadCrum from '../../components/BreadCrum'
 import axios from 'axios'
 import { handleError, handlesuccess } from '../../toast.util'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import { orderState } from '../../store/order.state'
 import Navlogoname from '../../components/Navlogoname'
+import { LoadingStateApi } from '../../store/Loading.State'
+
 
 function AddPatient() {
 
   const navigate = useNavigate()
-
+const setLoading = useSetRecoilState(LoadingStateApi)
   const [step , setstep] = useState(1)
   const [selected, setSelected] = useState(true)
   const [saveDetails , setSavedetails] = useState(false)
@@ -47,6 +49,7 @@ function AddPatient() {
       }
 
       try {
+        setLoading(true)
         const base = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
         const response = await axios.post(`${base}/api/v1/patient/patientdetails` , normalized , {withCredentials:true})
         console.log(response.data.data._id);
@@ -60,6 +63,8 @@ function AddPatient() {
       } catch (error) {
         console.log("patient details : " , error?.response?.data || error.message);
         handleError(error.response.data.message)
+      }finally{
+        setLoading(false)
       }
    }
 
