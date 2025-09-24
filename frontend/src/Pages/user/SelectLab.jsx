@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Plus, ArrowUpDown, Star, Calendar, Check } from 'lucide-react'
 import { orderState } from '../../store/order.state'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import Navlogoname from '../../components/Navlogoname'
+import { LoadingStateApi } from '../../store/Loading.State'
 
 function SelectLab() {
   const navigate = useNavigate()
@@ -15,11 +16,14 @@ function SelectLab() {
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [order,setOrder ] = useRecoilState(orderState)
   console.log(order);
+
+  const SetLoading = useSetRecoilState(LoadingStateApi)
   
 
 
       const fetchLabs = async()=>{
     try {
+      SetLoading(true)
       const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/lab/getlab`)
       setlabInfo(response.data.data || [])
       console.log(response);
@@ -27,7 +31,8 @@ function SelectLab() {
     
     } catch (error) {
       console.log(error);
-      
+    }finally{
+      SetLoading(false)
     }
     }
     

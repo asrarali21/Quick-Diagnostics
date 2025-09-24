@@ -4,19 +4,26 @@ import axios from 'axios'
 import { useParams, useNavigate } from 'react-router-dom'
 import { User, Calendar, MapPin, Trash2 } from 'lucide-react'
 import Navlogoname from '../../components/Navlogoname'
+import { useSetRecoilState } from 'recoil'
+import { LoadingStateApi } from '../../store/Loading.State'
 
 function ReviewOrder() {
   const navigate = useNavigate()
   const { orderId } = useParams()
   const [orderInfo, setOrderInfo] = useState(null)
 
+  const SetLoading = useSetRecoilState(LoadingStateApi)
+
   useEffect(() => {
     const fetchReviewOrder = async () => {
       try {
+        SetLoading(true)
         const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/order/${orderId}`, { withCredentials: true })
         setOrderInfo(response?.data?.data)
       } catch (error) {
         console.log(error)
+      }finally{
+        SetLoading(false)
       }
     }
     fetchReviewOrder()

@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react'
 import StepTracker from '../../components/StepTracker'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { orderState } from '../../store/order.state'
 import Navlogoname from '../../components/Navlogoname'
+import { LoadingStateApi } from '../../store/Loading.State'
 
 function SelectAppointment() {
   const navigate = useNavigate()
   const orders = useRecoilValue(orderState)
 
-   
+   const Setloading = useSetRecoilState(LoadingStateApi)
 
    const [order , setOrder ] = useRecoilState(orderState)
    console.log(order);
@@ -92,6 +93,7 @@ function SelectAppointment() {
   const fetchSlots = async () => {
     if (!order?.lab) return
     try {
+      Setloading(true)
       const response = await axios.get(
         `${import.meta.env.VITE_API_BASE_URL}/api/v1/slot/getslot`,
         { params:{ labId: orders.lab, date: todayDate } }
@@ -124,6 +126,8 @@ function SelectAppointment() {
       setappointmentInfo([])
       setDates([])
       setSelectedSlotIndex(null)
+    }finally{
+      Setloading(false)
     }
   }
 

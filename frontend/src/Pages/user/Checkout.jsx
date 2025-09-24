@@ -4,6 +4,8 @@ import { ArrowLeft, Calendar, MapPin, Trash2, Plus } from 'lucide-react'
 import axios from 'axios'
 import { useEffect } from 'react'
 import Navlogoname from '../../components/Navlogoname'
+import { useSetRecoilState } from 'recoil'
+import { LoadingStateApi } from '../../store/Loading.State'
 
 export default function Checkout() {
   const navigate = useNavigate()
@@ -20,9 +22,10 @@ export default function Checkout() {
   const grandTotal = itemTotal - discount
 
  
-  
+  const SetLoading = useSetRecoilState(LoadingStateApi)
 
  async function handlePayment() {
+  SetLoading(true)
         const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/payment/create-order` ,{orderId:order._id} , {withCredentials:true})
         console.log(response)
 
@@ -36,6 +39,7 @@ export default function Checkout() {
           description:"Lab Test Payment",
           handler:async function (response) {
           try {
+            SetLoading(true)
       console.log("Razorpay response:", response);
 
       const verifyRes = await axios.post(
@@ -64,6 +68,8 @@ if (paymentStatus === "SUCCESS" ||
     } catch (error) {
       console.error("Payment verification error:", error);
       alert("Something went wrong during verification.");
+    }finally{
+      SetLoading(false)
     }
   },
            modal: {

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Check, UserSquare2, Package, FlaskConical, FileText, ChevronUp, ChevronDown, User, Info } from 'lucide-react'
+import { useRecoilState, useSetRecoilState } from 'recoil'
+import { LoadingStateApi } from '../../store/Loading.State'
 
 function TrackOrder() {
   const { orderId } = useParams()
@@ -9,13 +11,19 @@ function TrackOrder() {
   const [orderInfo, setOrderInfo] = useState(null)
   const [showInstructions, setShowInstructions] = useState(true)
 
+
+  const SetLoading = useSetRecoilState(LoadingStateApi)
+
   useEffect(() => {
     const fetchDetails = async () => {
       try {
+        SetLoading(true)
         const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/order/${orderId}`, { withCredentials: true })
         setOrderInfo(response?.data?.data)
       } catch (error) {
         console.error('Failed to fetch order', error)
+      }finally{
+        SetLoading(false)
       }
     }
     fetchDetails()
