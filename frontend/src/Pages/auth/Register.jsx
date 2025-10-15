@@ -67,6 +67,11 @@ function Register() {
         <div className="bg-white shadow-[0_12px_40px_-18px_rgba(17,24,39,0.18)] rounded-2xl px-8 pt-8 pb-10">
           <div className="text-center mb-6">
              <h1>Quick Diagnostic</h1>
+                <div className="mt-3 bg-[#647FBC]/10 border border-[#647FBC]/20 rounded-lg p-3">
+     <p className="text-xs text-[#647FBC] font-medium">
+       ⚡ Demo Note: Backend may take 2-3 minutes to respond on first request (Render free tier)
+     </p>
+   </div>
           </div>
           {/* Form: tighter vertical rhythm */}
           <form className="space-y-5" onSubmit={handleRegistersubmit}>
