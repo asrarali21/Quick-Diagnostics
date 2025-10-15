@@ -43,7 +43,7 @@ export async function answerFromKb(question  , k =5) {
 
 
     const chat = new ChatGoogleGenerativeAI({
-        model:"gemini-1.5-flash",
+        model:"gemini-2.5-flash",
         apiKey:process.env.GEMINI_API_KEY
     })
 

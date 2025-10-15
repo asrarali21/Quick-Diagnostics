@@ -24,7 +24,7 @@ const createOrder = asyncHandler(async(req , res)=>{
     : Math.round(Number(testDoc.price)) 
   const order = await Order.create({
     user:req.user._id,
-    patient, 
+    patient,
     test, 
     lab, 
     slot,
