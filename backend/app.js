@@ -21,8 +21,9 @@ const app = express()
 
 app.use(cors({
     origin:[
-        "http://localhost:5173", 
-        "https://quickdiagnostics.vercel.app" 
+        "http://localhost:5174", 
+        "https://quickdiagnostics.vercel.app",
+        "http://localhost:8000"
     ],
     credentials:true
 }
