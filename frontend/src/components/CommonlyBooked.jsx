@@ -8,7 +8,7 @@ import { LoadingStateApi } from '../store/Loading.State'
 
 function CommonlyBooked() {
   const tests = useRecoilValue(TestdataApiState)
-    const loading = useRecoilValue(LoadingStateApi);
+  const loading = useRecoilValue(LoadingStateApi);
   const navigate = useNavigate()
 
 
@@ -33,7 +33,7 @@ function CommonlyBooked() {
       {/* Cards grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {tests.map((item, i) => (
+          {(tests || []).map((item, i) => (
             <div
               key={item?._id}
               role="button"

@@ -46,7 +46,7 @@ function TestList() {
         {/* Section Heading */}
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-[26px] md:text-[30px] font-semibold text-gray-900 leading-snug decoration-[#1F2840]">
-          Commonly Booked Test
+            Commonly Booked Test
           </h2>
         </div>
         {/* Cards Row */}
@@ -73,7 +73,7 @@ function TestList() {
                 <div className="flex flex-col flex-1 justify-start">
                   <button
                     type="button"
-                    onClick={""}
+                    onClick={() => { }}
                     className="text-left font-semibold text-[17px] leading-snug text-gray-900 underline underline-offset-[3px] decoration-transparent hover:decoration-[#7287b9] transition-colors"
                   >
                     {t.name}

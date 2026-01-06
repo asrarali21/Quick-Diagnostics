@@ -94,7 +94,7 @@ const [userId, setUserId] = useState("")
         console.log(response);
         handlesuccess(response.data.message)
         setTimeout(()=>{
-        navigate("/home")
+        navigate("/login")
         })
       } catch (error) {
         console.log(error);

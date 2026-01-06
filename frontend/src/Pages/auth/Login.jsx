@@ -8,35 +8,37 @@ import { LoadingStateApi } from '../../store/Loading.State';
 
 function Login() {
 
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
-    const setLoading = useSetRecoilState(LoadingStateApi)
-    
-    const [showPassword , setShowPassword] = useState(false)
+  const setLoading = useSetRecoilState(LoadingStateApi)
 
-    const [Userinfo , setUserInfo] = useState({
-       email:"",
-       password:""
-    })
-    console.log(Userinfo);
+  const [showPassword, setShowPassword] = useState(false)
 
-    async function handleClick() {
-      try {
-        setLoading(true)
-        const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/users/login` , Userinfo , {withCredentials:true})
-        console.log(response);
-        handlesuccess(response.data.message)
-        setTimeout(() => {
-          navigate("/home")
-        }, 1000);
-      } catch (error) {
-        console.log(error);
-        handleError(error.response.data.message)        
-      } finally {
-    setLoading(false);  
-  }
+  const [Userinfo, setUserInfo] = useState({
+    email: "",
+    password: ""
+  })
+  console.log(Userinfo);
+
+  async function handleClick() {
+    try {
+      setLoading(true)
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/users/login`, Userinfo, { withCredentials: true })
+      console.log(response);
+      handlesuccess(response.data.message)
+      setTimeout(() => {
+        // Use window.location to force a full page reload
+        // This ensures Recoil state is refreshed with the new auth cookie
+        window.location.href = "/"
+      }, 1000);
+    } catch (error) {
+      console.log(error);
+      handleError(error.response?.data?.message || "Login failed")
+    } finally {
+      setLoading(false);
     }
-    
+  }
+
 
   return (
     <div className="min-h-screen bg-[#a4b4d9] flex items-center justify-center p-6">
@@ -65,14 +67,14 @@ function Login() {
               type={showPassword ? "text" : "password"}
               className="w-full rounded-md border border-gray-300 bg-white px-3 py-3 text-gray-900 placeholder-gray-400"
               placeholder="Password"
-               value={Userinfo.password}
-                 onChange={(e) => setUserInfo(prev => ({ ...prev, password: e.target.value }))}
+              value={Userinfo.password}
+              onChange={(e) => setUserInfo(prev => ({ ...prev, password: e.target.value }))}
             />
-            <span onClick={()=>setShowPassword(!showPassword)} className="absolute inset-y-0 right-3 flex items-center text-gray-400">
+            <span onClick={() => setShowPassword(!showPassword)} className="absolute inset-y-0 right-3 flex items-center text-gray-400">
               {/* eye icon */}
-              <svg className="w-5 h-5 cursor-pointer"  viewBox="0 0 24 24" fill="none">
-                <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" stroke="currentColor" strokeWidth="1.5"/>
-                <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5"/>
+              <svg className="w-5 h-5 cursor-pointer" viewBox="0 0 24 24" fill="none">
+                <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" stroke="currentColor" strokeWidth="1.5" />
+                <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5" />
               </svg>
             </span>
           </div>
@@ -80,7 +82,7 @@ function Login() {
 
         {/* Forgot password */}
         <div className="mb-6">
-          <Link to={"/forgotPassword"} style={{textDecoration:"none", color:"black"}} className="text-sm cursor-pointer font-semibold text-[#6B4DE0]">
+          <Link to={"/forgotPassword"} style={{ textDecoration: "none", color: "black" }} className="text-sm cursor-pointer font-semibold text-[#6B4DE0]">
             Forgot Password?
           </Link>
         </div>
@@ -97,7 +99,7 @@ function Login() {
         {/* Sign up prompt */}
         <p className="text-center text-sm text-gray-700 mb-6">
           Don’t have an account?{' '}
-          <Link style={{textDecoration:"none", color:"black"}} to={"/"} className="font-semibold  text-[#6B4DE0]">Sign up</Link>
+          <Link style={{ textDecoration: "none", color: "black" }} to={"/register"} className="font-semibold  text-[#6B4DE0]">Sign up</Link>
         </p>
 
       </div>

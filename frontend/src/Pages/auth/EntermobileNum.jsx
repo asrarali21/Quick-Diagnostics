@@ -82,7 +82,7 @@ function EntermobileNum() {
           {/* Button */}
           <button
             type="button"
-            className="mt-8 w-full rounded-lg bg-[#CCD4FF] text-white font-semibold py-3
+            className="mt-8 w-full rounded-lg bg-[#647FBC] text-white font-semibold py-3
                        transition-colors duration-200 hover:bg-[#647FBC]
                        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#647FBC]
                        active:bg-[#647FBC] cursor-pointer"

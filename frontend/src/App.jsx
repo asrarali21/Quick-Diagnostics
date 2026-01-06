@@ -2,7 +2,7 @@
 import './App.css'
 import Navbar from './components/Navbar';
 
-import { Route, Routes,  } from 'react-router-dom';
+import { Route, Routes, } from 'react-router-dom';
 // user pages under Pages/user
 import Home from './Pages/user/Home';
 import Reports from './Pages/user/Reports';
@@ -28,58 +28,63 @@ import PaymentSuccess from './Pages/user/PaymentSuccess';
 import TrackOrder from './Pages/user/TrackOrder';
 import ForgotPassword from './Pages/auth/ForgotPassword';
 import ResetPassword from './Pages/auth/ResetPassword';
+import AuthModal from './components/AuthModal';
 
 
 
 function App() {
-        
 
-      
+
+
   return (
     <>
-    <Routes>
-      <Route path='/' element ={ <Register/>  }/>
-      <Route path='/login' element ={ <Login/>  }/>
-      <Route path='/mobileNo' element ={ <EntermobileNum/>  }/>
-      <Route path='/verifyOtp' element ={ <VerifyOtp/>  }/>
-      <Route path='/ForgotPassword' element ={ <ForgotPassword/>  }/>
-      <Route path='/resetPassword' element ={ <ResetPassword/>  }/>
-      <Route path='/home' element ={ <Home/>  }/>
-      <Route path='/reports' element ={ 
-        <>
-         <Navbar/>
-          <Reports/>  
-        </>
-      }
-      />
-      <Route path='/appointments' element ={
-        <>
-        <Navbar/>
-        <Appointments/>
-        </>
-        }/>
-        <Route path='/testinfo/:id' element={<TestInfo/>}/>
-        <Route path='/AddPatient' element={<AddPatient/>}/>
-        <Route path='/Lab' element={<SelectLab/>}/>
-        <Route path='/SelectAppointment' element={<SelectAppointment/>}/>
-        <Route path='/AddAddress' element={<AddAddress/>}/>
-        <Route path='/reviewOrder/:orderId' element={<ReviewOrder/>}/>
+      {/* Global Auth Modal - accessible from any page via Navbar */}
+      <AuthModal />
+
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/mobileNo' element={<EntermobileNum />} />
+        <Route path='/verifyOtp' element={<VerifyOtp />} />
+        <Route path='/ForgotPassword' element={<ForgotPassword />} />
+        <Route path='/resetPassword' element={<ResetPassword />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/reports' element={
+          <>
+            <Navbar />
+            <Reports />
+          </>
+        }
+        />
+        <Route path='/appointments' element={
+          <>
+            <Navbar />
+            <Appointments />
+          </>
+        } />
+        <Route path='/testinfo/:id' element={<TestInfo />} />
+        <Route path='/AddPatient' element={<AddPatient />} />
+        <Route path='/Lab' element={<SelectLab />} />
+        <Route path='/SelectAppointment' element={<SelectAppointment />} />
+        <Route path='/AddAddress' element={<AddAddress />} />
+        <Route path='/reviewOrder/:orderId' element={<ReviewOrder />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/payment-success/:orderId" element={<PaymentSuccess />} />
         <Route path="/trackOrder/:orderId" element={<TrackOrder />} />
 
         {/* admin auth */}
-        <Route path='/adminLogin' element={<LoginAdmin/>}/>
+        <Route path='/adminLogin' element={<LoginAdmin />} />
 
         {/* admin app layout + children */}
-        <Route path='/admin' element={<AdminLayout/>}>
-          <Route index element={<AdminDashboard/>} />
-          <Route path='add-test' element={<AdminAddTest/>} />
+        <Route path='/admin' element={<AdminLayout />}>
+          <Route index element={<AdminDashboard />} />
+          <Route path='add-test' element={<AdminAddTest />} />
           {/* add more sections here: tests, reports, appointments, users, settings */}
-       
+
         </Route>
-     </Routes>
-   
+      </Routes>
+
     </>
   )
 }
